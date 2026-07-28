@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primal Technologies — Innovación que transforma industrias</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange:     #E63900;
+  --orange-mid: #FF6B35;
+  --dark:       #1A1A1A;
+  --dark-2:     #242424;
+  --gray:       #6B6B6B;
+  --gray-light: #F4F4F4;
+  --white:      #FFFFFF;
+  --border:     #E8E8E8;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--dark);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+/* ── UTILITY ── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+@media(max-width:768px){ .container{ padding:0 20px; } }
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding: 6px 14px;
+  border: 1px solid var(--orange);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--orange);
+  color: #fff;
+  padding: 16px 32px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.btn-primary:hover { background: var(--orange-mid); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  padding: 14px 30px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+.arrow-right {
+  width: 18px; height: 18px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.d1 { transition-delay:.1s; }
+.reveal.d2 { transition-delay:.2s; }
+.reveal.d3 { transition-delay:.3s; }
+.reveal.d4 { transition-delay:.4s; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ─────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  transition: background .3s, backdrop-filter .3s, box-shadow .3s;
+  padding: 0;
+}
+nav.scrolled {
+  background: rgba(26,26,26,0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 32px; height: 32px;
+  background: var(--orange);
+  clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%);
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--orange);
+  color: #fff !important;
+  padding: 10px 22px;
+  font-weight: 600 !important;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--orange-mid); color: #fff !important; }
+.nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+.nav-hamburger span { display:block; width:24px; height:2px; background:#fff; transition:.3s; }
+.mobile-menu {
+  display:none;
+  position:fixed;
+  top:72px; left:0; right:0;
+  background: rgba(26,26,26,0.98);
+  backdrop-filter:blur(12px);
+  padding:24px 20px 32px;
+  z-index:99;
+}
+.mobile-menu.open { display:block; }
+.mobile-menu a {
+  display:block;
+  color:rgba(255,255,255,.8);
+  text-decoration:none;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:500;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.mobile-menu a:last-child { border-bottom:none; }
+@media(max-width:900px){
+  .nav-links { display:none; }
+  .nav-hamburger { display:flex; }
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(230,57,0,0.30) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255,107,53,0.18) 0%, transparent 60%),
+    linear-gradient(rgba(26,26,26,0.78), rgba(26,26,26,0.78));
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+/* Geometric accent */
+.hero-accent {
+  position: absolute;
+  z-index: 1;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(230,57,0,0.15);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-accent::before {
+  content:'';
+  position:absolute;
+  inset:60px;
+  border:1px solid rgba(230,57,0,0.1);
+  border-radius:50%;
+}
+.hero-accent::after {
+  content:'';
+  position:absolute;
+  inset:120px;
+  border:1px solid rgba(230,57,0,0.08);
+  border-radius:50%;
+}
+.hero-content { position:relative; z-index:2; }
+.hero-scroll { z-index:2; }
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.hero-eyebrow span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.hero-line {
+  width: 48px;
+  height: 1px;
+  background: var(--orange);
+}
+.hero h1 {
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 28px;
+  max-width: 900px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--orange);
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.hero-scroll span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  writing-mode: vertical-rl;
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse {
+  0%,100%{ opacity:.3; } 50%{ opacity:1; }
+}
+
+/* ─────────────────────────────────────────
+   STATS BAND
+───────────────────────────────────────── */
+.stats-band {
+  background: var(--orange);
+  padding: 0;
+}
+.stats-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media(max-width:768px){ .stats-inner{ grid-template-columns:repeat(2,1fr); } }
+.stat-item {
+  padding: 40px 32px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  text-align: left;
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ─────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────── */
+.about {
+  padding: 120px 0;
+  background: var(--white);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media(max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:48px; } }
+.about h2 {
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  margin-bottom: 28px;
+  line-height: 1.1;
+}
+.about h2 span { color: var(--orange); }
+.about p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+.value-item {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  background: var(--gray-light);
+}
+.value-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.value-item p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+.about-visual {
+  position: relative;
+}
+.about-img-block {
+  background: var(--dark);
+  height: 480px;
+  clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.about-img-bg {
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 70% 70% at 60% 40%, rgba(230,57,0,0.25) 0%, transparent 70%);
+}
+.about-icon-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+  width: 260px;
+}
+.about-icon-cell {
+  aspect-ratio:1;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: background .3s;
+}
+.about-icon-cell:hover { background: rgba(230,57,0,.2); }
+.about-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--orange);
+  color: #fff;
+  padding: 20px 28px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+.about-badge .num {
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height:1;
+}
+.about-badge .lbl {
+  font-size: 12px;
+  font-weight: 500;
+  opacity:.8;
+  margin-top:4px;
+}
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+.services {
+  padding: 120px 0;
+  background: var(--dark);
+}
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 72px;
+}
+@media(max-width:768px){ .services-header{ grid-template-columns:1fr; gap:24px; margin-bottom:48px; } }
+.services h2 {
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+}
+.services h2 span { color: var(--orange); }
+.services-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+@media(max-width:768px){ .services-grid{ grid-template-columns:1fr; } }
+.service-card {
+  background: var(--dark-2);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+  border: 1px solid rgba(255,255,255,.04);
+  text-decoration: none;
+  display: block;
+  cursor: default;
+}
+.service-card::before {
+  content:'';
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+.service-card:hover { background: #2a2a2a; }
+.service-card:hover::before { transform: scaleX(1); }
+.service-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+  opacity: .7;
+}
+.service-icon {
+  width: 56px; height: 56px;
+  background: rgba(230,57,0,0.12);
+  border: 1px solid rgba(230,57,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 28px;
+  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+  transition: background .3s;
+}
+.service-card:hover .service-icon { background: rgba(230,57,0,0.25); }
+.service-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.service-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,.45);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.service-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,.4);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 4px 10px;
+  letter-spacing: 0.05em;
+}
+.service-arrow {
+  position: absolute;
+  top: 40px; right: 40px;
+  width: 36px; height: 36px;
+  border-top: 2px solid rgba(255,255,255,.15);
+  border-right: 2px solid rgba(255,255,255,.15);
+  transform: rotate(45deg);
+  transition: border-color .3s, transform .3s;
+}
+.service-card:hover .service-arrow {
+  border-color: var(--orange);
+  transform: rotate(45deg) translate(3px,-3px);
+}
+
+/* ─────────────────────────────────────────
+   PROCESS
+───────────────────────────────────────── */
+.process {
+  padding: 120px 0;
+  background: var(--white);
+  overflow: hidden;
+}
+.process h2 {
+  font-size: clamp(36px,4vw,56px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.process h2 span { color: var(--orange); }
+.process-intro {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 72px;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  position: relative;
+}
+@media(max-width:900px){ .process-steps{ grid-template-columns:1fr; gap:0; } }
+.process-connector {
+  position: absolute;
+  top: 38px; left: 10%;
+  right: 10%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--orange) 0, var(--orange) 8px, transparent 8px, transparent 20px);
+  pointer-events: none;
+}
+@media(max-width:900px){ .process-connector{ display:none; } }
+.process-step {
+  padding: 0 20px;
+  position: relative;
+  z-index:2;
+}
+.step-num-wrap {
+  width: 76px; height: 76px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
+  clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%);
+  transition: background .3s, border-color .3s;
+}
+.process-step:hover .step-num-wrap {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+.step-num {
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  transition: color .3s;
+}
+.process-step:hover .step-num { color: #fff; }
+.step-title {
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+.step-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+@media(max-width:900px){
+  .process-step { display:flex; gap:24px; align-items:flex-start; padding:24px 0; border-bottom:1px solid var(--border); }
+  .process-step:last-child { border-bottom:none; }
+  .step-num-wrap { flex-shrink:0; margin-bottom:0; width:56px; height:56px; }
+}
+
+/* ─────────────────────────────────────────
+   INDUSTRIES
+───────────────────────────────────────── */
+.industries {
+  padding: 120px 0;
+  background: var(--gray-light);
+}
+.industries h2 {
+  font-size: clamp(36px,4vw,56px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.industries h2 span { color: var(--orange); }
+.industries-intro {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 64px;
+}
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+@media(max-width:900px){ .industries-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .industries-grid{ grid-template-columns:1fr; } }
+.industry-card {
+  background: var(--white);
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+  position: relative;
+  overflow: hidden;
+}
+.industry-card::after {
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:4px; height:100%;
+  background:var(--orange);
+  transform:scaleY(0);
+  transform-origin:bottom;
+  transition:transform .4s;
+}
+.industry-card:hover { border-color: rgba(230,57,0,.2); transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
+.industry-card:hover::after { transform:scaleY(1); }
+.industry-icon { font-size:32px; margin-bottom:20px; }
+.industry-card h3 {
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.industry-card p {
+  font-size:14px;
+  color:var(--gray);
+  line-height:1.65;
+}
+
+/* ─────────────────────────────────────────
+   TECHNOLOGY
+───────────────────────────────────────── */
+.technology {
+  padding: 100px 0;
+  background: var(--dark);
+  overflow: hidden;
+}
+.technology h2 {
+  font-size:clamp(32px,3.5vw,48px);
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:12px;
+}
+.technology h2 span { color:var(--orange); }
+.tech-intro {
+  font-size:16px;
+  color:rgba(255,255,255,.45);
+  margin-bottom:56px;
+  font-weight:300;
+}
+.tech-categories {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 32px;
+}
+@media(max-width:900px){ .tech-categories{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .tech-categories{ grid-template-columns:1fr; } }
+.tech-cat-title {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.tech-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.tech-list li {
+  font-size:14px;
+  color:rgba(255,255,255,.5);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:300;
+  transition:color .2s;
+}
+.tech-list li:hover { color:rgba(255,255,255,.9); }
+.tech-list li::before {
+  content:'';
+  width:6px; height:6px;
+  background:var(--orange);
+  flex-shrink:0;
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+}
+
+/* ─────────────────────────────────────────
+   CTA BAND
+───────────────────────────────────────── */
+.cta-band {
+  padding: 120px 0;
+  background: var(--orange);
+  position: relative;
+  overflow: hidden;
+}
+.cta-band-bg {
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.cta-inner {
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:40px;
+  align-items:center;
+}
+@media(max-width:768px){ .cta-inner{ grid-template-columns:1fr; } }
+.cta-band h2 {
+  font-size:clamp(32px,4vw,52px);
+  color:#fff;
+  font-weight:700;
+  margin-bottom:16px;
+  line-height:1.1;
+}
+.cta-band p {
+  font-size:17px;
+  color:rgba(255,255,255,.75);
+  line-height:1.6;
+  font-weight:300;
+}
+.cta-btn-dark {
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--dark);
+  color:#fff;
+  padding:18px 36px;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:15px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .2s, transform .2s;
+  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.cta-btn-dark:hover { background:#333; transform:translateY(-2px); }
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+.contact {
+  padding: 120px 0;
+  background: var(--white);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+@media(max-width:900px){ .contact-grid{ grid-template-columns:1fr; gap:48px; } }
+.contact-info h2 {
+  font-size:clamp(36px,4vw,52px);
+  font-weight:700;
+  margin-bottom:20px;
+}
+.contact-info h2 span { color:var(--orange); }
+.contact-info p {
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.7;
+  margin-bottom:40px;
+}
+.contact-detail {
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:24px;
+}
+.contact-icon {
+  width:44px; height:44px;
+  background:rgba(230,57,0,.08);
+  border:1px solid rgba(230,57,0,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  flex-shrink:0;
+}
+.contact-detail-text strong {
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--dark);
+  margin-bottom:4px;
+}
+.contact-detail-text span {
+  font-size:15px;
+  color:var(--gray);
+}
+/* Form */
+.contact-form {
+  background:var(--gray-light);
+  padding:48px;
+  border:1px solid var(--border);
+  clip-path:polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+@media(max-width:600px){ .contact-form{ padding:32px 24px; clip-path:none; } }
+.form-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:16px;
+}
+@media(max-width:600px){ .form-row{ grid-template-columns:1fr; } }
+.form-group { margin-bottom:16px; }
+.form-group label {
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--dark);
+  margin-bottom:8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  background:var(--white);
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  color:var(--dark);
+  outline:none;
+  transition:border-color .2s;
+  border-radius:0;
+  -webkit-appearance:none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color:var(--orange); }
+.form-group textarea { resize:vertical; min-height:120px; }
+.form-submit {
+  width:100%;
+  background:var(--orange);
+  color:#fff;
+  border:none;
+  padding:16px 32px;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:15px;
+  cursor:pointer;
+  transition:background .2s;
+  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.form-submit:hover { background:var(--orange-mid); }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  background: var(--dark);
+  padding: 72px 0 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 32px;
+}
+@media(max-width:900px){ .footer-top{ grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){ .footer-top{ grid-template-columns:1fr; } }
+.footer-brand .logo { margin-bottom:16px; display:inline-flex; }
+.footer-brand p {
+  font-size:14px;
+  color:rgba(255,255,255,.4);
+  line-height:1.7;
+  font-weight:300;
+  max-width:260px;
+}
+.footer-col h4 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:rgba(255,255,255,.5);
+  margin-bottom:20px;
+}
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:12px; }
+.footer-col ul li a {
+  font-size:14px;
+  color:rgba(255,255,255,.35);
+  text-decoration:none;
+  transition:color .2s;
+}
+.footer-col ul li a:hover { color:var(--white); }
+.footer-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.footer-copy {
+  font-size:13px;
+  color:rgba(255,255,255,.25);
+}
+.footer-copy span { color:var(--orange); }
+.footer-legal {
+  display:flex;
+  gap:24px;
+}
+.footer-legal a {
+  font-size:13px;
+  color:rgba(255,255,255,.25);
+  text-decoration:none;
+  transition:color .2s;
+}
+.footer-legal a:hover { color:rgba(255,255,255,.6); }
+
+/* ─────────────────────────────────────────
+   NOTIFICATIONS (form feedback)
+───────────────────────────────────────── */
+.toast {
+  position:fixed;
+  bottom:32px; right:32px;
+  background:var(--dark);
+  color:#fff;
+  padding:16px 24px;
+  font-size:14px;
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  z-index:999;
+  transform:translateX(120%);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  clip-path:polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+.toast.show { transform:translateX(0); }
+.toast-dot { width:8px; height:8px; background:var(--orange); border-radius:50%; flex-shrink:0; }
+
+/* ─────────────────────────────────────────
+   MACHINERY
+───────────────────────────────────────── */
+.machinery {
+  padding: 100px 0;
+  background: var(--gray-light);
+}
+.machinery h2 {
+  font-size: clamp(32px,4vw,52px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.machinery h2 span { color: var(--orange); }
+.machinery-intro {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+.machinery-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2px;
+  margin-bottom: 48px;
+}
+@media(max-width:900px){ .machinery-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .machinery-grid{ grid-template-columns:1fr; } }
+.machine-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .3s, transform .3s;
+}
+.machine-card::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--orange);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s;
+}
+.machine-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.08); transform:translateY(-3px); }
+.machine-card:hover::before { transform:scaleX(1); }
+.machine-category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.machine-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: var(--dark);
+}
+.machine-card p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+.machinery-note {
+  background: var(--dark);
+  color: rgba(255,255,255,.6);
+  font-size: 13px;
+  padding: 20px 28px;
+  border-left: 3px solid var(--orange);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.machinery-note strong { color: var(--white); }
+
+/* ─────────────────────────────────────────
+   PRODUCTIVE PROCESSES
+───────────────────────────────────────── */
+.prod-processes {
+  padding: 100px 0;
+  background: var(--dark);
+}
+.prod-processes h2 {
+  font-size: clamp(32px,4vw,52px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.prod-processes h2 span { color: var(--orange); }
+.prod-intro {
+  font-size: 16px;
+  color: rgba(255,255,255,.45);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+  font-weight: 300;
+}
+.proc-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+@media(max-width:900px){ .proc-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .proc-grid{ grid-template-columns:1fr; } }
+.proc-card {
+  background: var(--dark-2);
+  border: 1px solid rgba(255,255,255,.04);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+.proc-card:hover { background: #2e2e2e; }
+.proc-card::after {
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background: var(--orange);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s;
+}
+.proc-card:hover::after { transform:scaleX(1); }
+.proc-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: block;
+}
+.proc-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.proc-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ── Service card image strip ── */
+.service-img {
+  width: calc(100% + 80px);
+  margin: -48px -40px 32px;
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.service-img::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to bottom, transparent 40%, var(--dark-2) 100%);
+}
+
+/* ── About real image ── */
+.about-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Machinery banner ── */
+.machinery-banner {
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+.machinery-banner::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.4) 100%);
+  z-index:1;
+}
+.machinery-banner-text {
+  position: absolute;
+  bottom: 32px;
+  left: 40px;
+  z-index: 2;
+  color: rgba(255,255,255,.7);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+.machinery-banner-text strong {
+  display: block;
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+/* ── Unsplash attribution ── */
+.unsplash-credit {
+  font-size: 11px;
+  color: rgba(255,255,255,.25);
+  text-align: center;
+  padding: 12px 0;
+  background: var(--dark);
+  letter-spacing: 0.03em;
+}
+.unsplash-credit a { color: rgba(255,255,255,.4); text-decoration: none; }
+.unsplash-credit a:hover { color: rgba(255,255,255,.7); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-mark"></div>
+        Primal Technologies
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#maquinaria">Maquinaria</a></li>
+        <li><a href="#procesos">Procesos</a></li>
+        <li><a href="#industrias">Industrias</a></li>
+        <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#servicios"  onclick="toggleMenu()">Servicios</a>
+  <a href="#maquinaria" onclick="toggleMenu()">Maquinaria</a>
+  <a href="#procesos"   onclick="toggleMenu()">Procesos</a>
+  <a href="#industrias" onclick="toggleMenu()">Industrias</a>
+  <a href="#contacto"   onclick="toggleMenu()">Contáctanos</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="inicio">
+  <video class="hero-video" autoplay muted loop playsinline
+    poster="https://images.unsplash.com/photo-1647427060118-4911c9821b82?auto=format&fit=crop&w=1920&q=80">
+    <source src="https://videos.pexels.com/video-files/30715848/13141191_2560_1440_24fps.mp4" type="video/mp4">
+  </video>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-line"></div>
+      <span>Consultora de Tecnología e Ingeniería</span>
+    </div>
+    <h1>Innovación que<br><em>transforma</em><br>industrias</h1>
+    <p class="hero-sub">Automatizamos procesos, desarrollamos software y aplicamos inteligencia artificial para llevar tu empresa al siguiente nivel.</p>
+    <div class="hero-ctas">
+      <a href="#servicios" class="btn-primary">Ver servicios <span class="arrow-right"></span></a>
+      <a href="#contacto"  class="btn-secondary">Hablar con un experto</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS ═══════════ -->
+<section class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-number">18+</div>
+      <div class="stat-label">Años en operación (desde 2007)</div>
+    </div>
+    <div class="stat-item reveal d1">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Plantas: El Paso TX & Cd. Juárez</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Máquinas CNC y de precisión</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Sectores industriales atendidos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="tag reveal">Quiénes somos</div>
+        <h2 class="reveal d1">Manufactura de <span>precisión</span> e ingeniería que transforma operaciones</h2>
+        <p class="reveal d2">Desde 2007 en El Paso, TX, y con expansión a Cd. Juárez, Chih., integramos maquinado CNC de alta precisión, automatización industrial con PLC y robótica, desarrollo de software a la medida e inteligencia artificial en una sola empresa.</p>
+        <p class="reveal d2">Nuestra misión es garantizar la satisfacción del cliente a través de productos de máxima calidad, mejora continua en equipo y el desarrollo de nuestro talento humano mediante liderazgo y capacitación constante.</p>
+        <div class="about-values">
+          <div class="value-item reveal d1">
+            <h4>Precisión CNC</h4>
+            <p>Maquinado de piezas con tolerancias exactas usando Haas, FANUC, Hurco y Mitsubishi EDM.</p>
+          </div>
+          <div class="value-item reveal d2">
+            <h4>Industria 4.0</h4>
+            <p>Automatización PLC, robótica, IoT, MES y analítica de datos para producción inteligente.</p>
+          </div>
+          <div class="value-item reveal d3">
+            <h4>Software & IA</h4>
+            <p>Sistemas a la medida, automatización con inteligencia artificial y plataformas web de alto impacto.</p>
+          </div>
+          <div class="value-item reveal d4">
+            <h4>Acabados Industriales</h4>
+            <p>Pintura en polvo, pintura líquida convencional y electroestática, con horno de curado.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal d2">
+        <div class="about-img-block" style="background-image:url('https://images.unsplash.com/photo-1606206873764-fd15e242df52?auto=format&fit=crop&w=900&q=85'); background-size:cover; background-position:center;">
+          <div class="about-img-bg"></div>
+        </div>
+        <div class="about-badge">
+          <div class="num">2007</div>
+          <div class="lbl">Fundados en El Paso, TX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="tag reveal" style="border-color:rgba(230,57,0,.5);">Nuestros servicios</div>
+        <h2 class="reveal d1">Lo que <span>hacemos</span><br>mejor</h2>
+      </div>
+      <p class="services-sub reveal d2">Cuatro áreas de especialización que se complementan para darte una solución tecnológica completa e integrada.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1645754884968-a00b7ed62c43?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="service-num">01</div>
+        <div class="service-arrow"></div>
+        <div class="service-icon">⚙️</div>
+        <h3>Automatización Industrial, PLC y Maquinado CNC</h3>
+        <p>Programación PLC (nuevas implementaciones, upgrades, integración de sistemas, monitoreo remoto), integración robótica, construcción de máquinas especiales, líneas de producción totalmente automatizadas, modernización de equipos legacy e integración Industry 4.0. Maquinado CNC de precisión con centros Haas, FANUC Robodrill, Hurco VMX60, Wire EDM Mitsubishi, corte láser Amada y más.</p>
+        <div class="service-tags">
+          <span class="service-tag">PLC / SCADA</span>
+          <span class="service-tag">CNC Haas / FANUC</span>
+          <span class="service-tag">Robótica</span>
+          <span class="service-tag">Industria 4.0</span>
+          <span class="service-tag">Wire EDM</span>
+          <span class="service-tag">Corte Láser</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card reveal d1">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1743090660977-babf07732432?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="service-num">02</div>
+        <div class="service-arrow"></div>
+        <div class="service-icon">💻</div>
+        <h3>Desarrollo de Software a la Medida</h3>
+        <p>Diseñamos e integramos sistemas MES (Manufacturing Execution Systems) para monitorear y controlar tu producción en tiempo real, soluciones de analítica de datos, ERPs industriales, aplicaciones de gestión de inventarios y trazabilidad, así como software para procesos regulados en sectores médico y farmacéutico.</p>
+        <div class="service-tags">
+          <span class="service-tag">Sistemas MES</span>
+          <span class="service-tag">APIs REST</span>
+          <span class="service-tag">ERP Industrial</span>
+          <span class="service-tag">Analítica de datos</span>
+          <span class="service-tag">Trazabilidad</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card reveal d2">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1717501218198-816a64915f81?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="service-num">03</div>
+        <div class="service-arrow"></div>
+        <div class="service-icon">🧠</div>
+        <h3>Automatización con Inteligencia Artificial</h3>
+        <p>Liberamos el potencial humano de tareas repetitivas mediante IA: visión por computadora para inspección de calidad en línea, agentes LLM para documentación y soporte técnico, análisis predictivo de mantenimiento de equipos CNC, y pipelines de machine learning que convierten los datos de tu planta en decisiones operativas más precisas y rentables.</p>
+        <div class="service-tags">
+          <span class="service-tag">Visión por cómputo</span>
+          <span class="service-tag">Control de calidad IA</span>
+          <span class="service-tag">Mantenimiento predictivo</span>
+          <span class="service-tag">Agentes LLM</span>
+          <span class="service-tag">IoT + ML</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card reveal d3">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1754548930550-be9fa88874f4?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="service-num">04</div>
+        <div class="service-arrow"></div>
+        <div class="service-icon">🌐</div>
+        <h3>Desarrollo Web</h3>
+        <p>Creamos sitios web corporativos, plataformas de comercio electrónico y aplicaciones web progresivas que combinan diseño de alto impacto con rendimiento y posicionamiento SEO.</p>
+        <div class="service-tags">
+          <span class="service-tag">React / Next.js</span>
+          <span class="service-tag">E-commerce</span>
+          <span class="service-tag">CMS</span>
+          <span class="service-tag">SEO técnico</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MACHINERY ═══════════ -->
+<section class="machinery" id="maquinaria">
+  <div class="container">
+    <div class="tag reveal">Equipamiento</div>
+    <h2 class="reveal d1">Maquinaria de <span>precisión industrial</span></h2>
+    <p class="machinery-intro reveal d2">Contamos con un parque de máquinas de última generación en nuestras plantas de El Paso, TX y Cd. Juárez, Chih., que nos permite ofrecer maquinado de alta precisión, corte, formado, soldadura y acabados superficiales bajo un mismo techo.</p>
+
+    <div class="machinery-banner reveal" style="background-image:url('https://images.unsplash.com/photo-1716643863806-989dd76ae093?auto=format&fit=crop&w=1920&q=85');">
+      <div class="machinery-banner-text">
+        <strong>Instalaciones binacionales de manufactura</strong>
+        El Paso, TX (USA) &amp; Cd. Juárez, Chih. (México) — operación continua desde 2007
+      </div>
+    </div>
+
+    <div class="machinery-grid">
+
+      <div class="machine-card reveal">
+        <div class="machine-category">Maquinado CNC</div>
+        <h4>Haas VF-1 — 24 Herramientas</h4>
+        <p>Centro de maquinado vertical CNC para fresado de alta velocidad y tolerancias estrechas.</p>
+      </div>
+
+      <div class="machine-card reveal d1">
+        <div class="machine-category">Maquinado CNC</div>
+        <h4>Haas Super VF-3 — 26 Herramientas</h4>
+        <p>12,000 RPM, 1,400 IPM. Centro de maquinado de alto rendimiento para piezas complejas.</p>
+      </div>
+
+      <div class="machine-card reveal d2">
+        <div class="machine-category">Maquinado CNC</div>
+        <h4>Haas CNC Lathe (Torno)</h4>
+        <p>Torno CNC HAAS para torneado de precisión de piezas cilíndricas y roscas.</p>
+      </div>
+
+      <div class="machine-card reveal d3">
+        <div class="machine-category">Maquinado CNC</div>
+        <h4>FANUC Robodrill CNC</h4>
+        <p>Centro de perforado y maquinado de alta velocidad para piezas de alta precisión dimensional.</p>
+      </div>
+
+      <div class="machine-card reveal">
+        <div class="machine-category">Maquinado CNC</div>
+        <h4>Hurco VMX60</h4>
+        <p>Centro de maquinado vertical de mesa grande para componentes de mayor tamaño.</p>
+      </div>
+
+      <div class="machine-card reveal d1">
+        <div class="machine-category">EDM</div>
+        <h4>Mitsubishi Wire EDM NV1200R</h4>
+        <p>Electroerosión por hilo para geometrías complejas con tolerancias de ±0.001".</p>
+      </div>
+
+      <div class="machine-card reveal d2">
+        <div class="machine-category">EDM</div>
+        <h4>Mitsubishi EDM Sinkers (x2)</h4>
+        <p>Electroerosión por penetración para cavidades y moldes de alta precisión.</p>
+      </div>
+
+      <div class="machine-card reveal d3">
+        <div class="machine-category">EDM</div>
+        <h4>Wire Cutter Mitsubishi FX20</h4>
+        <p>Corte por hilo de alta precisión para perfiles y formas intrincadas en metal duro.</p>
+      </div>
+
+      <div class="machine-card reveal">
+        <div class="machine-category">Corte y Formado</div>
+        <h4>Laser Amada LCG 3015 AJ</h4>
+        <p>Corte láser de lámina metálica de alta potencia, mesa 3,015 × 1,525 mm.</p>
+      </div>
+
+      <div class="machine-card reveal d1">
+        <div class="machine-category">Corte y Formado</div>
+        <h4>Turret Press (Amada)</h4>
+        <p>Prensa torreta para punzonado y perforado de lámina metálica en serie.</p>
+      </div>
+
+      <div class="machine-card reveal d2">
+        <div class="machine-category">Corte y Formado</div>
+        <h4>Blade Guillotine 3/8" × 12 ft</h4>
+        <p>Guillotina hidráulica para corte de lámina hasta 3/8" de espesor y 12 pies de longitud.</p>
+      </div>
+
+      <div class="machine-card reveal d3">
+        <div class="machine-category">Corte y Formado</div>
+        <h4>Press Brake + CNC Router</h4>
+        <p>Dobladora de lámina de precisión y router CNC para madera y materiales no ferrosos.</p>
+      </div>
+
+      <div class="machine-card reveal">
+        <div class="machine-category">Fresado Manual</div>
+        <h4>Kent Vertical Manual Mill</h4>
+        <p>Fresadora vertical manual para prototipos y trabajos de ajuste de alta precisión artesanal.</p>
+      </div>
+
+      <div class="machine-card reveal d1">
+        <div class="machine-category">Inspección</div>
+        <h4>Comparador Óptico</h4>
+        <p>Medición y verificación dimensional de piezas maquinadas mediante proyección óptica.</p>
+      </div>
+
+      <div class="machine-card reveal d2">
+        <div class="machine-category">Marcado</div>
+        <h4>Zing Laser Etch</h4>
+        <p>Grabado láser para marcado permanente, logotipos y trazabilidad de piezas y componentes.</p>
+      </div>
+
+      <div class="machine-card reveal d3">
+        <div class="machine-category">Acabados</div>
+        <h4>Sandblaster Industrial</h4>
+        <p>Limpieza y preparación de superficie por granallado antes de procesos de pintura y recubrimiento.</p>
+      </div>
+
+    </div>
+    <div class="machinery-note reveal">
+      <strong>Capacidad binacional:</strong> Nuestras instalaciones en El Paso, TX y Cd. Juárez, Chih. nos permiten operar bajo esquemas <em>Shelter</em> y maquila, facilitando el flujo de materiales y manufactura a ambos lados de la frontera.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRODUCTIVE PROCESSES ═══════════ -->
+<section class="prod-processes" id="procesos">
+  <div class="container">
+    <div class="tag reveal" style="border-color:rgba(230,57,0,.5);">Producción</div>
+    <h2 class="reveal d1">Procesos <span>productivos</span></h2>
+    <p class="prod-intro reveal d2">Desde la materia prima hasta el empaque y embarque, controlamos cada etapa del proceso bajo estrictos estándares de calidad y seguridad.</p>
+
+    <!-- welding banner image -->
+    <div style="height:240px; margin-bottom:48px; background-image:url('https://images.unsplash.com/photo-1526634140919-468dc3ae3870?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center; position:relative; clip-path:polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,26,0.88) 0%,rgba(26,26,26,0.4) 100%);"></div>
+      <div style="position:absolute;bottom:28px;left:40px;color:#fff;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Procesos certificados</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;">Soldadura · Formado · Recubrimiento · Empaque</div>
+      </div>
+    </div>
+
+    <div class="proc-grid">
+
+      <div class="proc-card reveal">
+        <span class="proc-icon">🔧</span>
+        <h3>Proceso de Maquinado</h3>
+        <p>Maquinado CNC en centros verticales y horizontales Haas, FANUC y Hurco para piezas de precisión en aluminio, acero, acero inoxidable y más materiales.</p>
+      </div>
+
+      <div class="proc-card reveal d1">
+        <span class="proc-icon">🔨</span>
+        <h3>Formado de Metal</h3>
+        <p>Corte con láser y guillotina, punzonado con torreta press, doblado en press brake y ensamble de estructuras metálicas según plano del cliente.</p>
+      </div>
+
+      <div class="proc-card reveal d2">
+        <span class="proc-icon">⚡</span>
+        <h3>Proceso de Soldadura</h3>
+        <p>Soldadura MIG, TIG y de punto para unión de estructuras metálicas con calidad de presentación y resistencia estructural certificada.</p>
+      </div>
+
+      <div class="proc-card reveal">
+        <span class="proc-icon">🎨</span>
+        <h3>Pintura en Polvo (Powder Coating)</h3>
+        <p>Aplicación electrostática de pintura en polvo termoendurecible con horno de curado, ofreciendo acabado uniforme, duradero y resistente a la corrosión.</p>
+      </div>
+
+      <div class="proc-card reveal d1">
+        <span class="proc-icon">🖌️</span>
+        <h3>Pintura Líquida</h3>
+        <p>Pintura líquida convencional y electroestática en cabina de acabado controlada, para componentes que requieren colores especiales o acabados de alta presentación.</p>
+      </div>
+
+      <div class="proc-card reveal d2">
+        <span class="proc-icon">📦</span>
+        <h3>Empaque y Embarque</h3>
+        <p>Embalaje industrial con stretch film, cajones y pallets, carga con montacargas y coordinación logística para entregas en México y EE.UU.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="tag reveal">Cómo trabajamos</div>
+    <h2 class="reveal d1">Proceso <span>claro</span>,<br>resultados medibles</h2>
+    <p class="process-intro reveal d2">Un método estructurado que elimina la incertidumbre y te mantiene en control de cada etapa de tu proyecto.</p>
+    <div class="process-steps">
+      <div class="process-connector"></div>
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><span class="step-num">01</span></div>
+        <div class="step-title">Diagnóstico</div>
+        <p class="step-desc">Analizamos tu operación, identificamos cuellos de botella y definimos el alcance exacto del proyecto.</p>
+      </div>
+      <div class="process-step reveal d1">
+        <div class="step-num-wrap"><span class="step-num">02</span></div>
+        <div class="step-title">Propuesta</div>
+        <p class="step-desc">Presentamos una solución técnica detallada con tiempos, costos y retorno de inversión estimado.</p>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step-num-wrap"><span class="step-num">03</span></div>
+        <div class="step-title">Desarrollo</div>
+        <p class="step-desc">Iteramos en sprints cortos con entregas parciales y revisiones continuas contigo.</p>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step-num-wrap"><span class="step-num">04</span></div>
+        <div class="step-title">Implementación</div>
+        <p class="step-desc">Desplegamos la solución en tu entorno, con pruebas rigurosas y capacitación a tu equipo.</p>
+      </div>
+      <div class="process-step reveal d4">
+        <div class="step-num-wrap"><span class="step-num">05</span></div>
+        <div class="step-title">Soporte</div>
+        <p class="step-desc">Monitoreamos, optimizamos y actualizamos la solución para que siempre opere al máximo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INDUSTRIES ═══════════ -->
+<section class="industries" id="industrias">
+  <div class="container">
+    <div class="tag reveal">Sectores</div>
+    <h2 class="reveal d1">Industrias que <span>servimos</span></h2>
+    <p class="industries-intro reveal d2">Nuestra experiencia abarca los sectores más exigentes donde la tecnología marca la diferencia entre liderar o quedarse atrás.</p>
+    <div class="industries-grid">
+      <div class="industry-card reveal">
+        <div class="industry-icon">🏭</div>
+        <h3>Manufactura General</h3>
+        <p>Automatización de líneas de producción, construcción de máquinas especiales, integración MES e Industry 4.0 para plantas de alto volumen.</p>
+      </div>
+      <div class="industry-card reveal d1">
+        <div class="industry-icon">🔩</div>
+        <h3>Metalmecánica</h3>
+        <p>Maquinado CNC de precisión, formado de metal, soldadura estructural, corte láser y acabados superficiales. Experiencia de más de 18 años en el sector.</p>
+      </div>
+      <div class="industry-card reveal d2">
+        <div class="industry-icon">🍔</div>
+        <h3>Industria Alimentaria</h3>
+        <p>Automatización de procesos de empaque, pesaje y etiquetado. Software de trazabilidad e inocuidad alimentaria conforme a normas sanitarias.</p>
+      </div>
+      <div class="industry-card reveal">
+        <div class="industry-icon">🏥</div>
+        <h3>Dispositivos Médicos</h3>
+        <p>Maquinado de precisión de componentes médicos, software de trazabilidad y automatización de procesos en ambientes regulados (FDA / ISO 13485).</p>
+      </div>
+      <div class="industry-card reveal d1">
+        <div class="industry-icon">🛍️</div>
+        <h3>Retail y Display</h3>
+        <p>Fabricación de estructuras metálicas, bases y armazones internos para maniquíes y displays de punto de venta. Cliente de referencia: NOA Brands America.</p>
+      </div>
+      <div class="industry-card reveal d2">
+        <div class="industry-icon">🌐</div>
+        <h3>Comercio Digital</h3>
+        <p>Desarrollo web, plataformas e-commerce, automatización de catálogos con IA y sistemas de gestión de pedidos cross-border México–EE.UU.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TECHNOLOGY ═══════════ -->
+<section class="technology" id="tecnologias">
+  <div class="container">
+    <div class="tag reveal">Capacidades técnicas</div>
+    <h2 class="reveal d1">Equipo y tecnología de <span>primer nivel</span></h2>
+    <p class="tech-intro reveal d2">Nuestras capacidades abarcan desde el piso de producción hasta la nube, integrando maquinaria de precisión con software y herramientas de inteligencia artificial.</p>
+    <div class="tech-categories">
+      <div class="reveal">
+        <div class="tech-cat-title">Maquinaria CNC</div>
+        <ul class="tech-list">
+          <li>Haas VF-1 / Super VF-3</li>
+          <li>Haas CNC Lathe</li>
+          <li>FANUC Robodrill</li>
+          <li>Hurco VMX60</li>
+          <li>Mitsubishi Wire EDM</li>
+          <li>Mitsubishi EDM Sinkers</li>
+          <li>Amada Laser LCG 3015</li>
+          <li>Turret Press / Press Brake</li>
+        </ul>
+      </div>
+      <div class="reveal d1">
+        <div class="tech-cat-title">Automatización PLC</div>
+        <ul class="tech-list">
+          <li>Programación PLC</li>
+          <li>Integración robótica</li>
+          <li>SCADA / HMI</li>
+          <li>MES Integration</li>
+          <li>IoT Industrial</li>
+          <li>OPC-UA / Modbus</li>
+          <li>Modernización legacy</li>
+          <li>Remote Monitoring</li>
+        </ul>
+      </div>
+      <div class="reveal d2">
+        <div class="tech-cat-title">Software & IA</div>
+        <ul class="tech-list">
+          <li>Python / FastAPI</li>
+          <li>Node.js / TypeScript</li>
+          <li>PyTorch / OpenCV</li>
+          <li>APIs Claude / GPT</li>
+          <li>PostgreSQL / MongoDB</li>
+          <li>Docker / Kubernetes</li>
+          <li>AWS / Azure / GCP</li>
+          <li>React / Next.js</li>
+        </ul>
+      </div>
+      <div class="reveal d3">
+        <div class="tech-cat-title">Procesos Industriales</div>
+        <ul class="tech-list">
+          <li>Powder Coating</li>
+          <li>Pintura Líquida Electroestática</li>
+          <li>Horno de Curado</li>
+          <li>Soldadura MIG / TIG</li>
+          <li>Sandblasting</li>
+          <li>Laser Etch (Zing)</li>
+          <li>Comparador Óptico</li>
+          <li>Packing & Shipping</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA BAND ═══════════ -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2>¿Listo para transformar<br>tu operación?</h2>
+        <p>Habla con nuestros especialistas y obtén un diagnóstico gratuito sin compromiso.</p>
+      </div>
+      <a href="#contacto" class="cta-btn-dark">Agendar diagnóstico <span class="arrow-right"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="tag reveal">Contacto</div>
+        <h2 class="reveal d1">Hablemos de tu <span>próximo proyecto</span></h2>
+        <p class="reveal d2">Cuéntanos tu desafío y en menos de 24 horas un especialista te contactará con una propuesta inicial.</p>
+        <div class="contact-detail reveal d2">
+          <div class="contact-icon">👤</div>
+          <div class="contact-detail-text">
+            <strong>Ing. Miguel Estrada</strong>
+            <span>656 789 2994 · estradamiguelangel777@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-detail reveal d3">
+          <div class="contact-icon">👤</div>
+          <div class="contact-detail-text">
+            <strong>Ing. Daniel García</strong>
+            <span>656 685 8215 · Daniel.agarcia@hotmail.com</span>
+          </div>
+        </div>
+        <div class="contact-detail reveal d4">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <strong>Plantas</strong>
+            <span>Cd. Juárez, Chih. (MX) · El Paso, TX (USA)</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal d2">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label>Empresa</label>
+              <input type="text" placeholder="Nombre de tu empresa">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Correo</label>
+              <input type="email" placeholder="tu@empresa.com" required>
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" placeholder="+52 000 000 0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Servicio de interés</label>
+            <select required>
+              <option value="">Selecciona una opción</option>
+              <option>Automatización Industrial y Maquinado</option>
+              <option>Desarrollo de Software a la Medida</option>
+              <option>Automatización con IA</option>
+              <option>Desarrollo Web</option>
+              <option>Varios servicios</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Cuéntanos tu proyecto</label>
+            <textarea placeholder="Describe brevemente el reto que quieres resolver o el proyecto que tienes en mente..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Enviar mensaje
+            <span class="arrow-right"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ UNSPLASH CREDITS ═══════════ -->
+<div class="unsplash-credit">
+  Fotografías por <a href="https://unsplash.com/@simonkadula" target="_blank">Simon Kadula</a>,
+  <a href="https://unsplash.com/@testalizeme" target="_blank">Testalize.me</a>,
+  <a href="https://unsplash.com/@mastarsmt" target="_blank">mastars MT</a>,
+  <a href="https://unsplash.com/@jakubzerdzicki" target="_blank">Jakub Żerdzicki</a>,
+  <a href="https://unsplash.com/@deepmind" target="_blank">Google DeepMind</a> &amp;
+  <a href="https://unsplash.com/@amanjakhar" target="_blank">Aman Jakhar</a>
+  vía <a href="https://unsplash.com" target="_blank">Unsplash</a>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-mark"></div>
+          Primal Technologies
+        </a>
+        <p>Soluciones de ingeniería y tecnología que impulsan la competitividad de tu empresa en la era digital.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Automatización Industrial</a></li>
+          <li><a href="#servicios">Software a la Medida</a></li>
+          <li><a href="#servicios">Automatización con IA</a></li>
+          <li><a href="#servicios">Desarrollo Web</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#industrias">Industrias</a></li>
+          <li><a href="#tecnologias">Tecnologías</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#contacto">Enviar mensaje</a></li>
+          <li><a href="#contacto">Agendar llamada</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>Primal Technologies</span>. Todos los derechos reservados.</p>
+      <div class="footer-legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos de uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  Mensaje enviado. Te contactaremos pronto.
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+// ── Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Mobile menu
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+
+// ── Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// ── Contact form (demo)
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+  e.target.reset();
+});
+
+// ── Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+    }
+  });
+});
+
+// ── Stats counter animation
+const statNums = document.querySelectorAll('.stat-number');
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const raw = el.textContent;
+    const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+    const suffix = raw.replace(/[0-9.]/g, '');
+    let start = 0;
+    const duration = 1200;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (num < 10 ? (eased * num).toFixed(1) : Math.round(eased * num)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    statsObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+statNums.forEach(el => statsObs.observe(el));
+</script>
+</body>
+</html>
