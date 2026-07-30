@@ -795,6 +795,66 @@ nav.scrolled {
 }
 
 /* ─────────────────────────────────────────
+   CLIENTS
+───────────────────────────────────────── */
+.clients {
+  padding: 96px 0;
+  background: #111;
+  border-top: 1px solid rgba(230,57,0,.25);
+}
+.clients h2 {
+  font-size: clamp(26px,3vw,40px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 56px;
+}
+.clients h2 span { color: var(--orange); }
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0;
+}
+@media(max-width:900px){ .clients-grid{ grid-template-columns:repeat(3,1fr); } }
+@media(max-width:500px){ .clients-grid{ grid-template-columns:repeat(2,1fr); } }
+.client-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 28px;
+  border: 1px solid rgba(255,255,255,.05);
+  margin: -1px 0 0 -1px;
+  transition: border-color .3s, background .3s;
+  min-height: 110px;
+}
+.client-item:hover {
+  border-color: rgba(230,57,0,.35);
+  background: rgba(230,57,0,.04);
+  z-index: 1;
+  position: relative;
+}
+.client-logo {
+  height: 44px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(.38);
+  transition: filter .35s;
+}
+.client-item:hover .client-logo {
+  filter: brightness(0) invert(1) opacity(.9);
+}
+.client-monogram {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  transition: color .3s;
+}
+.client-item:hover .client-monogram { color: rgba(255,255,255,.85); }
+
+/* ─────────────────────────────────────────
    CTA BAND
 ───────────────────────────────────────── */
 .cta-band {
@@ -1797,6 +1857,69 @@ footer {
           <li>Packing & Shipping</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CLIENTS ═══════════ -->
+<section class="clients" id="clientes">
+  <div class="container">
+    <div class="tag reveal">Empresas que confían en nosotros</div>
+    <h2 class="reveal d1">Clientes que nos <span>respaldan</span></h2>
+    <div class="clients-grid">
+
+      <!-- Snowball.mx -->
+      <div class="client-item reveal">
+        <img src="https://www.snowball.mx/images/corp/logotipo3blue2.png" alt="Snowball" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">Snowball</div>
+      </div>
+
+      <!-- Toro Company -->
+      <div class="client-item reveal d1">
+        <img src="https://www.thetorocompany.com/sites/g/files/knoqqb110666/themes/site/nir_pid1048/dist/images/toro-logo.png" alt="The Toro Company" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">TORO</div>
+      </div>
+
+      <!-- Cummins -->
+      <div class="client-item reveal d2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Cummins_logo.svg" alt="Cummins" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">CUMMINS</div>
+      </div>
+
+      <!-- Dekko -->
+      <div class="client-item reveal d3">
+        <div class="client-monogram">DEKKO</div>
+      </div>
+
+      <!-- Damkon -->
+      <div class="client-item reveal d4">
+        <div class="client-monogram">DAMKON</div>
+      </div>
+
+      <!-- BRP -->
+      <div class="client-item reveal">
+        <img src="https://www.brp.com/content/dam/global/logos/brands/BRP-Digital_and_Campaign_Logo-W-RGB.svg" alt="BRP" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">BRP</div>
+      </div>
+
+      <!-- CAPIM -->
+      <div class="client-item reveal d1">
+        <img src="https://new.capim.com.mx/img/landing/capim/Assets/CAPIM_Landing%20Page%20Asset%202.png" alt="CAPIM" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">CAPIM</div>
+      </div>
+
+      <!-- Migesa -->
+      <div class="client-item reveal d2">
+        <img src="https://www.migesa.com.mx/wp-content/uploads/2021/04/Logo_GPO_Migesa_Large-03.png" alt="Migesa" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">MIGESA</div>
+      </div>
+
     </div>
   </div>
 </section>
