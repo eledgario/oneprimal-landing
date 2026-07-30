@@ -795,6 +795,198 @@ nav.scrolled {
 }
 
 /* ─────────────────────────────────────────
+   PRODUCTS
+───────────────────────────────────────── */
+.products {
+  padding: 120px 0 0;
+  background: var(--dark);
+  overflow: hidden;
+}
+.products-intro {
+  font-size: 17px;
+  color: rgba(255,255,255,.45);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 72px;
+  font-weight: 300;
+}
+.products-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.prod-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+}
+@media(max-width:860px){ .prod-card{ grid-template-columns:1fr; } }
+.prod-card-body {
+  padding: 64px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.prod-card-visual {
+  position: relative;
+  overflow: hidden;
+}
+.prod-card-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .55;
+  transition: opacity .4s, transform .6s;
+}
+.prod-card:hover .prod-card-visual img { opacity:.7; transform:scale(1.03); }
+.prod-card-visual::after {
+  content:'';
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+/* Fire.ONE — dark navy with teal accent */
+.prod-card-fire { background: #0A1628; }
+.prod-card-fire .prod-card-visual::after {
+  background: linear-gradient(to right, #0A1628 0%, transparent 60%);
+}
+@media(max-width:860px){
+  .prod-card-fire .prod-card-visual::after { background: linear-gradient(to bottom, transparent 30%, #0A1628 100%); }
+}
+/* Dunebox — very dark with warm tint */
+.prod-card-dune { background: #121010; flex-direction: row-reverse; }
+.prod-card-dune .prod-card-visual::after {
+  background: linear-gradient(to left, #121010 0%, transparent 60%);
+}
+@media(max-width:860px){
+  .prod-card-dune { flex-direction: column; }
+  .prod-card-dune .prod-card-visual::after { background: linear-gradient(to bottom, transparent 30%, #121010 100%); }
+}
+.prod-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.prod-eyebrow-fire { color: #3DD8C8; }
+.prod-eyebrow-dune { color: #D4853A; }
+.prod-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 2px;
+  flex-shrink: 0;
+}
+.prod-eyebrow-fire::before { background: #3DD8C8; }
+.prod-eyebrow-dune::before { background: #D4853A; }
+.prod-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 20px;
+  letter-spacing: -.02em;
+}
+.prod-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  font-weight: 300;
+  max-width: 420px;
+}
+.prod-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.pstat-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #3DD8C8;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.pstat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.38);
+  letter-spacing: .03em;
+}
+.prod-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.prod-features li {
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.prod-features li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.prod-card-fire .prod-features li::before { background: #3DD8C8; }
+.prod-card-dune .prod-features li::before { background: #D4853A; }
+.prod-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: opacity .2s, transform .2s;
+  text-decoration: none;
+  align-self: flex-start;
+  letter-spacing: .02em;
+}
+.prod-cta:hover { opacity: .85; transform: translateX(4px); }
+.prod-cta-fire { background: #3DD8C8; color: #0A1628; }
+.prod-cta-dune { background: #D4853A; color: #fff; }
+.prod-cta::after { content: '→'; font-size: 16px; }
+.prod-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  align-self: flex-start;
+}
+.prod-badge-fire { background: rgba(61,216,200,.1); color: #3DD8C8; border: 1px solid rgba(61,216,200,.2); }
+.prod-badge-dune { background: rgba(212,133,58,.1); color: #D4853A; border: 1px solid rgba(212,133,58,.2); }
+.prod-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.prod-badge-fire::before { background: #3DD8C8; }
+.prod-badge-dune::before { background: #D4853A; }
+
+/* ─────────────────────────────────────────
    CLIENTS
 ───────────────────────────────────────── */
 .clients {
@@ -1871,6 +2063,73 @@ footer {
       </div>
     </div>
   </div>
+</section>
+
+<!-- ═══════════ PRODUCTS ═══════════ -->
+<section class="products" id="productos">
+  <div class="container">
+    <div class="tag reveal">Alianzas tecnológicas</div>
+    <h2 class="reveal d1" style="font-size:clamp(32px,3.5vw,48px);font-weight:700;color:var(--white);margin-bottom:16px;">Productos que <span style="color:var(--orange);">distribuimos</span></h2>
+    <p class="products-intro reveal d2">Representamos soluciones de clase mundial para complementar nuestra oferta de ingeniería y software con tecnología de frontera.</p>
+  </div>
+
+  <div class="products-stack">
+
+    <!-- ── FIRE.ONE ────────────────────────────────── -->
+    <div class="prod-card prod-card-fire reveal">
+      <div class="prod-card-body">
+        <div class="prod-badge prod-badge-fire">Ciberseguridad · Corea / EUA</div>
+        <div class="prod-eyebrow prod-eyebrow-fire">Granada Vista · Breezeway Platform</div>
+        <div class="prod-name">Fire<span style="color:#3DD8C8;">.</span>ONE</div>
+        <p class="prod-desc">Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.</p>
+        <div class="prod-stats">
+          <div>
+            <div class="pstat-num">85%</div>
+            <div class="pstat-label">Deployments más rápidos</div>
+          </div>
+          <div>
+            <div class="pstat-num" style="color:#fff">0%</div>
+            <div class="pstat-label">Error humano</div>
+          </div>
+          <div>
+            <div class="pstat-num">300+</div>
+            <div class="pstat-label">Clientes enterprise</div>
+          </div>
+        </div>
+        <ul class="prod-features">
+          <li>Discovery — visibilidad end-to-end en entornos multi-vendor</li>
+          <li>AI Optimization — análisis simultáneo de reglas y tráfico en vivo</li>
+          <li>Governance — auditoría continua y cumplimiento automatizado</li>
+          <li>Compatible con Fortinet, Palo Alto, Cisco, AWS, Azure y más</li>
+        </ul>
+        <a href="#contacto" class="prod-cta prod-cta-fire">Solicitar demo</a>
+      </div>
+      <div class="prod-card-visual">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity operations center">
+      </div>
+    </div>
+
+    <!-- ── DUNEBOX ─────────────────────────────────── -->
+    <div class="prod-card prod-card-dune reveal">
+      <div class="prod-card-body">
+        <div class="prod-badge prod-badge-dune">ERP Generativo · SaaS</div>
+        <div class="prod-eyebrow prod-eyebrow-dune">dunebox.io</div>
+        <div class="prod-name">Dune<span style="color:#D4853A;">box</span></div>
+        <p class="prod-desc">De una conversación a tu software empresarial completo. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.</p>
+        <ul class="prod-features">
+          <li>Cotizaciones y propuestas comerciales automáticas</li>
+          <li>Control de inventario con trazabilidad en tiempo real</li>
+          <li>Facturación CFDI 4.0 integrada</li>
+          <li>Módulo de producción y cuentas por cobrar</li>
+        </ul>
+        <a href="#contacto" class="prod-cta prod-cta-dune">Conocer más</a>
+      </div>
+      <div class="prod-card-visual">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Business dashboard software">
+      </div>
+    </div>
+
+  </div><!-- /products-stack -->
 </section>
 
 <!-- ═══════════ CLIENTS ═══════════ -->
