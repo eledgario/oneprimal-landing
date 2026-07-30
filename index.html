@@ -798,46 +798,57 @@ nav.scrolled {
    CLIENTS
 ───────────────────────────────────────── */
 .clients {
-  padding: 96px 0;
+  padding: 80px 0;
   background: #111;
   border-top: 1px solid rgba(230,57,0,.25);
+  overflow: hidden;
 }
-.clients h2 {
+.clients-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.clients-header h2 {
   font-size: clamp(26px,3vw,40px);
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 56px;
+  margin-top: 12px;
 }
-.clients h2 span { color: var(--orange); }
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 0;
+.clients-header h2 span { color: var(--orange); }
+/* marquee wrapper with edge fade */
+.clients-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
-@media(max-width:900px){ .clients-grid{ grid-template-columns:repeat(3,1fr); } }
-@media(max-width:500px){ .clients-grid{ grid-template-columns:repeat(2,1fr); } }
+/* track: two identical sets side by side — animation scrolls one full set width */
+.clients-track {
+  display: flex;
+  width: max-content;
+  animation: clients-scroll 28s linear infinite;
+}
+.clients-track:hover { animation-play-state: paused; }
+@keyframes clients-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 .client-item {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 28px;
-  border: 1px solid rgba(255,255,255,.05);
-  margin: -1px 0 0 -1px;
-  transition: border-color .3s, background .3s;
-  min-height: 110px;
+  padding: 36px 52px;
+  border-right: 1px solid rgba(255,255,255,.06);
+  transition: background .3s;
+  cursor: default;
 }
-.client-item:hover {
-  border-color: rgba(230,57,0,.35);
-  background: rgba(230,57,0,.04);
-  z-index: 1;
-  position: relative;
-}
+.client-item:hover { background: rgba(230,57,0,.05); }
 .client-logo {
-  height: 44px;
+  height: 42px;
   width: auto;
-  max-width: 150px;
+  max-width: 140px;
   object-fit: contain;
-  filter: brightness(0) invert(1) opacity(.38);
+  filter: brightness(0) invert(1) opacity(.35);
   transition: filter .35s;
 }
 .client-item:hover .client-logo {
@@ -845,11 +856,12 @@ nav.scrolled {
 }
 .client-monogram {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.3);
+  color: rgba(255,255,255,.28);
+  white-space: nowrap;
   transition: color .3s;
 }
 .client-item:hover .client-monogram { color: rgba(255,255,255,.85); }
@@ -1863,65 +1875,92 @@ footer {
 
 <!-- ═══════════ CLIENTS ═══════════ -->
 <section class="clients" id="clientes">
-  <div class="container">
-    <div class="tag reveal">Empresas que confían en nosotros</div>
-    <h2 class="reveal d1">Clientes que nos <span>respaldan</span></h2>
-    <div class="clients-grid">
+  <div class="container clients-header reveal">
+    <div class="tag">Empresas que confían en nosotros</div>
+    <h2>Clientes que nos <span>respaldan</span></h2>
+  </div>
 
-      <!-- Snowball.mx -->
-      <div class="client-item reveal">
+  <div class="clients-marquee">
+    <div class="clients-track">
+
+      <!-- ── Set A ─────────────────────────── -->
+      <div class="client-item">
         <img src="https://www.snowball.mx/images/corp/logotipo3blue2.png" alt="Snowball" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">Snowball</div>
       </div>
-
-      <!-- Toro Company -->
-      <div class="client-item reveal d1">
+      <div class="client-item">
         <img src="https://www.thetorocompany.com/sites/g/files/knoqqb110666/themes/site/nir_pid1048/dist/images/toro-logo.png" alt="The Toro Company" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">TORO</div>
       </div>
-
-      <!-- Cummins -->
-      <div class="client-item reveal d2">
+      <div class="client-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Cummins_logo.svg" alt="Cummins" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">CUMMINS</div>
       </div>
-
-      <!-- Dekko -->
-      <div class="client-item reveal d3">
+      <div class="client-item">
         <div class="client-monogram">DEKKO</div>
       </div>
-
-      <!-- Damkon -->
-      <div class="client-item reveal d4">
+      <div class="client-item">
         <div class="client-monogram">DAMKON</div>
       </div>
-
-      <!-- BRP -->
-      <div class="client-item reveal">
+      <div class="client-item">
         <img src="https://www.brp.com/content/dam/global/logos/brands/BRP-Digital_and_Campaign_Logo-W-RGB.svg" alt="BRP" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">BRP</div>
       </div>
-
-      <!-- CAPIM -->
-      <div class="client-item reveal d1">
+      <div class="client-item">
         <img src="https://new.capim.com.mx/img/landing/capim/Assets/CAPIM_Landing%20Page%20Asset%202.png" alt="CAPIM" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">CAPIM</div>
       </div>
-
-      <!-- Migesa -->
-      <div class="client-item reveal d2">
+      <div class="client-item">
         <img src="https://www.migesa.com.mx/wp-content/uploads/2021/04/Logo_GPO_Migesa_Large-03.png" alt="Migesa" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">MIGESA</div>
       </div>
 
-    </div>
-  </div>
+      <!-- ── Set B (duplicate for seamless loop) ─── -->
+      <div class="client-item">
+        <img src="https://www.snowball.mx/images/corp/logotipo3blue2.png" alt="Snowball" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">Snowball</div>
+      </div>
+      <div class="client-item">
+        <img src="https://www.thetorocompany.com/sites/g/files/knoqqb110666/themes/site/nir_pid1048/dist/images/toro-logo.png" alt="The Toro Company" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">TORO</div>
+      </div>
+      <div class="client-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Cummins_logo.svg" alt="Cummins" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">CUMMINS</div>
+      </div>
+      <div class="client-item">
+        <div class="client-monogram">DEKKO</div>
+      </div>
+      <div class="client-item">
+        <div class="client-monogram">DAMKON</div>
+      </div>
+      <div class="client-item">
+        <img src="https://www.brp.com/content/dam/global/logos/brands/BRP-Digital_and_Campaign_Logo-W-RGB.svg" alt="BRP" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">BRP</div>
+      </div>
+      <div class="client-item">
+        <img src="https://new.capim.com.mx/img/landing/capim/Assets/CAPIM_Landing%20Page%20Asset%202.png" alt="CAPIM" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">CAPIM</div>
+      </div>
+      <div class="client-item">
+        <img src="https://www.migesa.com.mx/wp-content/uploads/2021/04/Logo_GPO_Migesa_Large-03.png" alt="Migesa" class="client-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div class="client-monogram" style="display:none">MIGESA</div>
+      </div>
+
+    </div><!-- /clients-track -->
+  </div><!-- /clients-marquee -->
 </section>
 
 <!-- ═══════════ CTA BAND ═══════════ -->
