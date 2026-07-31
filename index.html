@@ -963,6 +963,57 @@ nav.scrolled {
 .prod-cta-fire { background: #3DD8C8; color: #0A1628; }
 .prod-cta-dune { background: #D4853A; color: #fff; }
 .prod-cta::after { content: '→'; font-size: 16px; }
+.prod-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.prod-logo-mark {
+  flex-shrink: 0;
+}
+.prod-logo-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1;
+}
+.prod-logo-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #3DD8C8;
+  opacity: .8;
+}
+.prod-logo-main {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #fff;
+  line-height: 1;
+}
+.prod-vendors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.prod-vendor {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: 5px 12px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.45);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: color .2s, background .2s;
+}
+.prod-card:hover .prod-vendor { color: rgba(255,255,255,.7); background: rgba(255,255,255,.09); }
 .prod-badge {
   display: inline-flex;
   align-items: center;
@@ -2078,10 +2129,35 @@ footer {
     <!-- ── FIRE.ONE ────────────────────────────────── -->
     <div class="prod-card prod-card-fire reveal">
       <div class="prod-card-body">
-        <div class="prod-badge prod-badge-fire">Ciberseguridad · Corea / EUA</div>
-        <div class="prod-eyebrow prod-eyebrow-fire">Granada Vista · Breezeway Platform</div>
-        <div class="prod-name">Fire<span style="color:#3DD8C8;">.</span>ONE</div>
+        <div class="prod-badge prod-badge-fire">Ciberseguridad · Granada Vista Inc.</div>
+
+        <!-- Breezeway Fire.ONE logo (inline SVG recreation from presentation) -->
+        <div class="prod-logo-wrap">
+          <!-- Fire.ONE icon mark: two overlapping teardrops (orange + teal) -->
+          <svg class="prod-logo-mark" width="52" height="58" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left teardrop (orange) -->
+            <path d="M18 2C18 2 4 14 4 26C4 34.837 10.268 42 18 42C25.732 42 32 34.837 32 26C32 14 18 2 18 2Z" fill="#FF6B35"/>
+            <!-- Right teardrop (teal) -->
+            <path d="M34 8C34 8 22 18 22 28C22 35.732 27.373 42 34 42C40.627 42 46 35.732 46 28C46 18 34 8 34 8Z" fill="#3DD8C8"/>
+            <!-- Orange drop below -->
+            <ellipse cx="34" cy="50" rx="5" ry="7" fill="#FF6B35"/>
+            <!-- Overlap blend area -->
+            <path d="M22 18C22 18 26 22 28 28C29.2 31.6 29.5 35.5 28.5 39C30.5 40.9 33.2 42 36 42C40.627 42 46 35.732 46 28C46 18 34 8 34 8C34 8 28 12.5 22 18Z" fill="url(#fireBlend)" opacity=".6"/>
+            <defs>
+              <linearGradient id="fireBlend" x1="22" y1="18" x2="46" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FF6B35"/>
+                <stop offset="100%" stop-color="#3DD8C8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="prod-logo-wordmark">
+            <span class="prod-logo-sub">Breezeway Platform</span>
+            <span class="prod-logo-main">Fire<span style="color:#FF6B35;">.</span><span style="color:#3DD8C8;">ONE</span></span>
+          </div>
+        </div>
+
         <p class="prod-desc">Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.</p>
+
         <div class="prod-stats">
           <div>
             <div class="pstat-num">85%</div>
@@ -2096,12 +2172,24 @@ footer {
             <div class="pstat-label">Clientes enterprise</div>
           </div>
         </div>
+
         <ul class="prod-features">
           <li>Discovery — visibilidad end-to-end en entornos multi-vendor</li>
           <li>AI Optimization — análisis simultáneo de reglas y tráfico en vivo</li>
           <li>Governance — auditoría continua y cumplimiento automatizado</li>
-          <li>Compatible con Fortinet, Palo Alto, Cisco, AWS, Azure y más</li>
         </ul>
+
+        <!-- Vendor compatibility chips -->
+        <div class="prod-vendors">
+          <span class="prod-vendor">Fortinet</span>
+          <span class="prod-vendor">Palo Alto</span>
+          <span class="prod-vendor">Cisco</span>
+          <span class="prod-vendor">AWS</span>
+          <span class="prod-vendor">Azure</span>
+          <span class="prod-vendor">Check Point</span>
+          <span class="prod-vendor">SonicWall</span>
+        </div>
+
         <a href="#contacto" class="prod-cta prod-cta-fire">Solicitar demo</a>
       </div>
       <div class="prod-card-visual">
@@ -2112,20 +2200,36 @@ footer {
     <!-- ── DUNEBOX ─────────────────────────────────── -->
     <div class="prod-card prod-card-dune reveal">
       <div class="prod-card-body">
-        <div class="prod-badge prod-badge-dune">ERP Generativo · SaaS</div>
-        <div class="prod-eyebrow prod-eyebrow-dune">dunebox.io</div>
-        <div class="prod-name">Dune<span style="color:#D4853A;">box</span></div>
-        <p class="prod-desc">De una conversación a tu software empresarial completo. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.</p>
+        <div class="prod-badge prod-badge-dune">ERP Generativo · SaaS · México</div>
+
+        <!-- Dunebox logo (official brand mark from dunebox.app) -->
+        <div class="prod-logo-wrap">
+          <!-- Dunebox wave mark (simplified navbar version from dunebox-landing.html) -->
+          <svg class="prod-logo-mark" width="44" height="36" viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 24C7 24 9 18 14 18C19 18 21 24 26 24C31 24 33 18 34 18" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M2 16C7 16 9 10 14 10C19 10 21 16 26 16C31 16 33 10 34 10" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round" opacity=".7"/>
+            <path d="M2 8C7 8 9 2 14 2C19 2 21 8 26 8C31 8 33 2 34 2" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round" opacity=".38"/>
+          </svg>
+          <div class="prod-logo-wordmark">
+            <span class="prod-logo-sub" style="color:#E4832E;">dunebox.app</span>
+            <span class="prod-logo-main" style="font-size:28px;">dunebox</span>
+          </div>
+        </div>
+
+        <p class="prod-desc">De una conversación a tu software empresarial. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.</p>
+
         <ul class="prod-features">
           <li>Cotizaciones y propuestas comerciales automáticas</li>
           <li>Control de inventario con trazabilidad en tiempo real</li>
           <li>Facturación CFDI 4.0 integrada</li>
           <li>Módulo de producción y cuentas por cobrar</li>
         </ul>
+
         <a href="#contacto" class="prod-cta prod-cta-dune">Conocer más</a>
       </div>
       <div class="prod-card-visual">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Business dashboard software">
+        <!-- Official Dunebox OG image from dunebox.app -->
+        <img src="https://dunebox.app/opengraph-image?5fce4daa0d4ad3df" alt="Dunebox — Software Líquido para PyMEs">
       </div>
     </div>
 
