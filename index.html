@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OnePrimal — Innovación que transforma industrias</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --orange:     #E63900;
-  --orange-mid: #FF6B35;
+  --orange:     #F7A400;
+  --orange-mid: #FFB733;
   --dark:       #1A1A1A;
   --dark-2:     #242424;
   --gray:       #6B6B6B;
@@ -19,7 +19,7 @@
 }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: var(--dark);
   background: var(--white);
   overflow-x: hidden;
@@ -53,7 +53,7 @@ h1,h2,h3,h4,h5 {
   background: var(--orange);
   color: #fff;
   padding: 16px 32px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 15px;
   border: none;
@@ -70,7 +70,7 @@ h1,h2,h3,h4,h5 {
   background: transparent;
   color: var(--white);
   padding: 14px 30px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 15px;
   border: 2px solid rgba(255,255,255,0.4);
@@ -121,7 +121,7 @@ nav.scrolled {
   height: 72px;
 }
 .logo {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 22px;
   color: var(--white);
@@ -135,6 +135,11 @@ nav.scrolled {
   background: var(--orange);
   clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%);
   flex-shrink: 0;
+}
+.logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
 }
 .nav-links {
   display: flex;
@@ -161,6 +166,29 @@ nav.scrolled {
 .nav-cta:hover { background: var(--orange-mid); color: #fff !important; }
 .nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
 .nav-hamburger span { display:block; width:24px; height:2px; background:#fff; transition:.3s; }
+.lang-toggle {
+  display:flex;
+  align-items:center;
+  gap:2px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;
+  padding:3px;
+}
+.lang-btn {
+  background:transparent;
+  border:none;
+  color:rgba(255,255,255,.55);
+  font-family:'Montserrat',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  padding:5px 11px;
+  border-radius:16px;
+  cursor:pointer;
+  transition:background .2s, color .2s;
+}
+.lang-btn.active { background:var(--orange); color:#fff; }
+.mobile-lang-toggle { display:flex; gap:8px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:4px; }
+.mobile-lang-toggle .lang-btn { flex:1; text-align:center; padding:10px; border:1px solid rgba(255,255,255,.15); }
 .mobile-menu {
   display:none;
   position:fixed;
@@ -211,46 +239,7 @@ nav.scrolled {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(230,57,0,0.30) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255,107,53,0.18) 0%, transparent 60%),
-    linear-gradient(rgba(26,26,26,0.78), rgba(26,26,26,0.78));
-}
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size: 80px 80px;
-}
-/* Geometric accent */
-.hero-accent {
-  position: absolute;
-  z-index: 1;
-  right: -80px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 600px;
-  height: 600px;
-  border: 1px solid rgba(230,57,0,0.15);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.hero-accent::before {
-  content:'';
-  position:absolute;
-  inset:60px;
-  border:1px solid rgba(230,57,0,0.1);
-  border-radius:50%;
-}
-.hero-accent::after {
-  content:'';
-  position:absolute;
-  inset:120px;
-  border:1px solid rgba(230,57,0,0.08);
-  border-radius:50%;
+  background: linear-gradient(to top, rgba(26,26,26,0.88) 0%, rgba(26,26,26,0.58) 55%, rgba(26,26,26,0.32) 100%);
 }
 .hero-content { position:relative; z-index:2; }
 .hero-scroll { z-index:2; }
@@ -345,7 +334,7 @@ nav.scrolled {
 }
 .stat-item:last-child { border-right: none; }
 .stat-number {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: clamp(36px, 4vw, 56px);
   font-weight: 700;
   color: #fff;
@@ -415,7 +404,7 @@ nav.scrolled {
 .about-img-block {
   background: var(--dark);
   height: 480px;
-  clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -426,7 +415,7 @@ nav.scrolled {
   position:absolute;
   inset:0;
   background:
-    radial-gradient(ellipse 70% 70% at 60% 40%, rgba(230,57,0,0.25) 0%, transparent 70%);
+    radial-gradient(ellipse 70% 70% at 60% 40%, rgba(247,164,0,0.14) 0%, transparent 70%);
 }
 .about-icon-grid {
   position: relative;
@@ -446,7 +435,7 @@ nav.scrolled {
   font-size: 28px;
   transition: background .3s;
 }
-.about-icon-cell:hover { background: rgba(230,57,0,.2); }
+.about-icon-cell:hover { background: rgba(247,164,0,.2); }
 .about-badge {
   position: absolute;
   bottom: -20px;
@@ -454,10 +443,10 @@ nav.scrolled {
   background: var(--orange);
   color: #fff;
   padding: 20px 28px;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  border-radius: 8px;
 }
 .about-badge .num {
-  font-family: 'Space Grotesk',sans-serif;
+  font-family: 'Montserrat',sans-serif;
   font-size: 36px;
   font-weight: 700;
   line-height:1;
@@ -527,7 +516,7 @@ nav.scrolled {
 .service-card:hover { background: #2a2a2a; }
 .service-card:hover::before { transform: scaleX(1); }
 .service-num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 600;
   color: var(--orange);
@@ -537,17 +526,17 @@ nav.scrolled {
 }
 .service-icon {
   width: 56px; height: 56px;
-  background: rgba(230,57,0,0.12);
-  border: 1px solid rgba(230,57,0,0.2);
+  background: rgba(247,164,0,0.12);
+  border: 1px solid rgba(247,164,0,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   margin-bottom: 28px;
-  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+  border-radius: 10px;
   transition: background .3s;
 }
-.service-card:hover .service-icon { background: rgba(230,57,0,0.25); }
+.service-card:hover .service-icon { background: rgba(247,164,0,0.25); }
 .service-card h3 {
   font-size: 22px;
   font-weight: 600;
@@ -639,7 +628,7 @@ nav.scrolled {
   justify-content: center;
   margin-bottom: 28px;
   position: relative;
-  clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%);
+  border-radius: 50%;
   transition: background .3s, border-color .3s;
 }
 .process-step:hover .step-num-wrap {
@@ -647,7 +636,7 @@ nav.scrolled {
   border-color: var(--orange);
 }
 .step-num {
-  font-family: 'Space Grotesk',sans-serif;
+  font-family: 'Montserrat',sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: var(--dark);
@@ -655,7 +644,7 @@ nav.scrolled {
 }
 .process-step:hover .step-num { color: #fff; }
 .step-title {
-  font-family: 'Space Grotesk',sans-serif;
+  font-family: 'Montserrat',sans-serif;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -708,7 +697,7 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
 }
-.wd-card:hover { border-color: rgba(230,57,0,.18); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+.wd-card:hover { border-color: rgba(247,164,0,.18); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
 /* top visual strip */
 .wd-visual {
   height: 120px;
@@ -796,13 +785,13 @@ nav.scrolled {
 }
 .tech-categories {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 32px;
+  grid-template-columns: repeat(2,1fr);
+  gap: 48px;
+  max-width: 720px;
 }
-@media(max-width:900px){ .tech-categories{ grid-template-columns:repeat(2,1fr); } }
-@media(max-width:600px){ .tech-categories{ grid-template-columns:1fr; } }
+@media(max-width:600px){ .tech-categories{ grid-template-columns:1fr; gap:32px; } }
 .tech-cat-title {
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Montserrat',sans-serif;
   font-size:12px;
   font-weight:600;
   letter-spacing:.12em;
@@ -833,7 +822,7 @@ nav.scrolled {
   width:6px; height:6px;
   background:var(--orange);
   flex-shrink:0;
-  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  border-radius:50%;
 }
 
 /* ─────────────────────────────────────────
@@ -928,7 +917,7 @@ nav.scrolled {
 .prod-eyebrow-fire::before { background: #3DD8C8; }
 .prod-eyebrow-dune::before { background: #D4853A; }
 .prod-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 700;
   color: var(--white);
@@ -951,7 +940,7 @@ nav.scrolled {
   flex-wrap: wrap;
 }
 .pstat-num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 30px;
   font-weight: 700;
   color: #3DD8C8;
@@ -991,7 +980,7 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 600;
   padding: 14px 28px;
@@ -1021,7 +1010,7 @@ nav.scrolled {
   line-height: 1;
 }
 .prod-logo-sub {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: .15em;
@@ -1030,7 +1019,7 @@ nav.scrolled {
   opacity: .8;
 }
 .prod-logo-main {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -.02em;
@@ -1085,7 +1074,7 @@ nav.scrolled {
 .clients {
   padding: 80px 0;
   background: #111;
-  border-top: 1px solid rgba(230,57,0,.25);
+  border-top: 1px solid rgba(247,164,0,.25);
   overflow: hidden;
 }
 .clients-header {
@@ -1099,35 +1088,22 @@ nav.scrolled {
   margin-top: 12px;
 }
 .clients-header h2 span { color: var(--orange); }
-/* marquee wrapper with edge fade */
-.clients-marquee {
-  position: relative;
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-/* track: two identical sets side by side — animation scrolls one full set width */
-.clients-track {
-  display: flex;
-  width: max-content;
-  animation: clients-scroll 28s linear infinite;
-}
-.clients-track:hover { animation-play-state: paused; }
-@keyframes clients-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* static credibility grid */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 .client-item {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px 52px;
-  border-right: 1px solid rgba(255,255,255,.06);
+  padding: 36px 24px;
+  border: 1px solid rgba(255,255,255,.06);
+  margin: -1px 0 0 -1px;
   transition: background .3s;
   cursor: default;
 }
-.client-item:hover { background: rgba(230,57,0,.05); }
+.client-item:hover { background: rgba(247,164,0,.05); }
 .client-logo {
   height: 42px;
   width: auto;
@@ -1140,7 +1116,7 @@ nav.scrolled {
   filter: brightness(0) invert(1) opacity(.9);
 }
 .client-monogram {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: .12em;
@@ -1150,6 +1126,51 @@ nav.scrolled {
   transition: color .3s;
 }
 .client-item:hover .client-monogram { color: rgba(255,255,255,.85); }
+
+/* ─────────────────────────────────────────
+   TRUST
+───────────────────────────────────────── */
+.trust {
+  padding: 120px 0;
+  background: var(--gray-light);
+}
+.trust-header {
+  max-width: 600px;
+  margin-bottom: 64px;
+}
+.trust h2 {
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.trust h2 span { color: var(--orange); }
+.trust-sub {
+  font-size: 17px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+@media(max-width:900px){ .trust-grid{ grid-template-columns:repeat(2,1fr); gap:32px; } }
+@media(max-width:560px){ .trust-grid{ grid-template-columns:1fr; } }
+.trust-item {
+  padding-top: 20px;
+  border-top: 2px solid var(--orange);
+}
+.trust-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.trust-item p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.65;
+}
 
 /* ─────────────────────────────────────────
    CTA BAND
@@ -1197,7 +1218,7 @@ nav.scrolled {
   background:var(--dark);
   color:#fff;
   padding:18px 36px;
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Montserrat',sans-serif;
   font-weight:600;
   font-size:15px;
   text-decoration:none;
@@ -1233,43 +1254,14 @@ nav.scrolled {
   line-height:1.7;
   margin-bottom:40px;
 }
-.contact-detail {
-  display:flex;
-  align-items:flex-start;
-  gap:16px;
-  margin-bottom:24px;
-}
-.contact-icon {
-  width:44px; height:44px;
-  background:rgba(230,57,0,.08);
-  border:1px solid rgba(230,57,0,.15);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  flex-shrink:0;
-}
-.contact-detail-text strong {
-  display:block;
-  font-size:13px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--dark);
-  margin-bottom:4px;
-}
-.contact-detail-text span {
-  font-size:15px;
-  color:var(--gray);
-}
 /* Form */
 .contact-form {
   background:var(--gray-light);
   padding:48px;
   border:1px solid var(--border);
-  clip-path:polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  border-radius:12px;
 }
-@media(max-width:600px){ .contact-form{ padding:32px 24px; clip-path:none; } }
+@media(max-width:600px){ .contact-form{ padding:32px 24px; } }
 .form-row {
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1312,7 +1304,7 @@ nav.scrolled {
   color:#fff;
   border:none;
   padding:16px 32px;
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Montserrat',sans-serif;
   font-weight:600;
   font-size:15px;
   cursor:pointer;
@@ -1351,7 +1343,7 @@ footer {
   max-width:260px;
 }
 .footer-col h4 {
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Montserrat',sans-serif;
   font-size:13px;
   font-weight:600;
   text-transform:uppercase;
@@ -1434,53 +1426,34 @@ footer {
   line-height: 1.7;
   margin-bottom: 56px;
 }
-.machinery-grid {
+.eq-groups {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 2px;
-  margin-bottom: 48px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 48px;
+  margin-bottom: 40px;
 }
-@media(max-width:900px){ .machinery-grid{ grid-template-columns:repeat(2,1fr); } }
-@media(max-width:600px){ .machinery-grid{ grid-template-columns:1fr; } }
-.machine-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  padding: 28px 24px;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow .3s, transform .3s;
-}
-.machine-card::before {
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:3px;
-  background:var(--orange);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .4s;
-}
-.machine-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.08); transform:translateY(-3px); }
-.machine-card:hover::before { transform:scaleX(1); }
-.machine-category {
-  font-size: 11px;
+@media(max-width:700px){ .eq-groups{ grid-template-columns:1fr; gap:28px; } }
+.eq-group h4 {
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--orange);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-.machine-card h4 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  line-height: 1.3;
-  color: var(--dark);
+.eq-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.machine-card p {
+.eq-tag {
   font-size: 13px;
-  color: var(--gray);
-  line-height: 1.6;
+  font-weight: 500;
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 14px;
 }
 .machinery-note {
   background: var(--dark);
@@ -1492,73 +1465,6 @@ footer {
   line-height: 1.6;
 }
 .machinery-note strong { color: var(--white); }
-
-/* ─────────────────────────────────────────
-   PRODUCTIVE PROCESSES
-───────────────────────────────────────── */
-.prod-processes {
-  padding: 100px 0;
-  background: var(--dark);
-}
-.prod-processes h2 {
-  font-size: clamp(32px,4vw,52px);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 16px;
-}
-.prod-processes h2 span { color: var(--orange); }
-.prod-intro {
-  font-size: 16px;
-  color: rgba(255,255,255,.45);
-  max-width: 560px;
-  line-height: 1.7;
-  margin-bottom: 56px;
-  font-weight: 300;
-}
-.proc-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 2px;
-}
-@media(max-width:900px){ .proc-grid{ grid-template-columns:repeat(2,1fr); } }
-@media(max-width:600px){ .proc-grid{ grid-template-columns:1fr; } }
-.proc-card {
-  background: var(--dark-2);
-  border: 1px solid rgba(255,255,255,.04);
-  padding: 36px 32px;
-  position: relative;
-  overflow: hidden;
-  transition: background .3s;
-}
-.proc-card:hover { background: #2e2e2e; }
-.proc-card::after {
-  content:'';
-  position:absolute;
-  bottom:0;left:0;right:0;
-  height:2px;
-  background: var(--orange);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .4s;
-}
-.proc-card:hover::after { transform:scaleX(1); }
-.proc-icon {
-  font-size: 32px;
-  margin-bottom: 20px;
-  display: block;
-}
-.proc-card h3 {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 10px;
-}
-.proc-card p {
-  font-size: 13px;
-  color: rgba(255,255,255,.4);
-  line-height: 1.65;
-  font-weight: 300;
-}
 
 /* ── Service card image strip ── */
 .service-img {
@@ -1594,7 +1500,7 @@ footer {
   margin-bottom: 48px;
   position: relative;
   overflow: hidden;
-  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  border-radius: 12px;
 }
 .machinery-banner::before {
   content:'';
@@ -1615,7 +1521,7 @@ footer {
 }
 .machinery-banner-text strong {
   display: block;
-  font-family: 'Space Grotesk',sans-serif;
+  font-family: 'Montserrat',sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #fff;
@@ -1642,15 +1548,20 @@ footer {
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="logo">
-        <div class="logo-mark"></div>
-        OnePrimal
+        <img src="assets/logo-primal.png" alt="Primal" class="logo-img">
       </a>
       <ul class="nav-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#maquinaria">Maquinaria</a></li>
-        <li><a href="#procesos">Procesos</a></li>
-        <li><a href="#industrias">Web & Móvil</a></li>
-        <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+        <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="#maquinaria" data-i18n="nav.maquinaria">Maquinaria</a></li>
+        <li><a href="#proceso" data-i18n="nav.procesos">Procesos</a></li>
+        <li><a href="#industrias" data-i18n="nav.industrias">Web & Móvil</a></li>
+        <li><a href="#contacto" class="nav-cta" data-i18n="nav.contacto">Contáctanos</a></li>
+        <li>
+          <div class="lang-toggle">
+            <button type="button" class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+          </div>
+        </li>
       </ul>
       <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -1659,11 +1570,15 @@ footer {
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#servicios"  onclick="toggleMenu()">Servicios</a>
-  <a href="#maquinaria" onclick="toggleMenu()">Maquinaria</a>
-  <a href="#procesos"   onclick="toggleMenu()">Procesos</a>
-  <a href="#industrias" onclick="toggleMenu()">Industrias</a>
-  <a href="#contacto"   onclick="toggleMenu()">Contáctanos</a>
+  <div class="mobile-lang-toggle">
+    <button type="button" class="lang-btn" data-lang="es" onclick="setLanguage('es')">Español</button>
+    <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">English</button>
+  </div>
+  <a href="#servicios"  onclick="toggleMenu()" data-i18n="nav.servicios">Servicios</a>
+  <a href="#maquinaria" onclick="toggleMenu()" data-i18n="nav.maquinaria">Maquinaria</a>
+  <a href="#proceso"    onclick="toggleMenu()" data-i18n="nav.procesos">Procesos</a>
+  <a href="#industrias" onclick="toggleMenu()" data-i18n="mobile.industrias">Industrias</a>
+  <a href="#contacto"   onclick="toggleMenu()" data-i18n="nav.contacto">Contáctanos</a>
 </div>
 
 <!-- ═══════════ HERO ═══════════ -->
@@ -1673,18 +1588,16 @@ footer {
     <source src="https://videos.pexels.com/video-files/30715848/13141191_2560_1440_24fps.mp4" type="video/mp4">
   </video>
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-accent"></div>
   <div class="container hero-content">
     <div class="hero-eyebrow">
       <div class="hero-line"></div>
-      <span>Software · IA · Ingeniería Industrial</span>
+      <span data-i18n="hero.eyebrow">Software · IA · Ingeniería Industrial</span>
     </div>
-    <h1>Innovación que<br><em>transforma</em><br>industrias</h1>
-    <p class="hero-sub">Desarrollamos software a la medida, integramos inteligencia artificial y dominamos la manufactura de precisión para llevar tu empresa al siguiente nivel.</p>
+    <h1 data-i18n="hero.h1">Innovación que<br><em>transforma</em><br>industrias</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Desarrollamos software a la medida, integramos inteligencia artificial y dominamos la manufactura de precisión para llevar tu empresa al siguiente nivel.</p>
     <div class="hero-ctas">
-      <a href="#servicios" class="btn-primary">Ver servicios <span class="arrow-right"></span></a>
-      <a href="#contacto"  class="btn-secondary">Hablar con un experto</a>
+      <a href="#servicios" class="btn-primary"><span data-i18n="hero.cta1">Ver servicios</span> <span class="arrow-right"></span></a>
+      <a href="#contacto"  class="btn-secondary" data-i18n="hero.cta2">Hablar con un experto</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1698,19 +1611,19 @@ footer {
   <div class="stats-inner">
     <div class="stat-item reveal">
       <div class="stat-number">18+</div>
-      <div class="stat-label">Años en operación (desde 2007)</div>
+      <div class="stat-label" data-i18n="stats.years">Años en operación (desde 2007)</div>
     </div>
     <div class="stat-item reveal d1">
       <div class="stat-number">2</div>
-      <div class="stat-label">Plantas: El Paso TX & Cd. Juárez</div>
+      <div class="stat-label" data-i18n="stats.plants">Plantas: El Paso TX & Cd. Juárez</div>
     </div>
     <div class="stat-item reveal d2">
       <div class="stat-number">15+</div>
-      <div class="stat-label">Máquinas CNC y de precisión</div>
+      <div class="stat-label" data-i18n="stats.cnc">Máquinas CNC y de precisión</div>
     </div>
     <div class="stat-item reveal d3">
       <div class="stat-number">4</div>
-      <div class="stat-label">Sectores industriales atendidos</div>
+      <div class="stat-label" data-i18n="stats.sectors">Sectores industriales atendidos</div>
     </div>
   </div>
 </section>
@@ -1718,14 +1631,12 @@ footer {
 <!-- ═══════════ CLIENTS ═══════════ -->
 <section class="clients" id="clientes">
   <div class="container clients-header reveal">
-    <div class="tag">Empresas que confían en nosotros</div>
-    <h2>Clientes que nos <span>respaldan</span></h2>
+    <div class="tag" data-i18n="clients.tag">Empresas que confían en nosotros</div>
+    <h2 data-i18n="clients.h2">Clientes que nos <span>respaldan</span></h2>
   </div>
 
-  <div class="clients-marquee">
-    <div class="clients-track">
-
-      <!-- ── Set A ─────────────────────────── -->
+  <div class="container">
+    <div class="clients-grid reveal d1">
       <div class="client-item">
         <img src="https://www.snowball.mx/images/corp/logotipo3blue2.png" alt="Snowball" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
@@ -1762,47 +1673,13 @@ footer {
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="client-monogram" style="display:none">MIGESA</div>
       </div>
-
-      <!-- ── Set B (duplicate for seamless loop) ─── -->
       <div class="client-item">
-        <img src="https://www.snowball.mx/images/corp/logotipo3blue2.png" alt="Snowball" class="client-logo"
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/SAP_Logo_2014.svg" alt="SAP" class="client-logo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="client-monogram" style="display:none">Snowball</div>
+        <div class="client-monogram" style="display:none">SAP</div>
       </div>
-      <div class="client-item">
-        <img src="https://www.thetorocompany.com/sites/g/files/knoqqb110666/themes/site/nir_pid1048/dist/images/toro-logo.png" alt="The Toro Company" class="client-logo"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="client-monogram" style="display:none">TORO</div>
-      </div>
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Cummins_logo.svg" alt="Cummins" class="client-logo"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="client-monogram" style="display:none">CUMMINS</div>
-      </div>
-      <div class="client-item">
-        <div class="client-monogram">DEKKO</div>
-      </div>
-      <div class="client-item">
-        <div class="client-monogram">DAMKON</div>
-      </div>
-      <div class="client-item">
-        <img src="https://www.brp.com/content/dam/global/logos/brands/BRP-Digital_and_Campaign_Logo-W-RGB.svg" alt="BRP" class="client-logo"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="client-monogram" style="display:none">BRP</div>
-      </div>
-      <div class="client-item">
-        <img src="https://new.capim.com.mx/img/landing/capim/Assets/CAPIM_Landing%20Page%20Asset%202.png" alt="CAPIM" class="client-logo"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="client-monogram" style="display:none">CAPIM</div>
-      </div>
-      <div class="client-item">
-        <img src="https://www.migesa.com.mx/wp-content/uploads/2021/04/Logo_GPO_Migesa_Large-03.png" alt="Migesa" class="client-logo"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="client-monogram" style="display:none">MIGESA</div>
-      </div>
-
-    </div><!-- /clients-track -->
-  </div><!-- /clients-marquee -->
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════ ABOUT ═══════════ -->
@@ -1810,36 +1687,32 @@ footer {
   <div class="container">
     <div class="about-grid">
       <div>
-        <div class="tag reveal">Quiénes somos</div>
-        <h2 class="reveal d1">Manufactura de <span>precisión</span> e ingeniería que transforma operaciones</h2>
-        <p class="reveal d2">Desde 2007 en El Paso, TX, y con expansión a Cd. Juárez, Chih., integramos maquinado CNC de alta precisión, automatización industrial con PLC y robótica, desarrollo de software a la medida e inteligencia artificial en una sola empresa.</p>
-        <p class="reveal d2">Nuestra misión es garantizar la satisfacción del cliente a través de productos de máxima calidad, mejora continua en equipo y el desarrollo de nuestro talento humano mediante liderazgo y capacitación constante.</p>
+        <div class="tag reveal" data-i18n="about.tag">Quiénes somos</div>
+        <h2 class="reveal d1" data-i18n="about.h2">Manufactura de <span>precisión</span> e ingeniería que transforma operaciones</h2>
+        <p class="reveal d2" data-i18n="about.p1">Integramos maquinado CNC de alta precisión, automatización industrial con PLC y robótica, desarrollo de software a la medida e inteligencia artificial en una sola empresa.</p>
+        <p class="reveal d2" data-i18n="about.p2">Nuestra misión es garantizar la satisfacción del cliente a través de productos de máxima calidad, mejora continua en equipo y el desarrollo de nuestro talento humano mediante liderazgo y capacitación constante.</p>
         <div class="about-values">
           <div class="value-item reveal d1">
-            <h4>Precisión CNC</h4>
-            <p>Maquinado de piezas con tolerancias exactas usando Haas, FANUC, Hurco y Mitsubishi EDM.</p>
+            <h4 data-i18n="about.v1.h4">Precisión CNC</h4>
+            <p data-i18n="about.v1.p">Maquinado de piezas con tolerancias exactas usando Haas, FANUC, Hurco y Mitsubishi EDM.</p>
           </div>
           <div class="value-item reveal d2">
-            <h4>Industria 4.0</h4>
-            <p>Automatización PLC, robótica, IoT, MES y analítica de datos para producción inteligente.</p>
+            <h4 data-i18n="about.v2.h4">Industria 4.0</h4>
+            <p data-i18n="about.v2.p">Automatización PLC, robótica, IoT, MES y analítica de datos para producción inteligente.</p>
           </div>
           <div class="value-item reveal d3">
-            <h4>Software & IA</h4>
-            <p>Sistemas a la medida, automatización con inteligencia artificial y plataformas web de alto impacto.</p>
+            <h4 data-i18n="about.v3.h4">Software & IA</h4>
+            <p data-i18n="about.v3.p">Sistemas a la medida, automatización con inteligencia artificial y plataformas web de alto impacto.</p>
           </div>
           <div class="value-item reveal d4">
-            <h4>Acabados Industriales</h4>
-            <p>Pintura en polvo, pintura líquida convencional y electroestática, con horno de curado.</p>
+            <h4 data-i18n="about.v4.h4">Acabados Industriales</h4>
+            <p data-i18n="about.v4.p">Pintura en polvo, pintura líquida convencional y electroestática, con horno de curado.</p>
           </div>
         </div>
       </div>
       <div class="about-visual reveal d2">
         <div class="about-img-block" style="background-image:url('https://images.unsplash.com/photo-1606206873764-fd15e242df52?auto=format&fit=crop&w=900&q=85'); background-size:cover; background-position:center;">
           <div class="about-img-bg"></div>
-        </div>
-        <div class="about-badge">
-          <div class="num">2007</div>
-          <div class="lbl">Fundados en El Paso, TX</div>
         </div>
       </div>
     </div>
@@ -1851,10 +1724,10 @@ footer {
   <div class="container">
     <div class="services-header">
       <div>
-        <div class="tag reveal" style="border-color:rgba(230,57,0,.5);">Nuestros servicios</div>
-        <h2 class="reveal d1">Lo que <span>hacemos</span><br>mejor</h2>
+        <div class="tag reveal" style="border-color:rgba(247,164,0,.5);" data-i18n="services.tag">Nuestros servicios</div>
+        <h2 class="reveal d1" data-i18n="services.h2">Lo que <span>hacemos</span><br>mejor</h2>
       </div>
-      <p class="services-sub reveal d2">Cuatro áreas de especialización que se complementan para darte una solución tecnológica completa e integrada.</p>
+      <p class="services-sub reveal d2" data-i18n="services.sub">Cuatro áreas de especialización que se complementan para darte una solución tecnológica completa e integrada.</p>
     </div>
     <div class="services-grid">
 
@@ -1864,14 +1737,14 @@ footer {
         <div class="service-num">01</div>
         <div class="service-arrow"></div>
         <div class="service-icon">💻</div>
-        <h3>Desarrollo de Software a la Medida</h3>
-        <p>Operamos como una software factory: un equipo dedicado que diseña, construye y libera software bajo un proceso estandarizado de producción, con control de calidad y entregas medibles en cada sprint. Sistemas MES, ERPs industriales, analítica de datos, aplicaciones de trazabilidad y software para procesos regulados en sectores médico y farmacéutico, fabricados con la misma disciplina con la que maquinamos piezas de precisión.</p>
+        <h3 data-i18n="svc1.h3">Desarrollo de Software a la Medida</h3>
+        <p data-i18n="svc1.p">Operamos como una software factory: un equipo dedicado que diseña, construye y libera software bajo un proceso estandarizado de producción, con control de calidad y entregas medibles en cada sprint. Sistemas MES, ERPs industriales, analítica de datos, aplicaciones de trazabilidad y software para procesos regulados en sectores médico y farmacéutico, fabricados con la misma disciplina con la que maquinamos piezas de precisión.</p>
         <div class="service-tags">
           <span class="service-tag">Software Factory</span>
-          <span class="service-tag">Sistemas MES</span>
+          <span class="service-tag" data-i18n="svc1.tag2">Sistemas MES</span>
           <span class="service-tag">APIs REST</span>
-          <span class="service-tag">ERP Industrial</span>
-          <span class="service-tag">Trazabilidad</span>
+          <span class="service-tag" data-i18n="svc1.tag4">ERP Industrial</span>
+          <span class="service-tag" data-i18n="svc1.tag5">Trazabilidad</span>
         </div>
       </div>
 
@@ -1881,15 +1754,15 @@ footer {
         <div class="service-num">02</div>
         <div class="service-arrow"></div>
         <div class="service-icon">⚙️</div>
-        <h3>Automatización Industrial, PLC y Maquinado CNC</h3>
-        <p>Programación PLC (nuevas implementaciones, upgrades, integración de sistemas, monitoreo remoto), integración robótica, construcción de máquinas especiales, líneas de producción totalmente automatizadas, modernización de equipos legacy e integración Industry 4.0. Maquinado CNC de precisión con centros Haas, FANUC Robodrill, Hurco VMX60, Wire EDM Mitsubishi, corte láser Amada y más.</p>
+        <h3 data-i18n="svc2.h3">Automatización Industrial, PLC y Maquinado CNC</h3>
+        <p data-i18n="svc2.p">Programación PLC (nuevas implementaciones, upgrades, integración de sistemas, monitoreo remoto), integración robótica, construcción de máquinas especiales, líneas de producción totalmente automatizadas, modernización de equipos legacy e integración Industry 4.0. Maquinado CNC de precisión con centros Haas, FANUC Robodrill, Hurco VMX60, Wire EDM Mitsubishi, corte láser Amada y más.</p>
         <div class="service-tags">
           <span class="service-tag">PLC / SCADA</span>
           <span class="service-tag">CNC Haas / FANUC</span>
-          <span class="service-tag">Robótica</span>
-          <span class="service-tag">Industria 4.0</span>
+          <span class="service-tag" data-i18n="svc2.tag3">Robótica</span>
+          <span class="service-tag" data-i18n="svc2.tag4">Industria 4.0</span>
           <span class="service-tag">Wire EDM</span>
-          <span class="service-tag">Corte Láser</span>
+          <span class="service-tag" data-i18n="svc2.tag6">Corte Láser</span>
         </div>
       </div>
 
@@ -1899,12 +1772,12 @@ footer {
         <div class="service-num">03</div>
         <div class="service-arrow"></div>
         <div class="service-icon">🧠</div>
-        <h3>Automatización con Inteligencia Artificial</h3>
-        <p>Liberamos el potencial humano de tareas repetitivas mediante IA: visión por computadora para inspección de calidad en línea, agentes LLM para documentación y soporte técnico, análisis predictivo de mantenimiento de equipos CNC, y pipelines de machine learning que convierten los datos de tu planta en decisiones operativas más precisas y rentables.</p>
+        <h3 data-i18n="svc3.h3">Automatización con Inteligencia Artificial</h3>
+        <p data-i18n="svc3.p">Liberamos el potencial humano de tareas repetitivas mediante IA: visión por computadora para inspección de calidad en línea, agentes LLM para documentación y soporte técnico, análisis predictivo de mantenimiento de equipos CNC, y pipelines de machine learning que convierten los datos de tu planta en decisiones operativas más precisas y rentables.</p>
         <div class="service-tags">
-          <span class="service-tag">Visión por cómputo</span>
-          <span class="service-tag">Control de calidad IA</span>
-          <span class="service-tag">Mantenimiento predictivo</span>
+          <span class="service-tag" data-i18n="svc3.tag1">Visión por cómputo</span>
+          <span class="service-tag" data-i18n="svc3.tag2">Control de calidad IA</span>
+          <span class="service-tag" data-i18n="svc3.tag3">Mantenimiento predictivo</span>
           <span class="service-tag">Agentes LLM</span>
           <span class="service-tag">IoT + ML</span>
         </div>
@@ -1916,13 +1789,13 @@ footer {
         <div class="service-num">04</div>
         <div class="service-arrow"></div>
         <div class="service-icon">🌐</div>
-        <h3>Desarrollo Web</h3>
-        <p>Creamos sitios web corporativos, plataformas de comercio electrónico y aplicaciones web progresivas que combinan diseño de alto impacto con rendimiento y posicionamiento SEO.</p>
+        <h3 data-i18n="svc4.h3">Desarrollo Web</h3>
+        <p data-i18n="svc4.p">Creamos sitios web corporativos, plataformas de comercio electrónico y aplicaciones web progresivas que combinan diseño de alto impacto con rendimiento y posicionamiento SEO.</p>
         <div class="service-tags">
           <span class="service-tag">React / Next.js</span>
           <span class="service-tag">E-commerce</span>
           <span class="service-tag">CMS</span>
-          <span class="service-tag">SEO técnico</span>
+          <span class="service-tag" data-i18n="svc4.tag4">SEO técnico</span>
         </div>
       </div>
 
@@ -1934,8 +1807,8 @@ footer {
 <section class="webdev" id="industrias">
   <div class="container">
     <div class="tag reveal">Software Factory</div>
-    <h2 class="reveal d1">Tu fábrica de <span>software a la medida</span></h2>
-    <p class="webdev-intro reveal d2">Un equipo de desarrollo dedicado que opera como línea de producción: procesos estandarizados, control de calidad en cada entrega y la velocidad de una fábrica, no de un freelancer. Del diseño de interfaz al deploy en producción, construimos software con la misma precisión y trazabilidad con la que maquinamos piezas industriales.</p>
+    <h2 class="reveal d1" data-i18n="webdev.h2">Tu fábrica de <span>software a la medida</span></h2>
+    <p class="webdev-intro reveal d2" data-i18n="webdev.intro">Un equipo de desarrollo dedicado que opera como línea de producción: procesos estandarizados, control de calidad en cada entrega y la velocidad de una fábrica, no de un freelancer. Del diseño de interfaz al deploy en producción, construimos software con la misma precisión y trazabilidad con la que maquinamos piezas industriales.</p>
     <div class="webdev-grid">
 
       <!-- Landing Pages -->
@@ -1951,14 +1824,14 @@ footer {
               <rect x="8" y="8" width="144" height="10" rx="2" fill="rgba(255,255,255,.15)"/>
               <rect x="8" y="26" width="90" height="6" rx="2" fill="rgba(255,255,255,.1)"/>
               <rect x="8" y="38" width="60" height="6" rx="2" fill="rgba(255,255,255,.08)"/>
-              <rect x="8" y="54" width="52" height="12" rx="3" fill="rgba(230,57,0,.7)"/>
+              <rect x="8" y="54" width="52" height="12" rx="3" fill="rgba(247,164,0,.7)"/>
             </svg>
           </div>
         </div>
         <div class="wd-body">
-          <div class="wd-label">Sitios web</div>
-          <h3>Landing Pages & Sitios Corporativos</h3>
-          <p>Diseño moderno, animaciones fluidas, SEO técnico y velocidad de carga optimizada. Cada página construida para convertir visitantes en clientes.</p>
+          <div class="wd-label" data-i18n="wd1.label">Sitios web</div>
+          <h3 data-i18n="wd1.h3">Landing Pages & Sitios Corporativos</h3>
+          <p data-i18n="wd1.p">Diseño moderno, animaciones fluidas, SEO técnico y velocidad de carga optimizada. Cada página construida para convertir visitantes en clientes.</p>
           <div class="wd-tags">
             <span class="wd-tag">Next.js</span>
             <span class="wd-tag">Tailwind CSS</span>
@@ -1981,14 +1854,14 @@ footer {
               <rect x="48" y="16" width="24" height="4" rx="2" fill="rgba(255,255,255,.25)"/>
               <rect x="48" y="26" width="18" height="3" rx="1.5" fill="rgba(255,255,255,.15)"/>
               <rect x="48" y="34" width="24" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
-              <rect x="48" y="44" width="24" height="14" rx="3" fill="rgba(230,57,0,.4)"/>
+              <rect x="48" y="44" width="24" height="14" rx="3" fill="rgba(247,164,0,.4)"/>
             </svg>
           </div>
         </div>
         <div class="wd-body">
-          <div class="wd-label">Apps móviles</div>
-          <h3>Aplicaciones iOS & Android</h3>
-          <p>Apps nativas y multiplataforma con experiencia de usuario impecable. Desde MVPs hasta productos listos para la App Store y Google Play.</p>
+          <div class="wd-label" data-i18n="wd2.label">Apps móviles</div>
+          <h3 data-i18n="wd2.h3">Aplicaciones iOS & Android</h3>
+          <p data-i18n="wd2.p">Apps nativas y multiplataforma con experiencia de usuario impecable. Desde MVPs hasta productos listos para la App Store y Google Play.</p>
           <div class="wd-tags">
             <span class="wd-tag">React Native</span>
             <span class="wd-tag">Flutter</span>
@@ -2021,8 +1894,8 @@ footer {
         </div>
         <div class="wd-body">
           <div class="wd-label">E-commerce</div>
-          <h3>Tiendas Online & Marketplaces</h3>
-          <p>Plataformas de venta con catálogos dinámicos, carrito, pagos integrados (Stripe, Conekta, PayPal) y panel de administración a la medida.</p>
+          <h3 data-i18n="wd3.h3">Tiendas Online & Marketplaces</h3>
+          <p data-i18n="wd3.p">Plataformas de venta con catálogos dinámicos, carrito, pagos integrados (Stripe, Conekta, PayPal) y panel de administración a la medida.</p>
           <div class="wd-tags">
             <span class="wd-tag">Shopify</span>
             <span class="wd-tag">WooCommerce</span>
@@ -2048,14 +1921,14 @@ footer {
               <rect x="48" y="36" width="48" height="24" rx="2" fill="rgba(255,255,255,.07)"/>
               <rect x="102" y="36" width="50" height="24" rx="2" fill="rgba(255,255,255,.07)"/>
               <!-- Chart bars inside big panel -->
-              <rect x="56" y="14" width="6" height="10" rx="1" fill="rgba(230,57,0,.5)"/>
-              <rect x="66" y="10" width="6" height="14" rx="1" fill="rgba(230,57,0,.7)"/>
-              <rect x="76" y="16" width="6" height="8" rx="1" fill="rgba(230,57,0,.4)"/>
-              <rect x="86" y="12" width="6" height="12" rx="1" fill="rgba(230,57,0,.6)"/>
-              <rect x="96" y="14" width="6" height="10" rx="1" fill="rgba(230,57,0,.5)"/>
-              <rect x="106" y="9" width="6" height="15" rx="1" fill="rgba(230,57,0,.8)"/>
-              <rect x="116" y="13" width="6" height="11" rx="1" fill="rgba(230,57,0,.5)"/>
-              <rect x="126" y="11" width="6" height="13" rx="1" fill="rgba(230,57,0,.65)"/>
+              <rect x="56" y="14" width="6" height="10" rx="1" fill="rgba(247,164,0,.5)"/>
+              <rect x="66" y="10" width="6" height="14" rx="1" fill="rgba(247,164,0,.7)"/>
+              <rect x="76" y="16" width="6" height="8" rx="1" fill="rgba(247,164,0,.4)"/>
+              <rect x="86" y="12" width="6" height="12" rx="1" fill="rgba(247,164,0,.6)"/>
+              <rect x="96" y="14" width="6" height="10" rx="1" fill="rgba(247,164,0,.5)"/>
+              <rect x="106" y="9" width="6" height="15" rx="1" fill="rgba(247,164,0,.8)"/>
+              <rect x="116" y="13" width="6" height="11" rx="1" fill="rgba(247,164,0,.5)"/>
+              <rect x="126" y="11" width="6" height="13" rx="1" fill="rgba(247,164,0,.65)"/>
               <!-- Sidebar items -->
               <rect x="12" y="12" width="26" height="4" rx="2" fill="rgba(255,255,255,.15)"/>
               <rect x="12" y="22" width="18" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
@@ -2065,9 +1938,9 @@ footer {
           </div>
         </div>
         <div class="wd-body">
-          <div class="wd-label">Aplicaciones web</div>
-          <h3>SaaS, Dashboards & Portales</h3>
-          <p>Sistemas web completos: CRMs, ERPs ligeros, portales de clientes, paneles de analytics en tiempo real y aplicaciones internas de negocio.</p>
+          <div class="wd-label" data-i18n="wd4.label">Aplicaciones web</div>
+          <h3 data-i18n="wd4.h3">SaaS, Dashboards & Portales</h3>
+          <p data-i18n="wd4.p">Sistemas web completos: CRMs, ERPs ligeros, portales de clientes, paneles de analytics en tiempo real y aplicaciones internas de negocio.</p>
           <div class="wd-tags">
             <span class="wd-tag">React</span>
             <span class="wd-tag">Node.js</span>
@@ -2085,20 +1958,20 @@ footer {
               <!-- Chat bubbles -->
               <rect x="8" y="8" width="80" height="20" rx="10" fill="rgba(255,255,255,.1)"/>
               <rect x="12" y="15" width="56" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
-              <rect x="62" y="34" width="80" height="20" rx="10" fill="rgba(230,57,0,.25)"/>
-              <rect x="66" y="41" width="56" height="6" rx="3" fill="rgba(230,57,0,.4)"/>
+              <rect x="62" y="34" width="80" height="20" rx="10" fill="rgba(247,164,0,.25)"/>
+              <rect x="66" y="41" width="56" height="6" rx="3" fill="rgba(247,164,0,.4)"/>
               <rect x="8" y="58" width="66" height="16" rx="8" fill="rgba(255,255,255,.1)"/>
               <rect x="12" y="63" width="42" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
               <!-- Typing dots -->
-              <circle cx="128" cy="66" r="3" fill="rgba(230,57,0,.5)"/>
-              <circle cx="138" cy="66" r="3" fill="rgba(230,57,0,.35)"/>
+              <circle cx="128" cy="66" r="3" fill="rgba(247,164,0,.5)"/>
+              <circle cx="138" cy="66" r="3" fill="rgba(247,164,0,.35)"/>
             </svg>
           </div>
         </div>
         <div class="wd-body">
-          <div class="wd-label">Inteligencia artificial</div>
-          <h3>Funciones IA en tus Productos</h3>
-          <p>Integración de IA generativa en productos existentes: asistentes conversacionales, generación automática de contenido, búsqueda semántica y recomendaciones.</p>
+          <div class="wd-label" data-i18n="wd5.label">Inteligencia artificial</div>
+          <h3 data-i18n="wd5.h3">Funciones IA en tus Productos</h3>
+          <p data-i18n="wd5.p">Integración de IA generativa en productos existentes: asistentes conversacionales, generación automática de contenido, búsqueda semántica y recomendaciones.</p>
           <div class="wd-tags">
             <span class="wd-tag">Claude API</span>
             <span class="wd-tag">GPT-4o</span>
@@ -2114,7 +1987,7 @@ footer {
           <div class="wd-visual-inner">
             <svg width="150" height="80" viewBox="0 0 150 80" fill="none">
               <!-- Nodes connected -->
-              <circle cx="75" cy="40" r="12" fill="rgba(230,57,0,.4)" stroke="rgba(230,57,0,.6)" stroke-width="1.5"/>
+              <circle cx="75" cy="40" r="12" fill="rgba(247,164,0,.4)" stroke="rgba(247,164,0,.6)" stroke-width="1.5"/>
               <circle cx="28" cy="20" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
               <circle cx="28" cy="60" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
               <circle cx="122" cy="20" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
@@ -2128,9 +2001,9 @@ footer {
           </div>
         </div>
         <div class="wd-body">
-          <div class="wd-label">Infraestructura</div>
+          <div class="wd-label" data-i18n="wd6.label">Infraestructura</div>
           <h3>APIs, Backend & Cloud</h3>
-          <p>Arquitecturas robustas y escalables: APIs REST y GraphQL, microservicios, bases de datos, autenticación, CI/CD y despliegue en AWS, Azure o GCP.</p>
+          <p data-i18n="wd6.p">Arquitecturas robustas y escalables: APIs REST y GraphQL, microservicios, bases de datos, autenticación, CI/CD y despliegue en AWS, Azure o GCP.</p>
           <div class="wd-tags">
             <span class="wd-tag">FastAPI</span>
             <span class="wd-tag">Docker</span>
@@ -2147,176 +2020,74 @@ footer {
 <!-- ═══════════ MACHINERY ═══════════ -->
 <section class="machinery" id="maquinaria">
   <div class="container">
-    <div class="tag reveal">Equipamiento</div>
-    <h2 class="reveal d1">Maquinaria de <span>precisión industrial</span></h2>
-    <p class="machinery-intro reveal d2">Contamos con un parque de máquinas de última generación en nuestras plantas de El Paso, TX y Cd. Juárez, Chih., que nos permite ofrecer maquinado de alta precisión, corte, formado, soldadura y acabados superficiales bajo un mismo techo.</p>
+    <div class="tag reveal" data-i18n="machinery.tag">Equipamiento</div>
+    <h2 class="reveal d1" data-i18n="machinery.h2">Maquinaria de <span>precisión industrial</span></h2>
+    <p class="machinery-intro reveal d2" data-i18n="machinery.intro">Maquinado, corte, formado, soldadura y acabados bajo un mismo techo, con un parque de máquinas de última generación en El Paso, TX y Cd. Juárez, Chih.</p>
 
     <div class="machinery-banner reveal" style="background-image:url('https://images.unsplash.com/photo-1716643863806-989dd76ae093?auto=format&fit=crop&w=1920&q=85');">
       <div class="machinery-banner-text">
-        <strong>Instalaciones binacionales de manufactura</strong>
-        El Paso, TX (USA) &amp; Cd. Juárez, Chih. (México) — operación continua desde 2007
+        <strong data-i18n="machinery.banner.strong">Instalaciones binacionales de manufactura</strong>
+        <span data-i18n="machinery.banner.text">El Paso, TX (USA) &amp; Cd. Juárez, Chih. (México) — operación continua desde 2007</span>
       </div>
     </div>
 
-    <div class="machinery-grid">
+    <div class="eq-groups">
 
-      <div class="machine-card reveal">
-        <div class="machine-category">Maquinado CNC</div>
-        <h4>Haas VF-1 — 24 Herramientas</h4>
-        <p>Centro de maquinado vertical CNC para fresado de alta velocidad y tolerancias estrechas.</p>
+      <div class="eq-group reveal">
+        <h4 data-i18n="mach.cat.cnc">Maquinado CNC</h4>
+        <div class="eq-tags">
+          <span class="eq-tag">Haas VF-1</span>
+          <span class="eq-tag">Haas Super VF-3</span>
+          <span class="eq-tag">Haas CNC Lathe</span>
+          <span class="eq-tag">FANUC Robodrill</span>
+          <span class="eq-tag">Hurco VMX60</span>
+        </div>
       </div>
 
-      <div class="machine-card reveal d1">
-        <div class="machine-category">Maquinado CNC</div>
-        <h4>Haas Super VF-3 — 26 Herramientas</h4>
-        <p>12,000 RPM, 1,400 IPM. Centro de maquinado de alto rendimiento para piezas complejas.</p>
+      <div class="eq-group reveal d1">
+        <h4>EDM</h4>
+        <div class="eq-tags">
+          <span class="eq-tag">Mitsubishi Wire EDM NV1200R</span>
+          <span class="eq-tag">Mitsubishi EDM Sinkers (x2)</span>
+          <span class="eq-tag">Wire Cutter FX20</span>
+        </div>
       </div>
 
-      <div class="machine-card reveal d2">
-        <div class="machine-category">Maquinado CNC</div>
-        <h4>Haas CNC Lathe (Torno)</h4>
-        <p>Torno CNC HAAS para torneado de precisión de piezas cilíndricas y roscas.</p>
+      <div class="eq-group reveal d2">
+        <h4 data-i18n="mach.cat.cutting">Corte y Formado</h4>
+        <div class="eq-tags">
+          <span class="eq-tag">Laser Amada LCG 3015 AJ</span>
+          <span class="eq-tag">Turret Press (Amada)</span>
+          <span class="eq-tag">Guillotina 3/8" × 12 ft</span>
+          <span class="eq-tag">Press Brake + CNC Router</span>
+        </div>
       </div>
 
-      <div class="machine-card reveal d3">
-        <div class="machine-category">Maquinado CNC</div>
-        <h4>FANUC Robodrill CNC</h4>
-        <p>Centro de perforado y maquinado de alta velocidad para piezas de alta precisión dimensional.</p>
+      <div class="eq-group reveal d3">
+        <h4 data-i18n="mach.cat.manual">Fresado, Inspección y Acabados</h4>
+        <div class="eq-tags">
+          <span class="eq-tag">Kent Vertical Manual Mill</span>
+          <span class="eq-tag" data-i18n="mach.name.optical">Comparador Óptico</span>
+          <span class="eq-tag">Zing Laser Etch</span>
+          <span class="eq-tag">Sandblaster Industrial</span>
+        </div>
       </div>
 
-      <div class="machine-card reveal">
-        <div class="machine-category">Maquinado CNC</div>
-        <h4>Hurco VMX60</h4>
-        <p>Centro de maquinado vertical de mesa grande para componentes de mayor tamaño.</p>
-      </div>
-
-      <div class="machine-card reveal d1">
-        <div class="machine-category">EDM</div>
-        <h4>Mitsubishi Wire EDM NV1200R</h4>
-        <p>Electroerosión por hilo para geometrías complejas con tolerancias de ±0.001".</p>
-      </div>
-
-      <div class="machine-card reveal d2">
-        <div class="machine-category">EDM</div>
-        <h4>Mitsubishi EDM Sinkers (x2)</h4>
-        <p>Electroerosión por penetración para cavidades y moldes de alta precisión.</p>
-      </div>
-
-      <div class="machine-card reveal d3">
-        <div class="machine-category">EDM</div>
-        <h4>Wire Cutter Mitsubishi FX20</h4>
-        <p>Corte por hilo de alta precisión para perfiles y formas intrincadas en metal duro.</p>
-      </div>
-
-      <div class="machine-card reveal">
-        <div class="machine-category">Corte y Formado</div>
-        <h4>Laser Amada LCG 3015 AJ</h4>
-        <p>Corte láser de lámina metálica de alta potencia, mesa 3,015 × 1,525 mm.</p>
-      </div>
-
-      <div class="machine-card reveal d1">
-        <div class="machine-category">Corte y Formado</div>
-        <h4>Turret Press (Amada)</h4>
-        <p>Prensa torreta para punzonado y perforado de lámina metálica en serie.</p>
-      </div>
-
-      <div class="machine-card reveal d2">
-        <div class="machine-category">Corte y Formado</div>
-        <h4>Blade Guillotine 3/8" × 12 ft</h4>
-        <p>Guillotina hidráulica para corte de lámina hasta 3/8" de espesor y 12 pies de longitud.</p>
-      </div>
-
-      <div class="machine-card reveal d3">
-        <div class="machine-category">Corte y Formado</div>
-        <h4>Press Brake + CNC Router</h4>
-        <p>Dobladora de lámina de precisión y router CNC para madera y materiales no ferrosos.</p>
-      </div>
-
-      <div class="machine-card reveal">
-        <div class="machine-category">Fresado Manual</div>
-        <h4>Kent Vertical Manual Mill</h4>
-        <p>Fresadora vertical manual para prototipos y trabajos de ajuste de alta precisión artesanal.</p>
-      </div>
-
-      <div class="machine-card reveal d1">
-        <div class="machine-category">Inspección</div>
-        <h4>Comparador Óptico</h4>
-        <p>Medición y verificación dimensional de piezas maquinadas mediante proyección óptica.</p>
-      </div>
-
-      <div class="machine-card reveal d2">
-        <div class="machine-category">Marcado</div>
-        <h4>Zing Laser Etch</h4>
-        <p>Grabado láser para marcado permanente, logotipos y trazabilidad de piezas y componentes.</p>
-      </div>
-
-      <div class="machine-card reveal d3">
-        <div class="machine-category">Acabados</div>
-        <h4>Sandblaster Industrial</h4>
-        <p>Limpieza y preparación de superficie por granallado antes de procesos de pintura y recubrimiento.</p>
+      <div class="eq-group reveal d4" style="grid-column:1/-1;">
+        <h4 data-i18n="procs.tag">Procesos productivos</h4>
+        <div class="eq-tags">
+          <span class="eq-tag" data-i18n="proc1.h3">Proceso de Maquinado</span>
+          <span class="eq-tag" data-i18n="proc2.h3">Formado de Metal</span>
+          <span class="eq-tag" data-i18n="proc3.h3">Proceso de Soldadura</span>
+          <span class="eq-tag" data-i18n="proc4.h3">Pintura en Polvo</span>
+          <span class="eq-tag" data-i18n="proc5.h3">Pintura Líquida</span>
+          <span class="eq-tag" data-i18n="proc6.h3">Empaque y Embarque</span>
+        </div>
       </div>
 
     </div>
-    <div class="machinery-note reveal">
-      <strong>Capacidad binacional:</strong> Nuestras instalaciones en El Paso, TX y Cd. Juárez, Chih. nos permiten operar bajo esquemas <em>Shelter</em> y maquila, facilitando el flujo de materiales y manufactura a ambos lados de la frontera.
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ PRODUCTIVE PROCESSES ═══════════ -->
-<section class="prod-processes" id="procesos">
-  <div class="container">
-    <div class="tag reveal" style="border-color:rgba(230,57,0,.5);">Producción</div>
-    <h2 class="reveal d1">Procesos <span>productivos</span></h2>
-    <p class="prod-intro reveal d2">Desde la materia prima hasta el empaque y embarque, controlamos cada etapa del proceso bajo estrictos estándares de calidad y seguridad.</p>
-
-    <!-- welding banner image -->
-    <div style="height:240px; margin-bottom:48px; background-image:url('https://images.unsplash.com/photo-1526634140919-468dc3ae3870?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center; position:relative; clip-path:polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));">
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,26,0.88) 0%,rgba(26,26,26,0.4) 100%);"></div>
-      <div style="position:absolute;bottom:28px;left:40px;color:#fff;">
-        <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Procesos certificados</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;">Soldadura · Formado · Recubrimiento · Empaque</div>
-      </div>
-    </div>
-
-    <div class="proc-grid">
-
-      <div class="proc-card reveal">
-        <span class="proc-icon">🔧</span>
-        <h3>Proceso de Maquinado</h3>
-        <p>Maquinado CNC en centros verticales y horizontales Haas, FANUC y Hurco para piezas de precisión en aluminio, acero, acero inoxidable y más materiales.</p>
-      </div>
-
-      <div class="proc-card reveal d1">
-        <span class="proc-icon">🔨</span>
-        <h3>Formado de Metal</h3>
-        <p>Corte con láser y guillotina, punzonado con torreta press, doblado en press brake y ensamble de estructuras metálicas según plano del cliente.</p>
-      </div>
-
-      <div class="proc-card reveal d2">
-        <span class="proc-icon">⚡</span>
-        <h3>Proceso de Soldadura</h3>
-        <p>Soldadura MIG, TIG y de punto para unión de estructuras metálicas con calidad de presentación y resistencia estructural certificada.</p>
-      </div>
-
-      <div class="proc-card reveal">
-        <span class="proc-icon">🎨</span>
-        <h3>Pintura en Polvo (Powder Coating)</h3>
-        <p>Aplicación electrostática de pintura en polvo termoendurecible con horno de curado, ofreciendo acabado uniforme, duradero y resistente a la corrosión.</p>
-      </div>
-
-      <div class="proc-card reveal d1">
-        <span class="proc-icon">🖌️</span>
-        <h3>Pintura Líquida</h3>
-        <p>Pintura líquida convencional y electroestática en cabina de acabado controlada, para componentes que requieren colores especiales o acabados de alta presentación.</p>
-      </div>
-
-      <div class="proc-card reveal d2">
-        <span class="proc-icon">📦</span>
-        <h3>Empaque y Embarque</h3>
-        <p>Embalaje industrial con stretch film, cajones y pallets, carga con montacargas y coordinación logística para entregas en México y EE.UU.</p>
-      </div>
-
+    <div class="machinery-note reveal" data-i18n="machinery.note">
+      <strong>Capacidad binacional:</strong> Operamos bajo esquemas <em>Shelter</em> y maquila entre ambos lados de la frontera.
     </div>
   </div>
 </section>
@@ -2324,35 +2095,35 @@ footer {
 <!-- ═══════════ PROCESS ═══════════ -->
 <section class="process" id="proceso">
   <div class="container">
-    <div class="tag reveal">Cómo trabajamos</div>
-    <h2 class="reveal d1">Proceso <span>claro</span>,<br>resultados medibles</h2>
-    <p class="process-intro reveal d2">Un método estructurado que elimina la incertidumbre y te mantiene en control de cada etapa de tu proyecto.</p>
+    <div class="tag reveal" data-i18n="process.tag">Cómo trabajamos</div>
+    <h2 class="reveal d1" data-i18n="process.h2">Proceso <span>claro</span>,<br>resultados medibles</h2>
+    <p class="process-intro reveal d2" data-i18n="process.intro">Un método estructurado que elimina la incertidumbre y te mantiene en control de cada etapa de tu proyecto.</p>
     <div class="process-steps">
       <div class="process-connector"></div>
       <div class="process-step reveal">
         <div class="step-num-wrap"><span class="step-num">01</span></div>
-        <div class="step-title">Diagnóstico</div>
-        <p class="step-desc">Analizamos tu operación, identificamos cuellos de botella y definimos el alcance exacto del proyecto.</p>
+        <div class="step-title" data-i18n="step1.title">Diagnóstico</div>
+        <p class="step-desc" data-i18n="step1.desc">Analizamos tu operación, identificamos cuellos de botella y definimos el alcance exacto del proyecto.</p>
       </div>
       <div class="process-step reveal d1">
         <div class="step-num-wrap"><span class="step-num">02</span></div>
-        <div class="step-title">Propuesta</div>
-        <p class="step-desc">Presentamos una solución técnica detallada con tiempos, costos y retorno de inversión estimado.</p>
+        <div class="step-title" data-i18n="step2.title">Propuesta</div>
+        <p class="step-desc" data-i18n="step2.desc">Presentamos una solución técnica detallada con tiempos, costos y retorno de inversión estimado.</p>
       </div>
       <div class="process-step reveal d2">
         <div class="step-num-wrap"><span class="step-num">03</span></div>
-        <div class="step-title">Desarrollo</div>
-        <p class="step-desc">Iteramos en sprints cortos con entregas parciales y revisiones continuas contigo.</p>
+        <div class="step-title" data-i18n="step3.title">Desarrollo</div>
+        <p class="step-desc" data-i18n="step3.desc">Iteramos en sprints cortos con entregas parciales y revisiones continuas contigo.</p>
       </div>
       <div class="process-step reveal d3">
         <div class="step-num-wrap"><span class="step-num">04</span></div>
-        <div class="step-title">Implementación</div>
-        <p class="step-desc">Desplegamos la solución en tu entorno, con pruebas rigurosas y capacitación a tu equipo.</p>
+        <div class="step-title" data-i18n="step4.title">Implementación</div>
+        <p class="step-desc" data-i18n="step4.desc">Desplegamos la solución en tu entorno, con pruebas rigurosas y capacitación a tu equipo.</p>
       </div>
       <div class="process-step reveal d4">
         <div class="step-num-wrap"><span class="step-num">05</span></div>
-        <div class="step-title">Soporte</div>
-        <p class="step-desc">Monitoreamos, optimizamos y actualizamos la solución para que siempre opere al máximo.</p>
+        <div class="step-title" data-i18n="step5.title">Soporte</div>
+        <p class="step-desc" data-i18n="step5.desc">Monitoreamos, optimizamos y actualizamos la solución para que siempre opere al máximo.</p>
       </div>
     </div>
   </div>
@@ -2361,38 +2132,25 @@ footer {
 <!-- ═══════════ TECHNOLOGY ═══════════ -->
 <section class="technology" id="tecnologias">
   <div class="container">
-    <div class="tag reveal">Capacidades técnicas</div>
-    <h2 class="reveal d1">Equipo y tecnología de <span>primer nivel</span></h2>
-    <p class="tech-intro reveal d2">Nuestras capacidades abarcan desde el piso de producción hasta la nube, integrando maquinaria de precisión con software y herramientas de inteligencia artificial.</p>
+    <div class="tag reveal" data-i18n="tech.tag">Stack tecnológico</div>
+    <h2 class="reveal d1" data-i18n="tech.h2">Automatización y <span>software de punta</span></h2>
+    <p class="tech-intro reveal d2" data-i18n="tech.intro">Las herramientas y protocolos con los que integramos el piso de producción con el software y la inteligencia artificial.</p>
     <div class="tech-categories">
       <div class="reveal">
-        <div class="tech-cat-title">Maquinaria CNC</div>
+        <div class="tech-cat-title" data-i18n="tech.cat2">Automatización PLC</div>
         <ul class="tech-list">
-          <li>Haas VF-1 / Super VF-3</li>
-          <li>Haas CNC Lathe</li>
-          <li>FANUC Robodrill</li>
-          <li>Hurco VMX60</li>
-          <li>Mitsubishi Wire EDM</li>
-          <li>Mitsubishi EDM Sinkers</li>
-          <li>Amada Laser LCG 3015</li>
-          <li>Turret Press / Press Brake</li>
-        </ul>
-      </div>
-      <div class="reveal d1">
-        <div class="tech-cat-title">Automatización PLC</div>
-        <ul class="tech-list">
-          <li>Programación PLC</li>
-          <li>Integración robótica</li>
+          <li data-i18n="tech.cat2.li1">Programación PLC</li>
+          <li data-i18n="tech.cat2.li2">Integración robótica</li>
           <li>SCADA / HMI</li>
           <li>MES Integration</li>
-          <li>IoT Industrial</li>
+          <li data-i18n="tech.cat2.li5">IoT Industrial</li>
           <li>OPC-UA / Modbus</li>
-          <li>Modernización legacy</li>
+          <li data-i18n="tech.cat2.li7">Modernización legacy</li>
           <li>Remote Monitoring</li>
         </ul>
       </div>
-      <div class="reveal d2">
-        <div class="tech-cat-title">Software & IA</div>
+      <div class="reveal d1">
+        <div class="tech-cat-title" data-i18n="tech.cat3">Software & IA</div>
         <ul class="tech-list">
           <li>Python / FastAPI</li>
           <li>Node.js / TypeScript</li>
@@ -2404,19 +2162,6 @@ footer {
           <li>React / Next.js</li>
         </ul>
       </div>
-      <div class="reveal d3">
-        <div class="tech-cat-title">Procesos Industriales</div>
-        <ul class="tech-list">
-          <li>Powder Coating</li>
-          <li>Pintura Líquida Electroestática</li>
-          <li>Horno de Curado</li>
-          <li>Soldadura MIG / TIG</li>
-          <li>Sandblasting</li>
-          <li>Laser Etch (Zing)</li>
-          <li>Comparador Óptico</li>
-          <li>Packing & Shipping</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
@@ -2424,9 +2169,9 @@ footer {
 <!-- ═══════════ PRODUCTS ═══════════ -->
 <section class="products" id="productos">
   <div class="container">
-    <div class="tag reveal">Alianzas tecnológicas</div>
-    <h2 class="reveal d1" style="font-size:clamp(32px,3.5vw,48px);font-weight:700;color:var(--white);margin-bottom:16px;">Productos que <span style="color:var(--orange);">distribuimos</span></h2>
-    <p class="products-intro reveal d2">Representamos soluciones de clase mundial para complementar nuestra oferta de ingeniería y software con tecnología de frontera.</p>
+    <div class="tag reveal" data-i18n="prods.tag">Alianzas tecnológicas</div>
+    <h2 class="reveal d1" style="font-size:clamp(32px,3.5vw,48px);font-weight:700;color:var(--white);margin-bottom:16px;" data-i18n="prods.h2">Productos que <span style="color:var(--orange);">distribuimos</span></h2>
+    <p class="products-intro reveal d2" data-i18n="prods.intro">Representamos soluciones de clase mundial para complementar nuestra oferta de ingeniería y software con tecnología de frontera.</p>
   </div>
 
   <div class="products-stack">
@@ -2434,7 +2179,7 @@ footer {
     <!-- ── FIRE.ONE ────────────────────────────────── -->
     <div class="prod-card prod-card-fire reveal">
       <div class="prod-card-body">
-        <div class="prod-badge prod-badge-fire">Ciberseguridad · Granada Vista Inc.</div>
+        <div class="prod-badge prod-badge-fire" data-i18n="fire.badge">Ciberseguridad · Granada Vista Inc.</div>
 
         <!-- Breezeway Fire.ONE logo (inline SVG recreation from presentation) -->
         <div class="prod-logo-wrap">
@@ -2461,27 +2206,27 @@ footer {
           </div>
         </div>
 
-        <p class="prod-desc">Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.</p>
+        <p class="prod-desc" data-i18n="fire.desc">Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.</p>
 
         <div class="prod-stats">
           <div>
             <div class="pstat-num">85%</div>
-            <div class="pstat-label">Deployments más rápidos</div>
+            <div class="pstat-label" data-i18n="fire.stat1">Deployments más rápidos</div>
           </div>
           <div>
             <div class="pstat-num" style="color:#fff">0%</div>
-            <div class="pstat-label">Error humano</div>
+            <div class="pstat-label" data-i18n="fire.stat2">Error humano</div>
           </div>
           <div>
             <div class="pstat-num">300+</div>
-            <div class="pstat-label">Clientes enterprise</div>
+            <div class="pstat-label" data-i18n="fire.stat3">Clientes enterprise</div>
           </div>
         </div>
 
         <ul class="prod-features">
-          <li>Discovery — visibilidad end-to-end en entornos multi-vendor</li>
-          <li>AI Optimization — análisis simultáneo de reglas y tráfico en vivo</li>
-          <li>Governance — auditoría continua y cumplimiento automatizado</li>
+          <li data-i18n="fire.feat1">Discovery — visibilidad end-to-end en entornos multi-vendor</li>
+          <li data-i18n="fire.feat2">AI Optimization — análisis simultáneo de reglas y tráfico en vivo</li>
+          <li data-i18n="fire.feat3">Governance — auditoría continua y cumplimiento automatizado</li>
         </ul>
 
         <!-- Vendor compatibility chips -->
@@ -2495,7 +2240,7 @@ footer {
           <span class="prod-vendor">SonicWall</span>
         </div>
 
-        <a href="#contacto" class="prod-cta prod-cta-fire">Solicitar demo</a>
+        <a href="#contacto" class="prod-cta prod-cta-fire" data-i18n="fire.cta">Solicitar demo</a>
       </div>
       <div class="prod-card-visual">
         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity operations center">
@@ -2505,7 +2250,7 @@ footer {
     <!-- ── DUNEBOX ─────────────────────────────────── -->
     <div class="prod-card prod-card-dune reveal">
       <div class="prod-card-body">
-        <div class="prod-badge prod-badge-dune">ERP Generativo · SaaS · México</div>
+        <div class="prod-badge prod-badge-dune" data-i18n="dune.badge">ERP Generativo · SaaS · México</div>
 
         <!-- Dunebox logo (official brand mark from dunebox.app) -->
         <div class="prod-logo-wrap">
@@ -2521,16 +2266,16 @@ footer {
           </div>
         </div>
 
-        <p class="prod-desc">De una conversación a tu software empresarial. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.</p>
+        <p class="prod-desc" data-i18n="dune.desc">De una conversación a tu software empresarial. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.</p>
 
         <ul class="prod-features">
-          <li>Cotizaciones y propuestas comerciales automáticas</li>
-          <li>Control de inventario con trazabilidad en tiempo real</li>
-          <li>Facturación CFDI 4.0 integrada</li>
-          <li>Módulo de producción y cuentas por cobrar</li>
+          <li data-i18n="dune.feat1">Cotizaciones y propuestas comerciales automáticas</li>
+          <li data-i18n="dune.feat2">Control de inventario con trazabilidad en tiempo real</li>
+          <li data-i18n="dune.feat3">Facturación CFDI 4.0 integrada</li>
+          <li data-i18n="dune.feat4">Módulo de producción y cuentas por cobrar</li>
         </ul>
 
-        <a href="#contacto" class="prod-cta prod-cta-dune">Conocer más</a>
+        <a href="#contacto" class="prod-cta prod-cta-dune" data-i18n="dune.cta">Conocer más</a>
       </div>
       <div class="prod-card-visual">
         <!-- Official Dunebox OG image from dunebox.app -->
@@ -2541,16 +2286,45 @@ footer {
   </div><!-- /products-stack -->
 </section>
 
+<!-- ═══════════ TRUST ═══════════ -->
+<section class="trust" id="confianza">
+  <div class="container">
+    <div class="trust-header">
+      <div class="tag reveal" data-i18n="trust.tag">Compromiso de calidad</div>
+      <h2 class="reveal d1" data-i18n="trust.h2">Ingeniería lista para <span>auditar</span></h2>
+      <p class="trust-sub reveal d2" data-i18n="trust.sub">Cada pieza que maquinamos y cada línea de código que entregamos queda documentada, trazable y respaldada por procesos que puedes revisar.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item reveal d1">
+        <h4 data-i18n="trust.p1.h4">Trazabilidad total</h4>
+        <p data-i18n="trust.p1.p">Cada pieza maquinada y cada release de software queda documentado y es rastreable de principio a fin.</p>
+      </div>
+      <div class="trust-item reveal d2">
+        <h4 data-i18n="trust.p2.h4">Procesos certificados</h4>
+        <p data-i18n="trust.p2.p">Control de calidad en cada etapa, desde el diseño hasta la entrega final en planta o en producción.</p>
+      </div>
+      <div class="trust-item reveal d3">
+        <h4 data-i18n="trust.p3.h4">Cumplimiento normativo</h4>
+        <p data-i18n="trust.p3.p">Software y manufactura para sectores regulados: médico, farmacéutico y automotriz.</p>
+      </div>
+      <div class="trust-item reveal d4">
+        <h4 data-i18n="trust.p4.h4">Entregas garantizadas</h4>
+        <p data-i18n="trust.p4.p">Diagnóstico inicial gratuito y compromisos medibles por sprint u orden de producción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ CTA BAND ═══════════ -->
 <section class="cta-band">
   <div class="cta-band-bg"></div>
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2>¿Listo para transformar<br>tu operación?</h2>
-        <p>Habla con nuestros especialistas y obtén un diagnóstico gratuito sin compromiso.</p>
+        <h2 data-i18n="ctaband.h2">¿Listo para transformar<br>tu operación?</h2>
+        <p data-i18n="ctaband.p">Habla con nuestros especialistas y obtén un diagnóstico gratuito sin compromiso.</p>
       </div>
-      <a href="#contacto" class="cta-btn-dark">Agendar diagnóstico <span class="arrow-right"></span></a>
+      <a href="#contacto" class="cta-btn-dark"><span data-i18n="ctaband.btn">Agendar diagnóstico</span> <span class="arrow-right"></span></a>
     </div>
   </div>
 </section>
@@ -2560,70 +2334,49 @@ footer {
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="tag reveal">Contacto</div>
-        <h2 class="reveal d1">Hablemos de tu <span>próximo proyecto</span></h2>
-        <p class="reveal d2">Cuéntanos tu desafío y en menos de 24 horas un especialista te contactará con una propuesta inicial.</p>
-        <div class="contact-detail reveal d2">
-          <div class="contact-icon">👤</div>
-          <div class="contact-detail-text">
-            <strong>Ing. Miguel Estrada</strong>
-            <span>656 789 2994 · estradamiguelangel777@gmail.com</span>
-          </div>
-        </div>
-        <div class="contact-detail reveal d3">
-          <div class="contact-icon">👤</div>
-          <div class="contact-detail-text">
-            <strong>Ing. Daniel García</strong>
-            <span>656 685 8215 · Daniel.agarcia@hotmail.com</span>
-          </div>
-        </div>
-        <div class="contact-detail reveal d4">
-          <div class="contact-icon">📍</div>
-          <div class="contact-detail-text">
-            <strong>Plantas</strong>
-            <span>Cd. Juárez, Chih. (MX) · El Paso, TX (USA)</span>
-          </div>
-        </div>
+        <div class="tag reveal" data-i18n="contact.tag">Contacto</div>
+        <h2 class="reveal d1" data-i18n="contact.h2">Hablemos de tu <span>próximo proyecto</span></h2>
+        <p class="reveal d2" data-i18n="contact.p">Cuéntanos tu desafío y en menos de 24 horas un especialista te contactará con una propuesta inicial.</p>
       </div>
       <div class="contact-form reveal d2">
         <form id="contactForm">
           <div class="form-row">
             <div class="form-group">
-              <label>Nombre</label>
-              <input type="text" placeholder="Tu nombre" required>
+              <label data-i18n="form.label.name">Nombre</label>
+              <input type="text" placeholder="Tu nombre" data-i18n-placeholder="form.placeholder.name" required>
             </div>
             <div class="form-group">
-              <label>Empresa</label>
-              <input type="text" placeholder="Nombre de tu empresa">
+              <label data-i18n="form.label.company">Empresa</label>
+              <input type="text" placeholder="Nombre de tu empresa" data-i18n-placeholder="form.placeholder.company">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>Correo</label>
+              <label data-i18n="form.label.email">Correo</label>
               <input type="email" placeholder="tu@empresa.com" required>
             </div>
             <div class="form-group">
-              <label>Teléfono</label>
+              <label data-i18n="form.label.phone">Teléfono</label>
               <input type="tel" placeholder="+52 000 000 0000">
             </div>
           </div>
           <div class="form-group">
-            <label>Servicio de interés</label>
+            <label data-i18n="form.label.service">Servicio de interés</label>
             <select required>
-              <option value="">Selecciona una opción</option>
-              <option>Automatización Industrial y Maquinado</option>
-              <option>Desarrollo de Software a la Medida</option>
-              <option>Automatización con IA</option>
-              <option>Desarrollo Web</option>
-              <option>Varios servicios</option>
+              <option value="" data-i18n="form.opt.default">Selecciona una opción</option>
+              <option data-i18n="form.opt1">Automatización Industrial y Maquinado</option>
+              <option data-i18n="form.opt2">Desarrollo de Software a la Medida</option>
+              <option data-i18n="form.opt3">Automatización con IA</option>
+              <option data-i18n="form.opt4">Desarrollo Web</option>
+              <option data-i18n="form.opt5">Varios servicios</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Cuéntanos tu proyecto</label>
-            <textarea placeholder="Describe brevemente el reto que quieres resolver o el proyecto que tienes en mente..."></textarea>
+            <label data-i18n="form.label.message">Cuéntanos tu proyecto</label>
+            <textarea placeholder="Describe brevemente el reto que quieres resolver o el proyecto que tienes en mente..." data-i18n-placeholder="form.placeholder.message"></textarea>
           </div>
           <button type="submit" class="form-submit">
-            Enviar mensaje
+            <span data-i18n="form.submit">Enviar mensaje</span>
             <span class="arrow-right"></span>
           </button>
         </form>
@@ -2634,13 +2387,13 @@ footer {
 
 <!-- ═══════════ UNSPLASH CREDITS ═══════════ -->
 <div class="unsplash-credit">
-  Fotografías por <a href="https://unsplash.com/@simonkadula" target="_blank">Simon Kadula</a>,
+  <span data-i18n="credit.by">Fotografías por</span> <a href="https://unsplash.com/@simonkadula" target="_blank">Simon Kadula</a>,
   <a href="https://unsplash.com/@testalizeme" target="_blank">Testalize.me</a>,
   <a href="https://unsplash.com/@mastarsmt" target="_blank">mastars MT</a>,
   <a href="https://unsplash.com/@jakubzerdzicki" target="_blank">Jakub Żerdzicki</a>,
   <a href="https://unsplash.com/@deepmind" target="_blank">Google DeepMind</a> &amp;
   <a href="https://unsplash.com/@amanjakhar" target="_blank">Aman Jakhar</a>
-  vía <a href="https://unsplash.com" target="_blank">Unsplash</a>
+  <span data-i18n="credit.via">vía</span> <a href="https://unsplash.com" target="_blank">Unsplash</a>
 </div>
 
 <!-- ═══════════ FOOTER ═══════════ -->
@@ -2649,44 +2402,43 @@ footer {
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" class="logo">
-          <div class="logo-mark"></div>
-          OnePrimal
+          <img src="assets/logo-primal.png" alt="Primal" class="logo-img">
         </a>
-        <p>Soluciones de ingeniería y tecnología que impulsan la competitividad de tu empresa en la era digital.</p>
+        <p data-i18n="footer.brand.p">Soluciones de ingeniería y tecnología que impulsan la competitividad de tu empresa en la era digital.</p>
       </div>
       <div class="footer-col">
-        <h4>Servicios</h4>
+        <h4 data-i18n="footer.services.h4">Servicios</h4>
         <ul>
-          <li><a href="#servicios">Automatización Industrial</a></li>
-          <li><a href="#servicios">Software a la Medida</a></li>
-          <li><a href="#servicios">Automatización con IA</a></li>
-          <li><a href="#servicios">Desarrollo Web</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link1">Automatización Industrial</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link2">Software a la Medida</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link3">Automatización con IA</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link4">Desarrollo Web</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Empresa</h4>
+        <h4 data-i18n="footer.company.h4">Empresa</h4>
         <ul>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#industrias">Web & Móvil</a></li>
-          <li><a href="#tecnologias">Tecnologías</a></li>
+          <li><a href="#nosotros" data-i18n="footer.company.link1">Nosotros</a></li>
+          <li><a href="#proceso" data-i18n="footer.company.link2">Proceso</a></li>
+          <li><a href="#industrias" data-i18n="nav.industrias">Web & Móvil</a></li>
+          <li><a href="#tecnologias" data-i18n="footer.company.link4">Tecnologías</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contacto</h4>
+        <h4 data-i18n="contact.tag">Contacto</h4>
         <ul>
-          <li><a href="#contacto">Enviar mensaje</a></li>
-          <li><a href="#contacto">Agendar llamada</a></li>
+          <li><a href="#contacto" data-i18n="footer.contact.link1">Enviar mensaje</a></li>
+          <li><a href="#contacto" data-i18n="footer.contact.link2">Agendar llamada</a></li>
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 <span>OnePrimal</span>. Todos los derechos reservados.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2025 <span>OnePrimal</span>. Todos los derechos reservados.</p>
       <div class="footer-legal">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos de uso</a>
+        <a href="#" data-i18n="footer.legal1">Privacidad</a>
+        <a href="#" data-i18n="footer.legal2">Términos de uso</a>
       </div>
     </div>
   </div>
@@ -2695,7 +2447,7 @@ footer {
 <!-- ═══════════ TOAST ═══════════ -->
 <div class="toast" id="toast">
   <div class="toast-dot"></div>
-  Mensaje enviado. Te contactaremos pronto.
+  <span data-i18n="toast.msg">Mensaje enviado. Te contactaremos pronto.</span>
 </div>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
@@ -2773,6 +2525,437 @@ const statsObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.5 });
 statNums.forEach(el => statsObs.observe(el));
+</script>
+
+<!-- ═══════════ I18N (ES / EN) ═══════════ -->
+<script>
+const translations = {
+  es: {
+    'meta.title': 'OnePrimal — Innovación que transforma industrias',
+    'nav.servicios': 'Servicios',
+    'nav.maquinaria': 'Maquinaria',
+    'nav.procesos': 'Procesos',
+    'nav.industrias': 'Web & Móvil',
+    'nav.contacto': 'Contáctanos',
+    'mobile.industrias': 'Industrias',
+
+    'hero.eyebrow': 'Software · IA · Ingeniería Industrial',
+    'hero.h1': 'Innovación que<br><em>transforma</em><br>industrias',
+    'hero.sub': 'Desarrollamos software a la medida, integramos inteligencia artificial y dominamos la manufactura de precisión para llevar tu empresa al siguiente nivel.',
+    'hero.cta1': 'Ver servicios',
+    'hero.cta2': 'Hablar con un experto',
+
+    'stats.years': 'Años en operación (desde 2007)',
+    'stats.plants': 'Plantas: El Paso TX & Cd. Juárez',
+    'stats.cnc': 'Máquinas CNC y de precisión',
+    'stats.sectors': 'Sectores industriales atendidos',
+
+    'clients.tag': 'Empresas que confían en nosotros',
+    'clients.h2': 'Clientes que nos <span>respaldan</span>',
+
+    'about.tag': 'Quiénes somos',
+    'about.h2': 'Manufactura de <span>precisión</span> e ingeniería que transforma operaciones',
+    'about.p1': 'Integramos maquinado CNC, automatización industrial, software a la medida e inteligencia artificial en una sola empresa.',
+    'about.p2': 'Trabajamos con un solo objetivo: calidad medible en cada entrega, con mejora continua y un equipo en constante capacitación.',
+    'about.v1.h4': 'Precisión CNC',
+    'about.v1.p': 'Maquinado de piezas con tolerancias exactas usando Haas, FANUC, Hurco y Mitsubishi EDM.',
+    'about.v2.h4': 'Industria 4.0',
+    'about.v2.p': 'Automatización PLC, robótica, IoT, MES y analítica de datos para producción inteligente.',
+    'about.v3.h4': 'Software & IA',
+    'about.v3.p': 'Sistemas a la medida, automatización con inteligencia artificial y plataformas web de alto impacto.',
+    'about.v4.h4': 'Acabados Industriales',
+    'about.v4.p': 'Pintura en polvo, pintura líquida convencional y electroestática, con horno de curado.',
+
+    'services.tag': 'Nuestros servicios',
+    'services.h2': 'Lo que <span>hacemos</span><br>mejor',
+    'services.sub': 'Cuatro áreas de especialización que se complementan para darte una solución tecnológica completa e integrada.',
+    'svc1.h3': 'Desarrollo de Software a la Medida',
+    'svc1.p': 'Operamos como una software factory: un equipo dedicado que diseña, construye y libera software con control de calidad y entregas medibles en cada sprint, incluso para procesos regulados en sectores médico y farmacéutico.',
+    'svc1.tag2': 'Sistemas MES',
+    'svc1.tag4': 'ERP Industrial',
+    'svc1.tag5': 'Trazabilidad',
+    'svc2.h3': 'Automatización Industrial, PLC y Maquinado CNC',
+    'svc2.p': 'Programación PLC, integración robótica y líneas de producción automatizadas bajo estándares Industry 4.0, combinado con maquinado CNC de precisión en nuestro propio taller.',
+    'svc2.tag3': 'Robótica',
+    'svc2.tag4': 'Industria 4.0',
+    'svc2.tag6': 'Corte Láser',
+    'svc3.h3': 'Automatización con Inteligencia Artificial',
+    'svc3.p': 'Liberamos el potencial humano de tareas repetitivas: visión por computadora para inspección de calidad, agentes LLM para soporte técnico, y mantenimiento predictivo que convierte los datos de tu planta en decisiones más rentables.',
+    'svc3.tag1': 'Visión por cómputo',
+    'svc3.tag2': 'Control de calidad IA',
+    'svc3.tag3': 'Mantenimiento predictivo',
+    'svc4.h3': 'Desarrollo Web',
+    'svc4.p': 'Creamos sitios web corporativos, plataformas de comercio electrónico y aplicaciones web progresivas que combinan diseño de alto impacto con rendimiento y posicionamiento SEO.',
+    'svc4.tag4': 'SEO técnico',
+
+    'webdev.h2': 'Tu fábrica de <span>software a la medida</span>',
+    'webdev.intro': 'Un equipo de desarrollo dedicado que opera como línea de producción: procesos estandarizados, control de calidad en cada entrega y la velocidad de una fábrica, no de un freelancer.',
+    'wd1.label': 'Sitios web',
+    'wd1.h3': 'Landing Pages & Sitios Corporativos',
+    'wd1.p': 'Diseño moderno, animaciones fluidas, SEO técnico y velocidad de carga optimizada. Cada página construida para convertir visitantes en clientes.',
+    'wd2.label': 'Apps móviles',
+    'wd2.h3': 'Aplicaciones iOS & Android',
+    'wd2.p': 'Apps nativas y multiplataforma con experiencia de usuario impecable. Desde MVPs hasta productos listos para la App Store y Google Play.',
+    'wd3.h3': 'Tiendas Online & Marketplaces',
+    'wd3.p': 'Plataformas de venta con catálogos dinámicos, carrito, pagos integrados (Stripe, Conekta, PayPal) y panel de administración a la medida.',
+    'wd4.label': 'Aplicaciones web',
+    'wd4.h3': 'SaaS, Dashboards & Portales',
+    'wd4.p': 'Sistemas web completos: CRMs, ERPs ligeros, portales de clientes, paneles de analytics en tiempo real y aplicaciones internas de negocio.',
+    'wd5.label': 'Inteligencia artificial',
+    'wd5.h3': 'Funciones IA en tus Productos',
+    'wd5.p': 'Integración de IA generativa en productos existentes: asistentes conversacionales, generación automática de contenido, búsqueda semántica y recomendaciones.',
+    'wd6.label': 'Infraestructura',
+    'wd6.p': 'Arquitecturas robustas y escalables: APIs REST y GraphQL, microservicios, bases de datos, autenticación, CI/CD y despliegue en AWS, Azure o GCP.',
+
+    'machinery.tag': 'Equipamiento',
+    'machinery.h2': 'Maquinaria de <span>precisión industrial</span>',
+    'machinery.intro': 'Contamos con un parque de máquinas de última generación en nuestras plantas de El Paso, TX y Cd. Juárez, Chih., que nos permite ofrecer maquinado de alta precisión, corte, formado, soldadura y acabados superficiales bajo un mismo techo.',
+    'machinery.banner.strong': 'Instalaciones binacionales de manufactura',
+    'machinery.banner.text': 'El Paso, TX (USA) &amp; Cd. Juárez, Chih. (México) — operación continua desde 2007',
+    'mach.cat.cnc': 'Maquinado CNC',
+    'mach.cat.cutting': 'Corte y Formado',
+    'mach.cat.manual': 'Fresado, Inspección y Acabados',
+    'mach.name.optical': 'Comparador Óptico',
+    'machinery.note': '<strong>Capacidad binacional:</strong> Operamos bajo esquemas <em>Shelter</em> y maquila entre ambos lados de la frontera.',
+
+    'procs.tag': 'Procesos productivos',
+    'proc1.h3': 'Proceso de Maquinado',
+    'proc2.h3': 'Formado de Metal',
+    'proc3.h3': 'Proceso de Soldadura',
+    'proc4.h3': 'Pintura en Polvo',
+    'proc5.h3': 'Pintura Líquida',
+    'proc6.h3': 'Empaque y Embarque',
+
+    'process.tag': 'Cómo trabajamos',
+    'process.h2': 'Proceso <span>claro</span>,<br>resultados medibles',
+    'process.intro': 'Un método estructurado que elimina la incertidumbre y te mantiene en control de cada etapa de tu proyecto.',
+    'step1.title': 'Diagnóstico',
+    'step1.desc': 'Analizamos tu operación, identificamos cuellos de botella y definimos el alcance exacto del proyecto.',
+    'step2.title': 'Propuesta',
+    'step2.desc': 'Presentamos una solución técnica detallada con tiempos, costos y retorno de inversión estimado.',
+    'step3.title': 'Desarrollo',
+    'step3.desc': 'Iteramos en sprints cortos con entregas parciales y revisiones continuas contigo.',
+    'step4.title': 'Implementación',
+    'step4.desc': 'Desplegamos la solución en tu entorno, con pruebas rigurosas y capacitación a tu equipo.',
+    'step5.title': 'Soporte',
+    'step5.desc': 'Monitoreamos, optimizamos y actualizamos la solución para que siempre opere al máximo.',
+
+    'tech.tag': 'Stack tecnológico',
+    'tech.h2': 'Automatización y <span>software de punta</span>',
+    'tech.intro': 'Las herramientas y protocolos con los que integramos el piso de producción con el software y la inteligencia artificial.',
+    'tech.cat2': 'Automatización PLC',
+    'tech.cat2.li1': 'Programación PLC',
+    'tech.cat2.li2': 'Integración robótica',
+    'tech.cat2.li5': 'IoT Industrial',
+    'tech.cat2.li7': 'Modernización legacy',
+    'tech.cat3': 'Software & IA',
+
+    'prods.tag': 'Alianzas tecnológicas',
+    'prods.h2': 'Productos que <span style="color:var(--orange);">distribuimos</span>',
+    'prods.intro': 'Representamos soluciones de clase mundial para complementar nuestra oferta de ingeniería y software con tecnología de frontera.',
+    'fire.badge': 'Ciberseguridad · Granada Vista Inc.',
+    'fire.desc': 'Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.',
+    'fire.stat1': 'Deployments más rápidos',
+    'fire.stat2': 'Error humano',
+    'fire.stat3': 'Clientes enterprise',
+    'fire.feat1': 'Discovery — visibilidad end-to-end en entornos multi-vendor',
+    'fire.feat2': 'AI Optimization — análisis simultáneo de reglas y tráfico en vivo',
+    'fire.feat3': 'Governance — auditoría continua y cumplimiento automatizado',
+    'fire.cta': 'Solicitar demo',
+    'dune.badge': 'ERP Generativo · SaaS · México',
+    'dune.desc': 'De una conversación a tu software empresarial. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.',
+    'dune.feat1': 'Cotizaciones y propuestas comerciales automáticas',
+    'dune.feat2': 'Control de inventario con trazabilidad en tiempo real',
+    'dune.feat3': 'Facturación CFDI 4.0 integrada',
+    'dune.feat4': 'Módulo de producción y cuentas por cobrar',
+    'dune.cta': 'Conocer más',
+
+    'trust.tag': 'Compromiso de calidad',
+    'trust.h2': 'Ingeniería lista para <span>auditar</span>',
+    'trust.sub': 'Cada pieza que maquinamos y cada línea de código que entregamos queda documentada, trazable y respaldada por procesos que puedes revisar.',
+    'trust.p1.h4': 'Trazabilidad total',
+    'trust.p1.p': 'Cada pieza maquinada y cada release de software queda documentado y es rastreable de principio a fin.',
+    'trust.p2.h4': 'Procesos certificados',
+    'trust.p2.p': 'Control de calidad en cada etapa, desde el diseño hasta la entrega final en planta o en producción.',
+    'trust.p3.h4': 'Cumplimiento normativo',
+    'trust.p3.p': 'Software y manufactura para sectores regulados: médico, farmacéutico y automotriz.',
+    'trust.p4.h4': 'Entregas garantizadas',
+    'trust.p4.p': 'Diagnóstico inicial gratuito y compromisos medibles por sprint u orden de producción.',
+
+    'ctaband.h2': '¿Listo para transformar<br>tu operación?',
+    'ctaband.p': 'Habla con nuestros especialistas y obtén un diagnóstico gratuito sin compromiso.',
+    'ctaband.btn': 'Agendar diagnóstico',
+
+    'contact.tag': 'Contacto',
+    'contact.h2': 'Hablemos de tu <span>próximo proyecto</span>',
+    'contact.p': 'Cuéntanos tu desafío y en menos de 24 horas un especialista te contactará con una propuesta inicial.',
+
+    'form.label.name': 'Nombre',
+    'form.placeholder.name': 'Tu nombre',
+    'form.label.company': 'Empresa',
+    'form.placeholder.company': 'Nombre de tu empresa',
+    'form.label.email': 'Correo',
+    'form.label.phone': 'Teléfono',
+    'form.label.service': 'Servicio de interés',
+    'form.opt.default': 'Selecciona una opción',
+    'form.opt1': 'Automatización Industrial y Maquinado',
+    'form.opt2': 'Desarrollo de Software a la Medida',
+    'form.opt3': 'Automatización con IA',
+    'form.opt4': 'Desarrollo Web',
+    'form.opt5': 'Varios servicios',
+    'form.label.message': 'Cuéntanos tu proyecto',
+    'form.placeholder.message': 'Describe brevemente el reto que quieres resolver o el proyecto que tienes en mente...',
+    'form.submit': 'Enviar mensaje',
+
+    'credit.by': 'Fotografías por',
+    'credit.via': 'vía',
+
+    'footer.brand.p': 'Soluciones de ingeniería y tecnología que impulsan la competitividad de tu empresa en la era digital.',
+    'footer.services.h4': 'Servicios',
+    'footer.services.link1': 'Automatización Industrial',
+    'footer.services.link2': 'Software a la Medida',
+    'footer.services.link3': 'Automatización con IA',
+    'footer.services.link4': 'Desarrollo Web',
+    'footer.company.h4': 'Empresa',
+    'footer.company.link1': 'Nosotros',
+    'footer.company.link2': 'Proceso',
+    'footer.company.link4': 'Tecnologías',
+    'footer.contact.link1': 'Enviar mensaje',
+    'footer.contact.link2': 'Agendar llamada',
+    'footer.copy': '© 2025 <span>OnePrimal</span>. Todos los derechos reservados.',
+    'footer.legal1': 'Privacidad',
+    'footer.legal2': 'Términos de uso',
+
+    'toast.msg': 'Mensaje enviado. Te contactaremos pronto.'
+  },
+  en: {
+    'meta.title': 'OnePrimal — Innovation that Transforms Industries',
+    'nav.servicios': 'Services',
+    'nav.maquinaria': 'Machinery',
+    'nav.procesos': 'Processes',
+    'nav.industrias': 'Web & Mobile',
+    'nav.contacto': 'Contact Us',
+    'mobile.industrias': 'Industries',
+
+    'hero.eyebrow': 'Software · AI · Industrial Engineering',
+    'hero.h1': 'Innovation that<br><em>transforms</em><br>industries',
+    'hero.sub': 'We build custom software, integrate artificial intelligence and master precision manufacturing to take your company to the next level.',
+    'hero.cta1': 'View services',
+    'hero.cta2': 'Talk to an expert',
+
+    'stats.years': 'Years in operation (since 2007)',
+    'stats.plants': 'Plants: El Paso TX & Cd. Juárez',
+    'stats.cnc': 'CNC & precision machines',
+    'stats.sectors': 'Industrial sectors served',
+
+    'clients.tag': 'Companies that trust us',
+    'clients.h2': 'Clients who <span>back us</span>',
+
+    'about.tag': 'Who we are',
+    'about.h2': 'Precision <span>manufacturing</span> and engineering that transforms operations',
+    'about.p1': 'We bring together CNC machining, industrial automation, custom software and artificial intelligence under one company.',
+    'about.p2': 'We work toward one goal: measurable quality on every delivery, with continuous improvement and a team that never stops training.',
+    'about.v1.h4': 'CNC Precision',
+    'about.v1.p': 'Machining parts to exact tolerances using Haas, FANUC, Hurco and Mitsubishi EDM.',
+    'about.v2.h4': 'Industry 4.0',
+    'about.v2.p': 'PLC automation, robotics, IoT, MES and data analytics for smart production.',
+    'about.v3.h4': 'Software & AI',
+    'about.v3.p': 'Custom systems, AI-powered automation and high-impact web platforms.',
+    'about.v4.h4': 'Industrial Finishing',
+    'about.v4.p': 'Powder coating, conventional and electrostatic liquid paint, with curing oven.',
+
+    'services.tag': 'Our services',
+    'services.h2': 'What we <span>do</span><br>best',
+    'services.sub': 'Four areas of specialization that work together to give you a complete, integrated technology solution.',
+    'svc1.h3': 'Custom Software Development',
+    'svc1.p': 'We operate as a software factory: a dedicated team that designs, builds and ships software with quality control and measurable deliveries every sprint, even for regulated processes in the medical and pharmaceutical sectors.',
+    'svc1.tag2': 'MES Systems',
+    'svc1.tag4': 'Industrial ERP',
+    'svc1.tag5': 'Traceability',
+    'svc2.h3': 'Industrial Automation, PLC & CNC Machining',
+    'svc2.p': 'PLC programming, robotic integration and automated production lines under Industry 4.0 standards, combined with precision CNC machining in our own shop.',
+    'svc2.tag3': 'Robotics',
+    'svc2.tag4': 'Industry 4.0',
+    'svc2.tag6': 'Laser Cutting',
+    'svc3.h3': 'AI-Powered Automation',
+    'svc3.p': 'We free up human potential from repetitive tasks: computer vision for quality inspection, LLM agents for technical support, and predictive maintenance that turns your plant\'s data into more profitable decisions.',
+    'svc3.tag1': 'Computer Vision',
+    'svc3.tag2': 'AI Quality Control',
+    'svc3.tag3': 'Predictive Maintenance',
+    'svc4.h3': 'Web Development',
+    'svc4.p': 'We build corporate websites, e-commerce platforms and progressive web apps that combine high-impact design with performance and SEO.',
+    'svc4.tag4': 'Technical SEO',
+
+    'webdev.h2': 'Your <span>custom software factory</span>',
+    'webdev.intro': 'A dedicated development team that runs like a production line: standardized processes, quality control on every release and the speed of a factory — not a freelancer.',
+    'wd1.label': 'Websites',
+    'wd1.h3': 'Landing Pages & Corporate Sites',
+    'wd1.p': 'Modern design, fluid animations, technical SEO and optimized load speed. Every page built to convert visitors into customers.',
+    'wd2.label': 'Mobile Apps',
+    'wd2.h3': 'iOS & Android Apps',
+    'wd2.p': 'Native and cross-platform apps with a flawless user experience. From MVPs to products ready for the App Store and Google Play.',
+    'wd3.h3': 'Online Stores & Marketplaces',
+    'wd3.p': 'Sales platforms with dynamic catalogs, cart, integrated payments (Stripe, Conekta, PayPal) and a custom admin panel.',
+    'wd4.label': 'Web Applications',
+    'wd4.h3': 'SaaS, Dashboards & Portals',
+    'wd4.p': 'Full web systems: CRMs, lightweight ERPs, customer portals, real-time analytics dashboards and internal business applications.',
+    'wd5.label': 'Artificial Intelligence',
+    'wd5.h3': 'AI Features in Your Products',
+    'wd5.p': 'Generative AI integration into existing products: conversational assistants, automatic content generation, semantic search and recommendations.',
+    'wd6.label': 'Infrastructure',
+    'wd6.p': 'Robust, scalable architectures: REST and GraphQL APIs, microservices, databases, authentication, CI/CD and deployment on AWS, Azure or GCP.',
+
+    'machinery.tag': 'Equipment',
+    'machinery.h2': 'Industrial <span>precision</span> machinery',
+    'machinery.intro': 'We run a fleet of latest-generation machines at our El Paso, TX and Cd. Juárez, Chih. plants, letting us offer high-precision machining, cutting, forming, welding and surface finishing all under one roof.',
+    'machinery.banner.strong': 'Binational manufacturing facilities',
+    'machinery.banner.text': 'El Paso, TX (USA) &amp; Cd. Juárez, Chih. (Mexico) — continuous operation since 2007',
+    'mach.cat.cnc': 'CNC Machining',
+    'mach.cat.cutting': 'Cutting & Forming',
+    'mach.cat.manual': 'Milling, Inspection & Finishing',
+    'mach.name.optical': 'Optical Comparator',
+    'machinery.note': '<strong>Binational capacity:</strong> We operate under <em>Shelter</em> and maquila schemes across both sides of the border.',
+
+    'procs.tag': 'Production processes',
+    'proc1.h3': 'Machining Process',
+    'proc2.h3': 'Metal Forming',
+    'proc3.h3': 'Welding Process',
+    'proc4.h3': 'Powder Coating',
+    'proc5.h3': 'Liquid Paint',
+    'proc6.h3': 'Packing & Shipping',
+
+    'process.tag': 'How we work',
+    'process.h2': '<span>Clear</span> process,<br>measurable results',
+    'process.intro': 'A structured method that removes uncertainty and keeps you in control at every stage of your project.',
+    'step1.title': 'Discovery',
+    'step1.desc': 'We analyze your operation, identify bottlenecks and define the exact scope of the project.',
+    'step2.title': 'Proposal',
+    'step2.desc': 'We present a detailed technical solution with timelines, costs and estimated ROI.',
+    'step3.title': 'Development',
+    'step3.desc': 'We iterate in short sprints with partial deliveries and continuous reviews with you.',
+    'step4.title': 'Implementation',
+    'step4.desc': 'We deploy the solution in your environment, with rigorous testing and training for your team.',
+    'step5.title': 'Support',
+    'step5.desc': 'We monitor, optimize and update the solution so it always runs at its best.',
+
+    'tech.tag': 'Tech stack',
+    'tech.h2': 'Automation & <span>top-tier software</span>',
+    'tech.intro': 'The tools and protocols we use to connect the shop floor with software and artificial intelligence.',
+    'tech.cat2': 'PLC Automation',
+    'tech.cat2.li1': 'PLC Programming',
+    'tech.cat2.li2': 'Robotic Integration',
+    'tech.cat2.li5': 'Industrial IoT',
+    'tech.cat2.li7': 'Legacy Modernization',
+    'tech.cat3': 'Software & AI',
+
+    'prods.tag': 'Technology partnerships',
+    'prods.h2': 'Products we <span style="color:var(--orange);">distribute</span>',
+    'prods.intro': 'We represent world-class solutions that complement our engineering and software offering with frontier technology.',
+    'fire.badge': 'Cybersecurity · Granada Vista Inc.',
+    'fire.desc': 'AI-powered unified firewall policy automation platform. Defend your infrastructure at machine speed — with zero human error.',
+    'fire.stat1': 'Faster deployments',
+    'fire.stat2': 'Human error',
+    'fire.stat3': 'Enterprise clients',
+    'fire.feat1': 'Discovery — end-to-end visibility across multi-vendor environments',
+    'fire.feat2': 'AI Optimization — simultaneous analysis of rules and live traffic',
+    'fire.feat3': 'Governance — continuous auditing and automated compliance',
+    'fire.cta': 'Request a demo',
+    'dune.badge': 'Generative ERP · SaaS · Mexico',
+    'dune.desc': 'From a conversation to your business software. Describe what you need — Dunebox generates your management system in seconds, no code required.',
+    'dune.feat1': 'Automatic quotes and sales proposals',
+    'dune.feat2': 'Inventory control with real-time traceability',
+    'dune.feat3': 'Integrated CFDI 4.0 invoicing',
+    'dune.feat4': 'Production and accounts-receivable module',
+    'dune.cta': 'Learn more',
+
+    'trust.tag': 'Quality commitment',
+    'trust.h2': 'Engineering ready for <span>audit</span>',
+    'trust.sub': 'Every part we machine and every line of code we ship is documented, traceable, and backed by processes you can review.',
+    'trust.p1.h4': 'Full traceability',
+    'trust.p1.p': 'Every machined part and every software release is documented and traceable end to end.',
+    'trust.p2.h4': 'Certified processes',
+    'trust.p2.p': 'Quality control at every stage, from design to final delivery on the shop floor or in production.',
+    'trust.p3.h4': 'Regulatory compliance',
+    'trust.p3.p': 'Software and manufacturing for regulated industries: medical, pharmaceutical, and automotive.',
+    'trust.p4.h4': 'Guaranteed delivery',
+    'trust.p4.p': 'Free initial diagnostic and measurable commitments per sprint or production order.',
+
+    'ctaband.h2': 'Ready to transform<br>your operation?',
+    'ctaband.p': 'Talk to our specialists and get a free, no-obligation diagnostic.',
+    'ctaband.btn': 'Schedule a diagnostic',
+
+    'contact.tag': 'Contact',
+    'contact.h2': "Let's talk about your <span>next project</span>",
+    'contact.p': "Tell us about your challenge and within 24 hours a specialist will reach out with an initial proposal.",
+
+    'form.label.name': 'Name',
+    'form.placeholder.name': 'Your name',
+    'form.label.company': 'Company',
+    'form.placeholder.company': 'Your company name',
+    'form.label.email': 'Email',
+    'form.label.phone': 'Phone',
+    'form.label.service': 'Service of interest',
+    'form.opt.default': 'Select an option',
+    'form.opt1': 'Industrial Automation & Machining',
+    'form.opt2': 'Custom Software Development',
+    'form.opt3': 'AI Automation',
+    'form.opt4': 'Web Development',
+    'form.opt5': 'Multiple services',
+    'form.label.message': 'Tell us about your project',
+    'form.placeholder.message': 'Briefly describe the challenge you want to solve or the project you have in mind...',
+    'form.submit': 'Send message',
+
+    'credit.by': 'Photos by',
+    'credit.via': 'via',
+
+    'footer.brand.p': 'Engineering and technology solutions that drive your company\'s competitiveness in the digital era.',
+    'footer.services.h4': 'Services',
+    'footer.services.link1': 'Industrial Automation',
+    'footer.services.link2': 'Custom Software',
+    'footer.services.link3': 'AI Automation',
+    'footer.services.link4': 'Web Development',
+    'footer.company.h4': 'Company',
+    'footer.company.link1': 'About Us',
+    'footer.company.link2': 'Process',
+    'footer.company.link4': 'Technologies',
+    'footer.contact.link1': 'Send a message',
+    'footer.contact.link2': 'Schedule a call',
+    'footer.copy': '© 2025 <span>OnePrimal</span>. All rights reserved.',
+    'footer.legal1': 'Privacy',
+    'footer.legal2': 'Terms of use',
+
+    'toast.msg': "Message sent. We'll contact you soon."
+  }
+};
+
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang][key] !== undefined) el.setAttribute('placeholder', translations[lang][key]);
+  });
+  if (translations[lang]['meta.title']) document.title = translations[lang]['meta.title'];
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+}
+
+(function initLanguage() {
+  let lang = 'es';
+  try {
+    const stored = localStorage.getItem('lang');
+    if (stored === 'es' || stored === 'en') {
+      lang = stored;
+    } else if ((navigator.language || '').toLowerCase().startsWith('en')) {
+      lang = 'en';
+    }
+  } catch (e) {}
+  setLanguage(lang);
+})();
 </script>
 </body>
 </html>
