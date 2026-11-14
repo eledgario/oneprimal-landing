@@ -3,89 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OnePrimal — Innovación que transforma industrias</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/primal-isotipo.svg">
+<title>Primal Technologies — Primero ordenamos tu operación. Después la automatizamos.</title>
+<meta name="description" content="Consultoría que ordena y automatiza la operación de las PyMEs: diagnóstico con alcance y precio fijo, un proceso a la vez y pago mensual. Cd. Juárez y El Paso.">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── DESIGN TOKENS · Primal Technologies (Concreto) ── */
 :root {
-  --orange:     #F7A400;
-  --orange-mid: #FFB733;
-  --dark:       #1A1A1A;
-  --dark-2:     #242424;
-  --gray:       #6B6B6B;
-  --gray-light: #F4F4F4;
-  --white:      #FFFFFF;
-  --border:     #E8E8E8;
+  --surface:        #ebebe8;
+  --surface-raised: #dcdcd8;
+  --panel:          #111111;
+  --line:           #bdbdb8;
+  --ink:            #111111;
+  --ink-soft:       #6f6f6b;
+  --ink-muted:      #4f4f4b;
+  --on-panel:       #f0efec;
+  --on-panel-muted: #9a9a95;
+  --accent:         #f04e1c;
+  --accent-text:    #bf3a0d;
+  --on-accent:      #111111;
+  --field:          #f5f5f2;
+  --radius-s:       6px;
+  --cut:            64px;
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
 }
+/* Carbón: secciones oscuras */
+.hero, .clients, .services, .technology, .products, footer, .unsplash-credit, .mobile-menu, nav.scrolled {
+  --surface:        #121212;
+  --surface-raised: #1e1e1d;
+  --line:           #3a3a38;
+  --ink:            #f0efec;
+  --ink-soft:       #8f8f8a;
+  --ink-muted:      #a5a5a0;
+  --accent-text:    #ff6a3d;
+  --field:          #1e1e1d;
+}
+
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--dark);
-  background: var(--white);
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--surface);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  counter-reset: sec;
 }
-h1,h2,h3,h4,h5 {
-  font-family: 'Space Grotesk', sans-serif;
+h1,h2,h3,h4,h5 { font-family: var(--font); line-height: 1.1; }
+
+/* Titulares de sección: MAYÚSCULAS, segunda parte en ink-soft */
+section h2 {
+  font-size: clamp(40px, 5.6vw, 80px);
+  font-weight: 500;
+  line-height: .95;
   letter-spacing: -0.03em;
-  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--ink);
 }
+section h2 span { color: var(--ink-soft); }
 
 /* ── UTILITY ── */
 .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
 @media(max-width:768px){ .container{ padding:0 20px; } }
+@media(max-width:480px){ .container{ padding:0 16px; } }
+
+/* Etiqueta de sección: / 01  TEMA ———— */
 .tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  counter-increment: sec;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange);
-  padding: 6px 14px;
-  border: 1px solid var(--orange);
-  border-radius: 2px;
-  margin-bottom: 24px;
+  color: var(--ink-muted);
+  margin-bottom: 28px;
 }
+.tag::before {
+  content: "/ " counter(sec, decimal-leading-zero);
+  color: var(--accent-text);
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.tag::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--line);
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: var(--orange);
-  color: #fff;
-  padding: 16px 32px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  gap: 12px;
+  background: var(--accent);
+  color: var(--on-accent);
+  min-height: 52px;
+  padding: 16px 28px;
+  font-family: var(--font);
+  font-weight: 500;
   font-size: 15px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
   border: none;
+  border-radius: 2px;
   cursor: pointer;
   text-decoration: none;
   transition: background .2s, transform .2s;
-  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
 }
-.btn-primary:hover { background: var(--orange-mid); transform: translateY(-2px); }
+.btn-primary:hover { background: #ff6a3d; transform: translateY(-2px); }
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: transparent;
-  color: var(--white);
-  padding: 14px 30px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  color: var(--ink);
+  min-height: 52px;
+  padding: 14px 26px;
+  font-family: var(--font);
+  font-weight: 500;
   font-size: 15px;
-  border: 2px solid rgba(255,255,255,0.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: 2px solid var(--line);
+  border-radius: 2px;
   cursor: pointer;
   text-decoration: none;
   transition: border-color .2s, background .2s;
 }
-.btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+.btn-secondary:hover { border-color: var(--ink); }
 .arrow-right {
   width: 18px; height: 18px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
   flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Cpath d='M7 17 17 7M9 7h8v8'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Cpath d='M7 17 17 7M9 7h8v8'/%3E%3C/svg%3E") center / contain no-repeat;
 }
+/* Cruz + (marca de retícula) */
+.plus { width: 20px; height: 20px; position: absolute; right: 20px; top: 20px; color: var(--ink-muted); }
+.plus::before, .plus::after { content: ""; position: absolute; background: currentColor; }
+.plus::before { left: 9px; top: 0; width: 2px; height: 20px; }
+.plus::after  { top: 9px; left: 0; height: 2px; width: 20px; }
 
 /* ── SCROLL REVEAL ── */
 .reveal {
@@ -106,13 +168,11 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  transition: background .3s, backdrop-filter .3s, box-shadow .3s;
-  padding: 0;
+  transition: background .3s, box-shadow .3s;
 }
 nav.scrolled {
-  background: rgba(26,26,26,0.96);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  background: rgba(17,17,17,0.97);
+  box-shadow: 0 1px 0 #3a3a38;
 }
 .nav-inner {
   display: flex;
@@ -121,92 +181,100 @@ nav.scrolled {
   height: 72px;
 }
 .logo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 22px;
-  color: var(--white);
+  color: var(--on-panel);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.logo-mark {
-  width: 32px; height: 32px;
-  background: var(--orange);
-  clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%);
-  flex-shrink: 0;
-}
-.logo-img {
-  height: 30px;
-  width: auto;
-  display: block;
+.logo-img { height: 26px; width: auto; display: block; }
+.logo-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: var(--on-panel-muted);
+  padding-left: 12px;
+  border-left: 2px solid #3a3a38;
 }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 32px;
   list-style: none;
 }
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: var(--on-panel-muted);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   transition: color .2s;
 }
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover { color: var(--on-panel); }
 .nav-cta {
-  background: var(--orange);
-  color: #fff !important;
-  padding: 10px 22px;
-  font-weight: 600 !important;
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  background: var(--accent);
+  color: var(--on-accent) !important;
+  padding: 0 20px;
+  border-radius: 2px;
   transition: background .2s !important;
 }
-.nav-cta:hover { background: var(--orange-mid); color: #fff !important; }
-.nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-.nav-hamburger span { display:block; width:24px; height:2px; background:#fff; transition:.3s; }
+.nav-cta:hover { background: #ff6a3d; color: var(--on-accent) !important; }
+.nav-hamburger {
+  display:none; flex-direction:column; justify-content:center; gap:5px;
+  width:44px; height:44px; align-items:center; cursor:pointer;
+}
+.nav-hamburger span { display:block; width:24px; height:2px; background:var(--on-panel); transition:.3s; }
 .lang-toggle {
   display:flex;
   align-items:center;
   gap:2px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:20px;
+  border:1px solid #3a3a38;
+  border-radius:var(--radius-s);
   padding:3px;
 }
 .lang-btn {
   background:transparent;
   border:none;
-  color:rgba(255,255,255,.55);
-  font-family:'Montserrat',sans-serif;
+  color:var(--on-panel-muted);
+  font-family:var(--font);
   font-size:12px;
-  font-weight:600;
-  padding:5px 11px;
-  border-radius:16px;
+  font-weight:500;
+  letter-spacing:.08em;
+  padding:6px 10px;
+  border-radius:4px;
   cursor:pointer;
   transition:background .2s, color .2s;
 }
-.lang-btn.active { background:var(--orange); color:#fff; }
-.mobile-lang-toggle { display:flex; gap:8px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:4px; }
-.mobile-lang-toggle .lang-btn { flex:1; text-align:center; padding:10px; border:1px solid rgba(255,255,255,.15); }
+.lang-btn.active { background:var(--accent); color:var(--on-accent); }
+.mobile-lang-toggle { display:flex; gap:8px; padding:16px 0; border-bottom:1px solid var(--line); margin-bottom:4px; }
+.mobile-lang-toggle .lang-btn { flex:1; text-align:center; padding:12px; border:1px solid var(--line); }
 .mobile-menu {
   display:none;
   position:fixed;
   top:72px; left:0; right:0;
-  background: rgba(26,26,26,0.98);
-  backdrop-filter:blur(12px);
+  background: rgba(17,17,17,0.98);
   padding:24px 20px 32px;
   z-index:99;
 }
 .mobile-menu.open { display:block; }
 .mobile-menu a {
   display:block;
-  color:rgba(255,255,255,.8);
+  color:var(--ink);
   text-decoration:none;
   padding:14px 0;
-  font-size:16px;
+  font-size:15px;
   font-weight:500;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border-bottom:1px solid var(--line);
 }
 .mobile-menu a:last-child { border-bottom:none; }
 @media(max-width:900px){
@@ -219,11 +287,11 @@ nav.scrolled {
 ───────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background: var(--dark);
+  background: var(--surface);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 100px;
+  padding: 140px 0 100px;
   position: relative;
   overflow: hidden;
 }
@@ -234,52 +302,51 @@ nav.scrolled {
   object-fit: cover;
   object-position: center;
   z-index: 0;
+  filter: grayscale(1) contrast(1.05);
 }
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgba(26,26,26,0.88) 0%, rgba(26,26,26,0.58) 55%, rgba(26,26,26,0.32) 100%);
+  background: rgba(18,18,18,0.74);
 }
 .hero-content { position:relative; z-index:2; }
-.hero-scroll { z-index:2; }
 .hero-eyebrow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 16px;
+  margin-bottom: 32px;
+  max-width: 760px;
 }
 .hero-eyebrow span {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  order: -1;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--ink-muted);
+  white-space: nowrap;
 }
-.hero-line {
-  width: 48px;
-  height: 1px;
-  background: var(--orange);
-}
+.hero-eyebrow span::before { content: "/ 00"; color: var(--accent-text); margin-right: 16px; }
+.hero-line { flex: 1; height: 2px; background: var(--line); }
+@media(max-width:600px){ .hero-eyebrow span { white-space: normal; } }
 .hero h1 {
-  font-size: clamp(52px, 7vw, 96px);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 28px;
-  max-width: 900px;
+  font-size: clamp(44px, 7.4vw, 112px);
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 32px;
+  max-width: 1100px;
 }
-.hero h1 em {
-  font-style: normal;
-  color: var(--orange);
-}
+.hero h1 em { font-style: normal; color: var(--ink-soft); }
 .hero-sub {
-  font-size: clamp(16px, 2vw, 20px);
-  color: rgba(255,255,255,0.55);
-  max-width: 520px;
-  line-height: 1.6;
-  margin-bottom: 48px;
-  font-weight: 300;
+  font-size: clamp(17px, 1.8vw, 21px);
+  color: var(--ink-muted);
+  max-width: 600px;
+  line-height: 1.5;
+  margin-bottom: 44px;
 }
 .hero-ctas {
   display: flex;
@@ -298,63 +365,113 @@ nav.scrolled {
   gap: 8px;
 }
 .hero-scroll span {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.3);
+  color: var(--ink-muted);
   writing-mode: vertical-rl;
 }
 .scroll-line {
-  width: 1px;
+  width: 2px;
   height: 60px;
-  background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+  background: var(--line);
   animation: scrollPulse 2s infinite;
 }
-@keyframes scrollPulse {
-  0%,100%{ opacity:.3; } 50%{ opacity:1; }
-}
+@keyframes scrollPulse { 0%,100%{ opacity:.4; } 50%{ opacity:1; } }
+@media(max-width:600px){ .hero-scroll{ display:none; } }
 
 /* ─────────────────────────────────────────
    STATS BAND
 ───────────────────────────────────────── */
 .stats-band {
-  background: var(--orange);
-  padding: 0;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--line);
 }
 .stats-inner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  max-width: 1280px;
+  margin: 0 auto;
 }
 @media(max-width:768px){ .stats-inner{ grid-template-columns:repeat(2,1fr); } }
 .stat-item {
-  padding: 40px 32px;
-  border-right: 1px solid rgba(255,255,255,0.2);
-  text-align: left;
+  padding: 40px;
+  border-right: 1px solid var(--line);
 }
 .stat-item:last-child { border-right: none; }
+@media(max-width:768px){
+  .stat-item { padding: 28px 20px; border-bottom: 1px solid var(--line); }
+  .stat-item:nth-child(2n) { border-right: none; }
+}
 .stat-number {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 700;
-  color: #fff;
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--ink);
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .stat-label {
   font-size: 13px;
-  color: rgba(255,255,255,0.7);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  line-height: 1.4;
 }
+
+/* ─────────────────────────────────────────
+   CLIENTS
+───────────────────────────────────────── */
+.clients {
+  padding: 96px 0;
+  background: var(--surface);
+  overflow: hidden;
+}
+.clients-header { margin-bottom: 48px; }
+.clients-header h2 { font-size: clamp(36px, 4.4vw, 60px); }
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.client-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 24px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background .3s;
+  cursor: default;
+}
+.client-item:hover { background: var(--surface-raised); }
+.client-logo {
+  height: 40px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(.5);
+  transition: filter .35s;
+}
+.client-item:hover .client-logo { filter: brightness(0) invert(1) opacity(.95); }
+.client-monogram {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  transition: color .3s;
+}
+.client-item:hover .client-monogram { color: var(--ink); }
 
 /* ─────────────────────────────────────────
    ABOUT
 ───────────────────────────────────────── */
-.about {
-  padding: 120px 0;
-  background: var(--white);
-}
+.about { padding: 120px 0; background: var(--surface); }
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -362,363 +479,200 @@ nav.scrolled {
   align-items: center;
 }
 @media(max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:48px; } }
-.about h2 {
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 700;
-  margin-bottom: 28px;
-  line-height: 1.1;
-}
-.about h2 span { color: var(--orange); }
+.about h2 { margin-bottom: 28px; font-size: clamp(36px, 4.4vw, 60px); }
 .about p {
-  font-size: 17px;
-  line-height: 1.75;
-  color: var(--gray);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-muted);
   margin-bottom: 20px;
 }
 .about-values {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
   margin-top: 40px;
 }
+@media(max-width:560px){ .about-values{ grid-template-columns:1fr; } }
 .value-item {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--orange);
-  background: var(--gray-light);
+  position: relative;
+  padding: 24px 48px 24px 24px;
+  background: var(--surface-raised);
+  border-radius: var(--radius-s);
 }
 .value-item h4 {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 6px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 .value-item p {
-  font-size: 13px;
-  color: var(--gray);
+  font-size: 14px;
+  color: var(--ink-muted);
   line-height: 1.5;
   margin-bottom: 0;
 }
-.about-visual {
-  position: relative;
-}
+.about-visual { position: relative; }
 .about-img-block {
-  background: var(--dark);
-  height: 480px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: var(--panel);
+  height: 520px;
   overflow: hidden;
   position: relative;
+  filter: grayscale(1);
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut));
 }
-.about-img-bg {
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse 70% 70% at 60% 40%, rgba(247,164,0,0.14) 0%, transparent 70%);
-}
-.about-icon-grid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 2px;
-  width: 260px;
-}
-.about-icon-cell {
-  aspect-ratio:1;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  transition: background .3s;
-}
-.about-icon-cell:hover { background: rgba(247,164,0,.2); }
-.about-badge {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background: var(--orange);
-  color: #fff;
-  padding: 20px 28px;
-  border-radius: 8px;
-}
-.about-badge .num {
-  font-family: 'Montserrat',sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  line-height:1;
-}
-.about-badge .lbl {
-  font-size: 12px;
-  font-weight: 500;
-  opacity:.8;
-  margin-top:4px;
-}
+@media(max-width:900px){ .about-img-block{ height: 360px; } }
+.about-img-bg { display: none; }
+.about-real-img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
 
 /* ─────────────────────────────────────────
    SERVICES
 ───────────────────────────────────────── */
-.services {
-  padding: 120px 0;
-  background: var(--dark);
-}
+.services { padding: 120px 0; background: var(--surface); }
 .services-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: end;
-  margin-bottom: 72px;
+  margin-bottom: 64px;
 }
 @media(max-width:768px){ .services-header{ grid-template-columns:1fr; gap:24px; margin-bottom:48px; } }
-.services h2 {
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.1;
-}
-.services h2 span { color: var(--orange); }
 .services-sub {
-  font-size: 16px;
-  color: rgba(255,255,255,.5);
-  line-height: 1.7;
-  font-weight: 300;
+  font-size: 18px;
+  color: var(--ink-muted);
+  line-height: 1.6;
 }
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
+  gap: 16px;
 }
 @media(max-width:768px){ .services-grid{ grid-template-columns:1fr; } }
 .service-card {
-  background: var(--dark-2);
-  padding: 48px 40px;
+  background: var(--surface-raised);
+  padding: 40px;
   position: relative;
   overflow: hidden;
-  transition: background .3s;
-  border: 1px solid rgba(255,255,255,.04);
-  text-decoration: none;
+  border-radius: var(--radius-s);
   display: block;
   cursor: default;
 }
-.service-card::before {
-  content:'';
-  position:absolute;
-  bottom:0; left:0; right:0;
-  height:3px;
-  background: var(--orange);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .4s ease;
+@media(max-width:600px){ .service-card{ padding: 32px 24px; } }
+.service-img {
+  width: calc(100% + 80px);
+  margin: -40px -40px 32px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  filter: grayscale(1);
+  transition: filter .4s;
 }
-.service-card:hover { background: #2a2a2a; }
-.service-card:hover::before { transform: scaleX(1); }
+@media(max-width:600px){ .service-img{ width: calc(100% + 48px); margin: -32px -24px 28px; } }
+.service-card:hover .service-img { filter: grayscale(.4); }
 .service-num {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--orange);
-  letter-spacing: 0.1em;
-  margin-bottom: 32px;
-  opacity: .7;
-}
-.service-icon {
-  width: 56px; height: 56px;
-  background: rgba(247,164,0,0.12);
-  border: 1px solid rgba(247,164,0,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  margin-bottom: 28px;
-  border-radius: 10px;
-  transition: background .3s;
-}
-.service-card:hover .service-icon { background: rgba(247,164,0,0.25); }
-.service-card h3 {
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 16px;
-  line-height: 1.2;
-}
-.service-card p {
   font-size: 14px;
-  color: rgba(255,255,255,.45);
-  line-height: 1.7;
-  margin-bottom: 28px;
-  font-weight: 300;
-}
-.service-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.service-tag {
-  font-size: 11px;
   font-weight: 500;
-  color: rgba(255,255,255,.4);
-  border: 1px solid rgba(255,255,255,.1);
-  padding: 4px 10px;
-  letter-spacing: 0.05em;
+  color: var(--accent-text);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
 }
+.service-num::before { content: "/ "; }
 .service-arrow {
   position: absolute;
-  top: 40px; right: 40px;
-  width: 36px; height: 36px;
-  border-top: 2px solid rgba(255,255,255,.15);
-  border-right: 2px solid rgba(255,255,255,.15);
-  transform: rotate(45deg);
-  transition: border-color .3s, transform .3s;
+  top: 168px; right: 32px;
+  width: 64px; height: 64px;
+  border-radius: 999px;
+  background: var(--accent);
+  z-index: 2;
+  transition: transform .3s;
 }
-.service-card:hover .service-arrow {
-  border-color: var(--orange);
-  transform: rotate(45deg) translate(3px,-3px);
-}
-
-/* ─────────────────────────────────────────
-   PROCESS
-───────────────────────────────────────── */
-.process {
-  padding: 120px 0;
-  background: var(--white);
-  overflow: hidden;
-}
-.process h2 {
-  font-size: clamp(36px,4vw,56px);
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.process h2 span { color: var(--orange); }
-.process-intro {
-  font-size: 17px;
-  color: var(--gray);
-  max-width: 480px;
-  line-height: 1.7;
-  margin-bottom: 72px;
-}
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  position: relative;
-}
-@media(max-width:900px){ .process-steps{ grid-template-columns:1fr; gap:0; } }
-.process-connector {
+.service-arrow::after {
+  content: '';
   position: absolute;
-  top: 38px; left: 10%;
-  right: 10%;
-  height: 1px;
-  background: repeating-linear-gradient(90deg, var(--orange) 0, var(--orange) 8px, transparent 8px, transparent 20px);
-  pointer-events: none;
+  top: 50%; left: 50%;
+  width: 14px; height: 14px;
+  border-top: 2px solid var(--on-accent);
+  border-right: 2px solid var(--on-accent);
+  transform: translate(-65%, -50%) rotate(45deg);
 }
-@media(max-width:900px){ .process-connector{ display:none; } }
-.process-step {
-  padding: 0 20px;
-  position: relative;
-  z-index:2;
+.service-card:hover .service-arrow { transform: translateX(4px); }
+.service-card h3 {
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 16px;
 }
-.step-num-wrap {
-  width: 76px; height: 76px;
-  background: var(--white);
-  border: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 28px;
-  position: relative;
-  border-radius: 50%;
-  transition: background .3s, border-color .3s;
-}
-.process-step:hover .step-num-wrap {
-  background: var(--orange);
-  border-color: var(--orange);
-}
-.step-num {
-  font-family: 'Montserrat',sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--dark);
-  transition: color .3s;
-}
-.process-step:hover .step-num { color: #fff; }
-.step-title {
-  font-family: 'Montserrat',sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--dark);
-}
-.step-desc {
-  font-size: 13px;
-  color: var(--gray);
+.service-card p {
+  font-size: 15px;
+  color: var(--ink-muted);
   line-height: 1.6;
+  margin-bottom: 28px;
 }
-@media(max-width:900px){
-  .process-step { display:flex; gap:24px; align-items:flex-start; padding:24px 0; border-bottom:1px solid var(--border); }
-  .process-step:last-child { border-bottom:none; }
-  .step-num-wrap { flex-shrink:0; margin-bottom:0; width:56px; height:56px; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.service-tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 5px 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* ─────────────────────────────────────────
-   INDUSTRIES
+   ¿TE SUENA? (tarjetas de dolores)
 ───────────────────────────────────────── */
-.webdev {
-  padding: 120px 0;
-  background: var(--white);
-}
-.webdev h2 {
-  font-size: clamp(36px,4vw,56px);
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.webdev h2 span { color: var(--orange); }
+.webdev { padding: 120px 0; background: var(--surface); }
+.webdev h2 { margin-bottom: 24px; }
 .webdev-intro {
-  font-size: 17px;
-  color: var(--gray);
-  max-width: 520px;
-  line-height: 1.7;
+  font-size: 18px;
+  color: var(--ink-muted);
+  max-width: 720px;
+  line-height: 1.6;
   margin-bottom: 64px;
 }
 .webdev-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  gap: 16px;
 }
 @media(max-width:900px){ .webdev-grid{ grid-template-columns:repeat(2,1fr); } }
 @media(max-width:580px){ .webdev-grid{ grid-template-columns:1fr; } }
 .wd-card {
-  background: var(--white);
-  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  border-radius: var(--radius-s);
   overflow: hidden;
   position: relative;
-  transition: border-color .3s, box-shadow .3s, transform .3s;
+  transition: transform .3s;
   display: flex;
   flex-direction: column;
 }
-.wd-card:hover { border-color: rgba(247,164,0,.18); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
-/* top visual strip */
+.wd-card:hover { transform: translateY(-4px); }
 .wd-visual {
-  height: 120px;
+  height: 132px;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  background: var(--panel);
 }
 .wd-visual-inner {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
 }
-/* browser chrome overlay */
 .wd-chrome {
   position: absolute; top: 12px; left: 14px; right: 14px;
   height: 22px;
-  background: rgba(255,255,255,.12);
-  border-radius: 5px;
+  background: rgba(240,239,236,.08);
+  border-radius: 4px;
   display: flex; align-items: center; gap: 5px;
   padding: 0 8px;
 }
-.wd-chrome-dot { width:7px; height:7px; border-radius:50%; }
+.wd-chrome-dot { width:7px; height:7px; border-radius:50%; background:#3a3a38 !important; }
 .wd-body {
   padding: 28px 28px 32px;
   flex: 1;
@@ -726,126 +680,237 @@ nav.scrolled {
   flex-direction: column;
 }
 .wd-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .14em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 10px;
+  color: var(--accent-text);
+  margin-bottom: 12px;
 }
 .wd-card h3 {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--dark);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
   margin-bottom: 10px;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 .wd-card p {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 1.65;
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.6;
   flex: 1;
   margin-bottom: 20px;
 }
-.wd-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+.wd-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .wd-tag {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 3px;
-  background: var(--gray-light);
-  color: var(--gray);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--ink-muted);
   letter-spacing: .03em;
+}
+
+/* ─────────────────────────────────────────
+   MACHINERY
+───────────────────────────────────────── */
+.machinery { padding: 120px 0; background: var(--surface-raised); }
+.machinery h2 { margin-bottom: 24px; }
+.machinery-intro {
+  font-size: 18px;
+  color: var(--ink-muted);
+  max-width: 640px;
+  line-height: 1.6;
+  margin-bottom: 56px;
+}
+.machinery-banner {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 56px;
+  position: relative;
+  overflow: hidden;
+  filter: grayscale(1);
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut));
+}
+.machinery-banner::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(17,17,17,0.62);
+  z-index:1;
+}
+.machinery-banner-text {
+  position: absolute;
+  bottom: 36px;
+  left: 40px;
+  right: 40px;
+  z-index: 2;
+  color: var(--on-panel-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+@media(max-width:600px){ .machinery-banner-text{ left: 24px; right: 24px; bottom: 24px; } }
+.machinery-banner-text strong {
+  display: block;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--on-panel);
+  margin-bottom: 10px;
+}
+.eq-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px 48px;
+  margin-bottom: 48px;
+}
+@media(max-width:700px){ .eq-groups{ grid-template-columns:1fr; gap:28px; } }
+.eq-group h4 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--line);
+}
+.eq-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.eq-tag {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+  border-radius: var(--radius-s);
+  padding: 8px 14px;
+}
+.machinery-note {
+  background: var(--panel);
+  color: var(--on-panel-muted);
+  font-size: 18px;
+  line-height: 1.5;
+  padding: 40px 48px 40px 72px;
+  clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%, 0 40px);
+}
+@media(max-width:600px){ .machinery-note{ padding: 32px 24px 32px 40px; font-size: 16px; } }
+.machinery-note strong { color: var(--on-panel); font-weight: 500; }
+.machinery-note em { color: var(--accent); font-style: normal; }
+
+/* ─────────────────────────────────────────
+   PROCESS
+───────────────────────────────────────── */
+.process { padding: 120px 0; background: var(--surface); overflow: hidden; }
+.process h2 { margin-bottom: 24px; }
+.process-intro {
+  font-size: 18px;
+  color: var(--ink-muted);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: 72px;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media(max-width:900px){ .process-steps{ grid-template-columns:1fr; gap:0; } }
+.process-connector { display: none; }
+.process-step {
+  padding-top: 24px;
+  border-top: 2px solid var(--line);
+  transition: border-color .3s;
+}
+.process-step:hover { border-top-color: var(--accent); }
+.step-num-wrap { margin-bottom: 24px; }
+.step-num {
+  font-size: clamp(56px, 6vw, 96px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+  transition: color .3s;
+}
+.process-step:hover .step-num { color: var(--accent-text); }
+.step-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.step-desc { font-size: 15px; color: var(--ink-muted); line-height: 1.55; }
+@media(max-width:900px){
+  .process-step { display:flex; gap:24px; align-items:flex-start; padding:24px 0; }
+  .step-num-wrap { flex-shrink:0; margin-bottom:0; width:72px; }
+  .step-num { font-size: 56px; }
 }
 
 /* ─────────────────────────────────────────
    TECHNOLOGY
 ───────────────────────────────────────── */
-.technology {
-  padding: 100px 0;
-  background: var(--dark);
-  overflow: hidden;
-}
-.technology h2 {
-  font-size:clamp(32px,3.5vw,48px);
-  font-weight:700;
-  color:var(--white);
-  margin-bottom:12px;
-}
-.technology h2 span { color:var(--orange); }
+.technology { padding: 120px 0; background: var(--surface); overflow: hidden; }
+.technology h2 { margin-bottom: 24px; }
 .tech-intro {
-  font-size:16px;
-  color:rgba(255,255,255,.45);
-  margin-bottom:56px;
-  font-weight:300;
+  font-size: 18px;
+  color: var(--ink-muted);
+  max-width: 640px;
+  line-height: 1.6;
+  margin-bottom: 56px;
 }
 .tech-categories {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 48px;
-  max-width: 720px;
+  max-width: 880px;
 }
 @media(max-width:600px){ .tech-categories{ grid-template-columns:1fr; gap:32px; } }
 .tech-cat-title {
-  font-family:'Montserrat',sans-serif;
-  font-size:12px;
-  font-weight:600;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--orange);
-  margin-bottom:20px;
-  padding-bottom:12px;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--line);
 }
-.tech-list {
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
+.tech-list { list-style:none; display:flex; flex-direction:column; }
 .tech-list li {
-  font-size:14px;
-  color:rgba(255,255,255,.5);
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:300;
-  transition:color .2s;
+  font-size: 16px;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  transition: color .2s;
 }
-.tech-list li:hover { color:rgba(255,255,255,.9); }
+.tech-list li:hover { color: var(--ink); }
 .tech-list li::before {
   content:'';
   width:6px; height:6px;
-  background:var(--orange);
+  background:var(--accent);
   flex-shrink:0;
-  border-radius:50%;
 }
 
 /* ─────────────────────────────────────────
    PRODUCTS
 ───────────────────────────────────────── */
-.products {
-  padding: 120px 0 0;
-  background: var(--dark);
-  overflow: hidden;
-}
+.products { padding: 120px 0 0; background: var(--surface); overflow: hidden; }
+.products h2 { margin-bottom: 24px; }
 .products-intro {
-  font-size: 17px;
-  color: rgba(255,255,255,.45);
-  max-width: 560px;
-  line-height: 1.75;
-  margin-bottom: 72px;
-  font-weight: 300;
+  font-size: 18px;
+  color: var(--ink-muted);
+  max-width: 640px;
+  line-height: 1.6;
+  margin-bottom: 64px;
 }
-.products-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+.products-stack { display: flex; flex-direction: column; gap: 2px; }
 .prod-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -862,10 +927,8 @@ nav.scrolled {
   position: relative;
   z-index: 1;
 }
-.prod-card-visual {
-  position: relative;
-  overflow: hidden;
-}
+@media(max-width:600px){ .prod-card-body{ padding: 48px 20px; } }
+.prod-card-visual { position: relative; overflow: hidden; }
 .prod-card-visual img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -874,84 +937,44 @@ nav.scrolled {
   transition: opacity .4s, transform .6s;
 }
 .prod-card:hover .prod-card-visual img { opacity:.7; transform:scale(1.03); }
-.prod-card-visual::after {
-  content:'';
-  position: absolute; inset: 0;
-  pointer-events: none;
-}
-/* Fire.ONE — dark navy with teal accent */
+.prod-card-visual::after { content:''; position: absolute; inset: 0; pointer-events: none; }
+/* Fire.ONE — colores de su propia marca */
 .prod-card-fire { background: #0A1628; }
-.prod-card-fire .prod-card-visual::after {
-  background: linear-gradient(to right, #0A1628 0%, transparent 60%);
-}
+.prod-card-fire .prod-card-visual::after { background: linear-gradient(to right, #0A1628 0%, transparent 60%); }
 @media(max-width:860px){
   .prod-card-fire .prod-card-visual::after { background: linear-gradient(to bottom, transparent 30%, #0A1628 100%); }
 }
-/* Dunebox — very dark with warm tint */
-.prod-card-dune { background: #121010; flex-direction: row-reverse; }
-.prod-card-dune .prod-card-visual::after {
-  background: linear-gradient(to left, #121010 0%, transparent 60%);
-}
+/* Dunebox — colores de su propia marca */
+.prod-card-dune { background: #121010; }
+.prod-card-dune .prod-card-visual::after { background: linear-gradient(to left, #121010 0%, transparent 60%); }
 @media(max-width:860px){
-  .prod-card-dune { flex-direction: column; }
   .prod-card-dune .prod-card-visual::after { background: linear-gradient(to bottom, transparent 30%, #121010 100%); }
 }
-.prod-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.prod-eyebrow-fire { color: #3DD8C8; }
-.prod-eyebrow-dune { color: #D4853A; }
-.prod-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px; height: 2px;
-  flex-shrink: 0;
-}
-.prod-eyebrow-fire::before { background: #3DD8C8; }
-.prod-eyebrow-dune::before { background: #D4853A; }
 .prod-name {
-  font-family: 'Montserrat', sans-serif;
   font-size: clamp(32px, 3.5vw, 52px);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.08;
+  font-weight: 500;
+  color: var(--on-panel);
+  line-height: 1.05;
   margin-bottom: 20px;
   letter-spacing: -.02em;
 }
 .prod-desc {
-  font-size: 15px;
-  color: rgba(255,255,255,.5);
-  line-height: 1.75;
+  font-size: 16px;
+  color: rgba(240,239,236,.7);
+  line-height: 1.6;
   margin-bottom: 36px;
-  font-weight: 300;
-  max-width: 420px;
+  max-width: 440px;
 }
-.prod-stats {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 36px;
-  flex-wrap: wrap;
-}
+.prod-stats { display: flex; gap: 32px; margin-bottom: 36px; flex-wrap: wrap; }
 .pstat-num {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: -.03em;
   color: #3DD8C8;
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
-.pstat-label {
-  font-size: 12px;
-  color: rgba(255,255,255,.38);
-  letter-spacing: .03em;
-}
+.pstat-label { font-size: 12px; color: rgba(240,239,236,.6); letter-spacing: .06em; text-transform: uppercase; }
 .prod-features {
   list-style: none;
   display: flex;
@@ -960,281 +983,156 @@ nav.scrolled {
   margin-bottom: 40px;
 }
 .prod-features li {
-  font-size: 14px;
-  color: rgba(255,255,255,.55);
+  font-size: 15px;
+  color: rgba(240,239,236,.72);
   display: flex;
   align-items: flex-start;
   gap: 10px;
   line-height: 1.5;
 }
-.prod-features li::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 5px;
-}
+.prod-features li::before { content: ''; width: 6px; height: 6px; flex-shrink: 0; margin-top: 8px; }
 .prod-card-fire .prod-features li::before { background: #3DD8C8; }
 .prod-card-dune .prod-features li::before { background: #D4853A; }
 .prod-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Montserrat', sans-serif;
+  min-height: 48px;
+  font-family: var(--font);
   font-size: 14px;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border-radius: var(--radius-s);
   transition: opacity .2s, transform .2s;
   text-decoration: none;
   align-self: flex-start;
-  letter-spacing: .02em;
 }
 .prod-cta:hover { opacity: .85; transform: translateX(4px); }
 .prod-cta-fire { background: #3DD8C8; color: #0A1628; }
-.prod-cta-dune { background: #D4853A; color: #fff; }
+.prod-cta-dune { background: #D4853A; color: #121010; }
 .prod-cta::after { content: '→'; font-size: 16px; }
-.prod-logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 28px;
-}
-.prod-logo-mark {
-  flex-shrink: 0;
-}
-.prod-logo-wordmark {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  line-height: 1;
-}
+.prod-logo-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.prod-logo-mark { flex-shrink: 0; }
+.prod-logo-wordmark { display: flex; flex-direction: column; gap: 2px; line-height: 1; }
 .prod-logo-sub {
-  font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: .15em;
   text-transform: uppercase;
   color: #3DD8C8;
-  opacity: .8;
 }
 .prod-logo-main {
-  font-family: 'Montserrat', sans-serif;
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -.02em;
   color: #fff;
   line-height: 1;
 }
-.prod-vendors {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 36px;
-}
+.prod-vendors { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
 .prod-vendor {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: .06em;
   padding: 5px 12px;
-  border-radius: 3px;
+  border-radius: var(--radius-s);
   text-transform: uppercase;
   background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.45);
-  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(240,239,236,.6);
+  border: 1px solid rgba(255,255,255,.1);
   transition: color .2s, background .2s;
 }
-.prod-card:hover .prod-vendor { color: rgba(255,255,255,.7); background: rgba(255,255,255,.09); }
+.prod-card:hover .prod-vendor { color: rgba(240,239,236,.85); background: rgba(255,255,255,.09); }
 .prod-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 20px;
-  letter-spacing: .06em;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-s);
+  letter-spacing: .08em;
   text-transform: uppercase;
   margin-bottom: 24px;
   align-self: flex-start;
 }
-.prod-badge-fire { background: rgba(61,216,200,.1); color: #3DD8C8; border: 1px solid rgba(61,216,200,.2); }
-.prod-badge-dune { background: rgba(212,133,58,.1); color: #D4853A; border: 1px solid rgba(212,133,58,.2); }
-.prod-badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-}
+.prod-badge-fire { background: rgba(61,216,200,.1); color: #3DD8C8; border: 1px solid rgba(61,216,200,.25); }
+.prod-badge-dune { background: rgba(212,133,58,.1); color: #E4832E; border: 1px solid rgba(212,133,58,.25); }
+.prod-badge::before { content: ''; width: 6px; height: 6px; }
 .prod-badge-fire::before { background: #3DD8C8; }
 .prod-badge-dune::before { background: #D4853A; }
 
 /* ─────────────────────────────────────────
-   CLIENTS
-───────────────────────────────────────── */
-.clients {
-  padding: 80px 0;
-  background: #111;
-  border-top: 1px solid rgba(247,164,0,.25);
-  overflow: hidden;
-}
-.clients-header {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.clients-header h2 {
-  font-size: clamp(26px,3vw,40px);
-  font-weight: 700;
-  color: var(--white);
-  margin-top: 12px;
-}
-.clients-header h2 span { color: var(--orange); }
-/* static credibility grid */
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-}
-.client-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 36px 24px;
-  border: 1px solid rgba(255,255,255,.06);
-  margin: -1px 0 0 -1px;
-  transition: background .3s;
-  cursor: default;
-}
-.client-item:hover { background: rgba(247,164,0,.05); }
-.client-logo {
-  height: 42px;
-  width: auto;
-  max-width: 140px;
-  object-fit: contain;
-  filter: brightness(0) invert(1) opacity(.35);
-  transition: filter .35s;
-}
-.client-item:hover .client-logo {
-  filter: brightness(0) invert(1) opacity(.9);
-}
-.client-monogram {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.28);
-  white-space: nowrap;
-  transition: color .3s;
-}
-.client-item:hover .client-monogram { color: rgba(255,255,255,.85); }
-
-/* ─────────────────────────────────────────
    TRUST
 ───────────────────────────────────────── */
-.trust {
-  padding: 120px 0;
-  background: var(--gray-light);
-}
-.trust-header {
-  max-width: 600px;
-  margin-bottom: 64px;
-}
-.trust h2 {
-  font-size: clamp(32px, 3.5vw, 48px);
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.trust h2 span { color: var(--orange); }
-.trust-sub {
-  font-size: 17px;
-  color: var(--gray);
-  line-height: 1.7;
-}
+.trust { padding: 120px 0; background: var(--surface-raised); }
+.trust-header { max-width: 760px; margin-bottom: 64px; }
+.trust h2 { margin-bottom: 24px; }
+.trust-sub { font-size: 18px; color: var(--ink-muted); line-height: 1.6; }
 .trust-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 32px;
 }
-@media(max-width:900px){ .trust-grid{ grid-template-columns:repeat(2,1fr); gap:32px; } }
+@media(max-width:900px){ .trust-grid{ grid-template-columns:repeat(2,1fr); } }
 @media(max-width:560px){ .trust-grid{ grid-template-columns:1fr; } }
-.trust-item {
-  padding-top: 20px;
-  border-top: 2px solid var(--orange);
-}
+.trust-item { padding-top: 24px; border-top: 2px solid var(--ink); }
 .trust-item h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   margin-bottom: 10px;
 }
-.trust-item p {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 1.65;
-}
+.trust-item p { font-size: 15px; color: var(--ink-muted); line-height: 1.55; }
 
 /* ─────────────────────────────────────────
-   CTA BAND
+   CTA BAND · bloque naranja con corte diagonal
 ───────────────────────────────────────── */
-.cta-band {
-  padding: 120px 0;
-  background: var(--orange);
-  position: relative;
-  overflow: hidden;
-}
-.cta-band-bg {
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:60px 60px;
-}
+.cta-band { padding: 120px 0 0; background: var(--surface); }
+.cta-band-bg { display: none; }
 .cta-inner {
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:40px;
-  align-items:center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: 64px 64px 64px 140px;
+  clip-path: polygon(96px 0, 100% 0, 100% 100%, 0 100%);
 }
-@media(max-width:768px){ .cta-inner{ grid-template-columns:1fr; } }
+@media(max-width:768px){ .cta-inner{ grid-template-columns:1fr; padding: 48px 24px 40px 56px; clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%); } }
 .cta-band h2 {
-  font-size:clamp(32px,4vw,52px);
-  color:#fff;
-  font-weight:700;
-  margin-bottom:16px;
-  line-height:1.1;
+  font-size: clamp(36px, 5vw, 72px);
+  color: var(--on-accent);
+  margin-bottom: 20px;
 }
-.cta-band p {
-  font-size:17px;
-  color:rgba(255,255,255,.75);
-  line-height:1.6;
-  font-weight:300;
-}
+.cta-band p { font-size: 18px; color: var(--on-accent); line-height: 1.5; max-width: 560px; }
 .cta-btn-dark {
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  background:var(--dark);
-  color:#fff;
-  padding:18px 36px;
-  font-family:'Montserrat',sans-serif;
-  font-weight:600;
-  font-size:15px;
-  text-decoration:none;
-  white-space:nowrap;
-  transition:background .2s, transform .2s;
-  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  background: var(--panel);
+  color: var(--on-panel);
+  padding: 18px 32px;
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 2px;
+  transition: background .2s, transform .2s;
 }
-.cta-btn-dark:hover { background:#333; transform:translateY(-2px); }
+.cta-btn-dark:hover { background: #2a2a2a; transform: translateY(-2px); }
 
 /* ─────────────────────────────────────────
    CONTACT
 ───────────────────────────────────────── */
-.contact {
-  padding: 120px 0;
-  background: var(--white);
-}
+.contact { padding: 120px 0; background: var(--surface); }
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -1242,124 +1140,107 @@ nav.scrolled {
   align-items: start;
 }
 @media(max-width:900px){ .contact-grid{ grid-template-columns:1fr; gap:48px; } }
-.contact-info h2 {
-  font-size:clamp(36px,4vw,52px);
-  font-weight:700;
-  margin-bottom:20px;
-}
-.contact-info h2 span { color:var(--orange); }
-.contact-info p {
-  font-size:16px;
-  color:var(--gray);
-  line-height:1.7;
-  margin-bottom:40px;
-}
-/* Form */
+.contact-info h2 { margin-bottom: 24px; font-size: clamp(36px, 4.4vw, 60px); }
+.contact-info p { font-size: 18px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 40px; }
 .contact-form {
-  background:var(--gray-light);
-  padding:48px;
-  border:1px solid var(--border);
-  border-radius:12px;
+  background: var(--surface-raised);
+  padding: 40px;
+  border-radius: var(--radius-s);
 }
-@media(max-width:600px){ .contact-form{ padding:32px 24px; } }
+@media(max-width:600px){ .contact-form{ padding:28px 20px; } }
 .form-row {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:16px;
-  margin-bottom:16px;
 }
-@media(max-width:600px){ .form-row{ grid-template-columns:1fr; } }
+@media(max-width:600px){ .form-row{ grid-template-columns:1fr; gap:0; } }
 .form-group { margin-bottom:16px; }
 .form-group label {
   display:block;
   font-size:12px;
-  font-weight:600;
+  font-weight:500;
   text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--dark);
+  letter-spacing:.1em;
+  color:var(--ink-muted);
   margin-bottom:8px;
 }
 .form-group input,
 .form-group select,
 .form-group textarea {
   width:100%;
-  padding:14px 16px;
-  border:1px solid var(--border);
-  background:var(--white);
-  font-family:'Inter',sans-serif;
-  font-size:15px;
-  color:var(--dark);
+  min-height:48px;
+  padding:13px 16px;
+  border:1px solid var(--line);
+  background:var(--field);
+  font-family:var(--font);
+  font-size:16px;
+  color:var(--ink);
   outline:none;
   transition:border-color .2s;
-  border-radius:0;
+  border-radius:var(--radius-s);
   -webkit-appearance:none;
 }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: #6f6f6b; }
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus { border-color:var(--orange); }
+.form-group textarea:focus { border-color:var(--accent); box-shadow: 0 0 0 1px var(--accent); }
 .form-group textarea { resize:vertical; min-height:120px; }
 .form-submit {
   width:100%;
-  background:var(--orange);
-  color:#fff;
+  min-height:56px;
+  background:var(--accent);
+  color:var(--on-accent);
   border:none;
   padding:16px 32px;
-  font-family:'Montserrat',sans-serif;
-  font-weight:600;
+  font-family:var(--font);
+  font-weight:500;
   font-size:15px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
   cursor:pointer;
+  border-radius:2px;
   transition:background .2s;
-  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
   display:flex;
   align-items:center;
   justify-content:center;
   gap:12px;
 }
-.form-submit:hover { background:var(--orange-mid); }
+.form-submit:hover { background:#ff6a3d; }
 
 /* ─────────────────────────────────────────
    FOOTER
 ───────────────────────────────────────── */
-footer {
-  background: var(--dark);
-  padding: 72px 0 32px;
-}
+footer { background: var(--panel); padding: 72px 0 32px; }
 .footer-top {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 56px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid var(--line);
   margin-bottom: 32px;
 }
 @media(max-width:900px){ .footer-top{ grid-template-columns:1fr 1fr; } }
 @media(max-width:600px){ .footer-top{ grid-template-columns:1fr; } }
 .footer-brand .logo { margin-bottom:16px; display:inline-flex; }
-.footer-brand p {
-  font-size:14px;
-  color:rgba(255,255,255,.4);
-  line-height:1.7;
-  font-weight:300;
-  max-width:260px;
-}
+.footer-brand p { font-size:15px; color:var(--on-panel-muted); line-height:1.6; max-width:280px; }
 .footer-col h4 {
-  font-family:'Montserrat',sans-serif;
   font-size:13px;
-  font-weight:600;
+  font-weight:500;
   text-transform:uppercase;
   letter-spacing:.1em;
-  color:rgba(255,255,255,.5);
+  color:var(--accent);
   margin-bottom:20px;
 }
 .footer-col ul { list-style:none; }
 .footer-col ul li { margin-bottom:12px; }
 .footer-col ul li a {
-  font-size:14px;
-  color:rgba(255,255,255,.35);
+  font-size:15px;
+  color:var(--on-panel-muted);
   text-decoration:none;
   transition:color .2s;
 }
-.footer-col ul li a:hover { color:var(--white); }
+.footer-col ul li a:hover { color:var(--on-panel); }
 .footer-bottom {
   display:flex;
   justify-content:space-between;
@@ -1367,22 +1248,16 @@ footer {
   gap:16px;
   flex-wrap:wrap;
 }
-.footer-copy {
-  font-size:13px;
-  color:rgba(255,255,255,.25);
-}
-.footer-copy span { color:var(--orange); }
-.footer-legal {
-  display:flex;
-  gap:24px;
-}
+.footer-copy { font-size:13px; color:var(--on-panel-muted); letter-spacing:.04em; }
+.footer-copy span { color:var(--on-panel); }
+.footer-legal { display:flex; gap:24px; }
 .footer-legal a {
   font-size:13px;
-  color:rgba(255,255,255,.25);
+  color:var(--on-panel-muted);
   text-decoration:none;
   transition:color .2s;
 }
-.footer-legal a:hover { color:rgba(255,255,255,.6); }
+.footer-legal a:hover { color:var(--on-panel); }
 
 /* ─────────────────────────────────────────
    NOTIFICATIONS (form feedback)
@@ -1390,8 +1265,8 @@ footer {
 .toast {
   position:fixed;
   bottom:32px; right:32px;
-  background:var(--dark);
-  color:#fff;
+  background:var(--panel);
+  color:var(--on-panel);
   padding:16px 24px;
   font-size:14px;
   font-weight:500;
@@ -1399,146 +1274,26 @@ footer {
   align-items:center;
   gap:12px;
   z-index:999;
+  border-radius:var(--radius-s);
   transform:translateX(120%);
   transition:transform .4s cubic-bezier(.34,1.56,.64,1);
-  clip-path:polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
-.toast.show { transform:translateX(0); }
-.toast-dot { width:8px; height:8px; background:var(--orange); border-radius:50%; flex-shrink:0; }
-
-/* ─────────────────────────────────────────
-   MACHINERY
-───────────────────────────────────────── */
-.machinery {
-  padding: 100px 0;
-  background: var(--gray-light);
-}
-.machinery h2 {
-  font-size: clamp(32px,4vw,52px);
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.machinery h2 span { color: var(--orange); }
-.machinery-intro {
-  font-size: 16px;
-  color: var(--gray);
-  max-width: 560px;
-  line-height: 1.7;
-  margin-bottom: 56px;
-}
-.eq-groups {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px 48px;
-  margin-bottom: 40px;
-}
-@media(max-width:700px){ .eq-groups{ grid-template-columns:1fr; gap:28px; } }
-.eq-group h4 {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 14px;
-}
-.eq-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.eq-tag {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--dark);
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 7px 14px;
-}
-.machinery-note {
-  background: var(--dark);
-  color: rgba(255,255,255,.6);
-  font-size: 13px;
-  padding: 20px 28px;
-  border-left: 3px solid var(--orange);
-  font-weight: 300;
-  line-height: 1.6;
-}
-.machinery-note strong { color: var(--white); }
-
-/* ── Service card image strip ── */
-.service-img {
-  width: calc(100% + 80px);
-  margin: -48px -40px 32px;
-  height: 190px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  flex-shrink: 0;
-}
-.service-img::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to bottom, transparent 40%, var(--dark-2) 100%);
-}
-
-/* ── About real image ── */
-.about-real-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
-}
-
-/* ── Machinery banner ── */
-.machinery-banner {
-  height: 260px;
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 48px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-}
-.machinery-banner::before {
-  content:'';
-  position:absolute;
-  inset:0;
-  background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.4) 100%);
-  z-index:1;
-}
-.machinery-banner-text {
-  position: absolute;
-  bottom: 32px;
-  left: 40px;
-  z-index: 2;
-  color: rgba(255,255,255,.7);
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 0.05em;
-}
-.machinery-banner-text strong {
-  display: block;
-  font-family: 'Montserrat',sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 6px;
-}
+@media(max-width:600px){ .toast{ left:16px; right:16px; bottom:16px; transform:translateY(160%); } }
+.toast.show { transform:none; }
+.toast-dot { width:8px; height:8px; background:var(--accent); border-radius:50%; flex-shrink:0; }
 
 /* ── Unsplash attribution ── */
 .unsplash-credit {
-  font-size: 11px;
-  color: rgba(255,255,255,.25);
+  font-size: 12px;
+  color: var(--on-panel-muted);
   text-align: center;
-  padding: 12px 0;
-  background: var(--dark);
+  padding: 16px;
+  background: var(--panel);
+  border-bottom: 1px solid #3a3a38;
   letter-spacing: 0.03em;
 }
-.unsplash-credit a { color: rgba(255,255,255,.4); text-decoration: none; }
-.unsplash-credit a:hover { color: rgba(255,255,255,.7); }
+.unsplash-credit a { color: var(--on-panel-muted); }
+.unsplash-credit a:hover { color: var(--on-panel); }
 </style>
 </head>
 <body>
@@ -1548,14 +1303,14 @@ footer {
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="logo">
-        <img src="assets/logo-primal.png" alt="Primal" class="logo-img">
+        <img src="assets/primal-logo-negativo.svg" alt="Primal" class="logo-img"><span class="logo-sub">Technologies</span>
       </a>
       <ul class="nav-links">
         <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
-        <li><a href="#maquinaria" data-i18n="nav.maquinaria">Maquinaria</a></li>
-        <li><a href="#proceso" data-i18n="nav.procesos">Procesos</a></li>
-        <li><a href="#industrias" data-i18n="nav.industrias">Web & Móvil</a></li>
-        <li><a href="#contacto" class="nav-cta" data-i18n="nav.contacto">Contáctanos</a></li>
+        <li><a href="#metodo" data-i18n="nav.metodo">Método</a></li>
+        <li><a href="#works" data-i18n="nav.works">Works</a></li>
+        <li><a href="#herramientas" data-i18n="nav.herramientas">Herramientas</a></li>
+        <li><a href="#contacto" class="nav-cta" data-i18n="nav.contacto">Platiquemos</a></li>
         <li>
           <div class="lang-toggle">
             <button type="button" class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
@@ -1574,11 +1329,11 @@ footer {
     <button type="button" class="lang-btn" data-lang="es" onclick="setLanguage('es')">Español</button>
     <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">English</button>
   </div>
-  <a href="#servicios"  onclick="toggleMenu()" data-i18n="nav.servicios">Servicios</a>
-  <a href="#maquinaria" onclick="toggleMenu()" data-i18n="nav.maquinaria">Maquinaria</a>
-  <a href="#proceso"    onclick="toggleMenu()" data-i18n="nav.procesos">Procesos</a>
-  <a href="#industrias" onclick="toggleMenu()" data-i18n="mobile.industrias">Industrias</a>
-  <a href="#contacto"   onclick="toggleMenu()" data-i18n="nav.contacto">Contáctanos</a>
+  <a href="#servicios"    onclick="toggleMenu()" data-i18n="nav.servicios">Servicios</a>
+  <a href="#metodo"       onclick="toggleMenu()" data-i18n="nav.metodo">Método</a>
+  <a href="#works"        onclick="toggleMenu()" data-i18n="nav.works">Works</a>
+  <a href="#herramientas" onclick="toggleMenu()" data-i18n="nav.herramientas">Herramientas</a>
+  <a href="#contacto"     onclick="toggleMenu()" data-i18n="nav.contacto">Platiquemos</a>
 </div>
 
 <!-- ═══════════ HERO ═══════════ -->
@@ -1591,13 +1346,13 @@ footer {
   <div class="container hero-content">
     <div class="hero-eyebrow">
       <div class="hero-line"></div>
-      <span data-i18n="hero.eyebrow">Software · IA · Ingeniería Industrial</span>
+      <span data-i18n="hero.eyebrow">Operación y tecnología para PyMEs</span>
     </div>
-    <h1 data-i18n="hero.h1">Innovación que<br><em>transforma</em><br>industrias</h1>
-    <p class="hero-sub" data-i18n="hero.sub">Desarrollamos software a la medida, integramos inteligencia artificial y dominamos la manufactura de precisión para llevar tu empresa al siguiente nivel.</p>
+    <h1 data-i18n="hero.h1">Primero ordenamos tu operación. <em>Después la automatizamos.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Tecnología de corporativo, tamaño PyME. Entramos a cómo cotizas, vendes, compras, cobras y controlas tu inventario, lo ordenamos y después ponemos la tecnología. Se contrata por mes.</p>
     <div class="hero-ctas">
-      <a href="#servicios" class="btn-primary"><span data-i18n="hero.cta1">Ver servicios</span> <span class="arrow-right"></span></a>
-      <a href="#contacto"  class="btn-secondary" data-i18n="hero.cta2">Hablar con un experto</a>
+      <a href="#contacto" class="btn-primary"><span data-i18n="hero.cta1">Agenda tu diagnóstico</span> <span class="arrow-right"></span></a>
+      <a href="#metodo"   class="btn-secondary" data-i18n="hero.cta2">Cómo trabajamos</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1615,15 +1370,15 @@ footer {
     </div>
     <div class="stat-item reveal d1">
       <div class="stat-number">2</div>
-      <div class="stat-label" data-i18n="stats.plants">Plantas: El Paso TX & Cd. Juárez</div>
+      <div class="stat-label" data-i18n="stats.cities">Ciudades: Cd. Juárez y El Paso</div>
     </div>
     <div class="stat-item reveal d2">
-      <div class="stat-number">15+</div>
-      <div class="stat-label" data-i18n="stats.cnc">Máquinas CNC y de precisión</div>
+      <div class="stat-number">4</div>
+      <div class="stat-label" data-i18n="stats.steps">Pasos del Método Primal</div>
     </div>
     <div class="stat-item reveal d3">
-      <div class="stat-number">4</div>
-      <div class="stat-label" data-i18n="stats.sectors">Sectores industriales atendidos</div>
+      <div class="stat-number">1</div>
+      <div class="stat-label" data-i18n="stats.one">Proceso a la vez, con pago mensual</div>
     </div>
   </div>
 </section>
@@ -1632,7 +1387,7 @@ footer {
 <section class="clients" id="clientes">
   <div class="container clients-header reveal">
     <div class="tag" data-i18n="clients.tag">Empresas que confían en nosotros</div>
-    <h2 data-i18n="clients.h2">Clientes que nos <span>respaldan</span></h2>
+    <h2 data-i18n="clients.h2">Ya trabajamos <span>con ellos</span></h2>
   </div>
 
   <div class="container">
@@ -1687,26 +1442,26 @@ footer {
   <div class="container">
     <div class="about-grid">
       <div>
-        <div class="tag reveal" data-i18n="about.tag">Quiénes somos</div>
-        <h2 class="reveal d1" data-i18n="about.h2">Manufactura de <span>precisión</span> e ingeniería que transforma operaciones</h2>
-        <p class="reveal d2" data-i18n="about.p1">Integramos maquinado CNC de alta precisión, automatización industrial con PLC y robótica, desarrollo de software a la medida e inteligencia artificial en una sola empresa.</p>
-        <p class="reveal d2" data-i18n="about.p2">Nuestra misión es garantizar la satisfacción del cliente a través de productos de máxima calidad, mejora continua en equipo y el desarrollo de nuestro talento humano mediante liderazgo y capacitación constante.</p>
+        <div class="tag reveal" data-i18n="about.tag">Qué somos</div>
+        <h2 class="reveal d1" data-i18n="about.h2">Hemos estado en muchos negocios <span>como el tuyo</span></h2>
+        <p class="reveal d2" data-i18n="about.p1">Que tu negocio haya crecido con desorden es normal: nadie le enseña a un dueño a diseñar procesos. Entramos a tu operación, la técnica y la administrativa, y la dejamos clara: quién hace qué, cómo y con qué control.</p>
+        <p class="reveal d2" data-i18n="about.p2">Un sistema no arregla un proceso desordenado; lo hace más rápido. Por eso primero ordenamos y después automatizamos.</p>
         <div class="about-values">
-          <div class="value-item reveal d1">
-            <h4 data-i18n="about.v1.h4">Precisión CNC</h4>
-            <p data-i18n="about.v1.p">Maquinado de piezas con tolerancias exactas usando Haas, FANUC, Hurco y Mitsubishi EDM.</p>
+          <div class="value-item reveal d1"><span class="plus" aria-hidden="true"></span>
+            <h4 data-i18n="about.v1.h4">Primal ordena</h4>
+            <p data-i18n="about.v1.p">Diagnóstico, roles, controles y números claros. Es la puerta de entrada.</p>
           </div>
-          <div class="value-item reveal d2">
-            <h4 data-i18n="about.v2.h4">Industria 4.0</h4>
-            <p data-i18n="about.v2.p">Automatización PLC, robótica, IoT, MES y analítica de datos para producción inteligente.</p>
+          <div class="value-item reveal d2"><span class="plus" aria-hidden="true"></span>
+            <h4 data-i18n="about.v2.h4">Dunebox opera</h4>
+            <p data-i18n="about.v2.p">El sistema donde vive la operación ya ordenada: cotizaciones, inventario y facturación.</p>
           </div>
-          <div class="value-item reveal d3">
-            <h4 data-i18n="about.v3.h4">Software & IA</h4>
-            <p data-i18n="about.v3.p">Sistemas a la medida, automatización con inteligencia artificial y plataformas web de alto impacto.</p>
+          <div class="value-item reveal d3"><span class="plus" aria-hidden="true"></span>
+            <h4 data-i18n="about.v3.h4">Primal Security protege</h4>
+            <p data-i18n="about.v3.p">Ciberseguridad para negocios pequeños, sin sustos: el riesgo real y el siguiente paso.</p>
           </div>
-          <div class="value-item reveal d4">
-            <h4 data-i18n="about.v4.h4">Acabados Industriales</h4>
-            <p data-i18n="about.v4.p">Pintura en polvo, pintura líquida convencional y electroestática, con horno de curado.</p>
+          <div class="value-item reveal d4"><span class="plus" aria-hidden="true"></span>
+            <h4 data-i18n="about.v4.h4">Primal Works fabrica</h4>
+            <p data-i18n="about.v4.p">Piezas y prototipos para negocios que no pueden pagar un taller de corporativo.</p>
           </div>
         </div>
       </div>
@@ -1724,78 +1479,62 @@ footer {
   <div class="container">
     <div class="services-header">
       <div>
-        <div class="tag reveal" style="border-color:rgba(247,164,0,.5);" data-i18n="services.tag">Nuestros servicios</div>
-        <h2 class="reveal d1" data-i18n="services.h2">Lo que <span>hacemos</span><br>mejor</h2>
+        <div class="tag reveal" data-i18n="services.tag">Lo que hacemos</div>
+        <h2 class="reveal d1" data-i18n="services.h2">Empieza por un proceso. <span>Paga por mes.</span></h2>
       </div>
-      <p class="services-sub reveal d2" data-i18n="services.sub">Cuatro áreas de especialización que se complementan para darte una solución tecnológica completa e integrada.</p>
+      <p class="services-sub reveal d2" data-i18n="services.sub">Sin proyectos eternos ni contratos de corporativo. Un diagnóstico con alcance y precio fijo y, de ahí, un proceso a la vez.</p>
     </div>
     <div class="services-grid">
 
-      <!-- Card 1 -->
       <div class="service-card reveal">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1743090660977-babf07732432?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="service-num">01</div>
         <div class="service-arrow"></div>
-        <div class="service-icon">💻</div>
-        <h3 data-i18n="svc1.h3">Desarrollo de Software a la Medida</h3>
-        <p data-i18n="svc1.p">Operamos como una software factory: un equipo dedicado que diseña, construye y libera software bajo un proceso estandarizado de producción, con control de calidad y entregas medibles en cada sprint. Sistemas MES, ERPs industriales, analítica de datos, aplicaciones de trazabilidad y software para procesos regulados en sectores médico y farmacéutico, fabricados con la misma disciplina con la que maquinamos piezas de precisión.</p>
+        <h3 data-i18n="svc1.h3">Diagnóstico de tu operación</h3>
+        <p data-i18n="svc1.p">En 2 semanas sabes dónde se pierden tiempo y dinero. Vamos a tu negocio, vemos cómo se cotiza, se vende, se compra, se cobra y se controla el inventario, y te decimos qué arreglar primero.</p>
         <div class="service-tags">
-          <span class="service-tag">Software Factory</span>
-          <span class="service-tag" data-i18n="svc1.tag2">Sistemas MES</span>
-          <span class="service-tag">APIs REST</span>
-          <span class="service-tag" data-i18n="svc1.tag4">ERP Industrial</span>
-          <span class="service-tag" data-i18n="svc1.tag5">Trazabilidad</span>
+          <span class="service-tag" data-i18n="svc1.tag1">Alcance fijo</span>
+          <span class="service-tag" data-i18n="svc1.tag2">Precio fijo</span>
+          <span class="service-tag" data-i18n="svc1.tag3">2 semanas</span>
         </div>
       </div>
 
-      <!-- Card 2 -->
       <div class="service-card reveal d1">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1645754884968-a00b7ed62c43?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="service-num">02</div>
         <div class="service-arrow"></div>
-        <div class="service-icon">⚙️</div>
-        <h3 data-i18n="svc2.h3">Automatización Industrial, PLC y Maquinado CNC</h3>
-        <p data-i18n="svc2.p">Programación PLC (nuevas implementaciones, upgrades, integración de sistemas, monitoreo remoto), integración robótica, construcción de máquinas especiales, líneas de producción totalmente automatizadas, modernización de equipos legacy e integración Industry 4.0. Maquinado CNC de precisión con centros Haas, FANUC Robodrill, Hurco VMX60, Wire EDM Mitsubishi, corte láser Amada y más.</p>
+        <h3 data-i18n="svc2.h3">Ordenar y automatizar</h3>
+        <p data-i18n="svc2.p">Ordenamos el proceso y lo dejamos funcionando en un sistema. Definimos quién hace qué y con qué control, y lo pasamos a Dunebox o a una automatización.</p>
         <div class="service-tags">
-          <span class="service-tag">PLC / SCADA</span>
-          <span class="service-tag">CNC Haas / FANUC</span>
-          <span class="service-tag" data-i18n="svc2.tag3">Robótica</span>
-          <span class="service-tag" data-i18n="svc2.tag4">Industria 4.0</span>
-          <span class="service-tag">Wire EDM</span>
-          <span class="service-tag" data-i18n="svc2.tag6">Corte Láser</span>
+          <span class="service-tag" data-i18n="svc2.tag1">Procesos</span>
+          <span class="service-tag">Dunebox</span>
+          <span class="service-tag" data-i18n="svc2.tag3">Automatización</span>
+          <span class="service-tag" data-i18n="svc2.tag4">Setup + mensualidad</span>
         </div>
       </div>
 
-      <!-- Card 3 -->
       <div class="service-card reveal d2">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1717501218198-816a64915f81?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="service-num">03</div>
         <div class="service-arrow"></div>
-        <div class="service-icon">🧠</div>
-        <h3 data-i18n="svc3.h3">Automatización con Inteligencia Artificial</h3>
-        <p data-i18n="svc3.p">Liberamos el potencial humano de tareas repetitivas mediante IA: visión por computadora para inspección de calidad en línea, agentes LLM para documentación y soporte técnico, análisis predictivo de mantenimiento de equipos CNC, y pipelines de machine learning que convierten los datos de tu planta en decisiones operativas más precisas y rentables.</p>
+        <h3 data-i18n="svc3.h3">Operaciones por mensualidad</h3>
+        <p data-i18n="svc3.p">Un gerente de operaciones de medio tiempo para tu negocio. Cada mes revisamos los números contigo, ajustamos lo que no funciona y cuidamos que el negocio no dependa de ti.</p>
         <div class="service-tags">
-          <span class="service-tag" data-i18n="svc3.tag1">Visión por cómputo</span>
-          <span class="service-tag" data-i18n="svc3.tag2">Control de calidad IA</span>
-          <span class="service-tag" data-i18n="svc3.tag3">Mantenimiento predictivo</span>
-          <span class="service-tag">Agentes LLM</span>
-          <span class="service-tag">IoT + ML</span>
+          <span class="service-tag" data-i18n="svc3.tag1">Revisión mensual</span>
+          <span class="service-tag" data-i18n="svc3.tag2">Números claros</span>
         </div>
       </div>
 
-      <!-- Card 4 -->
       <div class="service-card reveal d3">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1754548930550-be9fa88874f4?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="service-num">04</div>
         <div class="service-arrow"></div>
-        <div class="service-icon">🌐</div>
-        <h3 data-i18n="svc4.h3">Desarrollo Web</h3>
-        <p data-i18n="svc4.p">Creamos sitios web corporativos, plataformas de comercio electrónico y aplicaciones web progresivas que combinan diseño de alto impacto con rendimiento y posicionamiento SEO.</p>
+        <h3 data-i18n="svc4.h3">Primal Security</h3>
+        <p data-i18n="svc4.p">Revisa si tu negocio está expuesto. Revisamos tu dominio, tu correo y tus accesos, y te decimos el riesgo real y el siguiente paso.</p>
         <div class="service-tags">
-          <span class="service-tag">React / Next.js</span>
-          <span class="service-tag">E-commerce</span>
-          <span class="service-tag">CMS</span>
-          <span class="service-tag" data-i18n="svc4.tag4">SEO técnico</span>
+          <span class="service-tag" data-i18n="svc4.tag1">Revisión sin costo</span>
+          <span class="service-tag" data-i18n="svc4.tag2">Dominio y correo</span>
+          <span class="service-tag" data-i18n="svc4.tag3">Accesos</span>
         </div>
       </div>
 
@@ -1803,236 +1542,93 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════ INDUSTRIES ═══════════ -->
-<section class="webdev" id="industrias">
+<!-- ═══════════ ¿TE SUENA? ═══════════ -->
+<section class="webdev" id="te-suena">
   <div class="container">
-    <div class="tag reveal">Software Factory</div>
-    <h2 class="reveal d1" data-i18n="webdev.h2">Tu fábrica de <span>software a la medida</span></h2>
-    <p class="webdev-intro reveal d2" data-i18n="webdev.intro">Un equipo de desarrollo dedicado que opera como línea de producción: procesos estandarizados, control de calidad en cada entrega y la velocidad de una fábrica, no de un freelancer. Del diseño de interfaz al deploy en producción, construimos software con la misma precisión y trazabilidad con la que maquinamos piezas industriales.</p>
+    <div class="tag reveal" data-i18n="pains.tag">¿Te suena?</div>
+    <h2 class="reveal d1" data-i18n="pains.h2">Lo que nos cuentan <span>los dueños</span></h2>
+    <p class="webdev-intro reveal d2" data-i18n="pains.intro">Si tu negocio todavía corre en Excel y WhatsApp, no estás atrasado: los sistemas grandes se hicieron para corporativos. Esto es lo que más vemos, y cómo lo resolvemos.</p>
     <div class="webdev-grid">
-
-      <!-- Landing Pages -->
-      <div class="wd-card reveal">
-        <div class="wd-visual" style="background: linear-gradient(135deg,#1A1A1A 0%,#2D1A0A 100%);">
-          <div class="wd-chrome">
-            <span class="wd-chrome-dot" style="background:#FF5F57"></span>
-            <span class="wd-chrome-dot" style="background:#FEBC2E"></span>
-            <span class="wd-chrome-dot" style="background:#28C840"></span>
-          </div>
-          <div class="wd-visual-inner" style="padding-top:22px;">
-            <svg width="160" height="72" viewBox="0 0 160 72" fill="none">
-              <rect x="8" y="8" width="144" height="10" rx="2" fill="rgba(255,255,255,.15)"/>
-              <rect x="8" y="26" width="90" height="6" rx="2" fill="rgba(255,255,255,.1)"/>
-              <rect x="8" y="38" width="60" height="6" rx="2" fill="rgba(255,255,255,.08)"/>
-              <rect x="8" y="54" width="52" height="12" rx="3" fill="rgba(247,164,0,.7)"/>
-            </svg>
-          </div>
-        </div>
-        <div class="wd-body">
-          <div class="wd-label" data-i18n="wd1.label">Sitios web</div>
-          <h3 data-i18n="wd1.h3">Landing Pages & Sitios Corporativos</h3>
-          <p data-i18n="wd1.p">Diseño moderno, animaciones fluidas, SEO técnico y velocidad de carga optimizada. Cada página construida para convertir visitantes en clientes.</p>
-          <div class="wd-tags">
-            <span class="wd-tag">Next.js</span>
-            <span class="wd-tag">Tailwind CSS</span>
-            <span class="wd-tag">GSAP</span>
-            <span class="wd-tag">Vercel</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile Apps -->
-      <div class="wd-card reveal d1">
-        <div class="wd-visual" style="background: linear-gradient(135deg,#0A1A2D 0%,#0D2140 100%);">
-          <div class="wd-visual-inner">
-            <svg width="120" height="90" viewBox="0 0 120 90" fill="none">
-              <!-- Phone frame -->
-              <rect x="35" y="4" width="50" height="82" rx="8" stroke="rgba(255,255,255,.2)" stroke-width="1.5" fill="rgba(255,255,255,.04)"/>
-              <rect x="45" y="10" width="30" height="60" rx="3" fill="rgba(255,255,255,.07)"/>
-              <circle cx="60" cy="77" r="4" fill="rgba(255,255,255,.15)"/>
-              <!-- Screen elements -->
-              <rect x="48" y="16" width="24" height="4" rx="2" fill="rgba(255,255,255,.25)"/>
-              <rect x="48" y="26" width="18" height="3" rx="1.5" fill="rgba(255,255,255,.15)"/>
-              <rect x="48" y="34" width="24" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
-              <rect x="48" y="44" width="24" height="14" rx="3" fill="rgba(247,164,0,.4)"/>
-            </svg>
-          </div>
-        </div>
-        <div class="wd-body">
-          <div class="wd-label" data-i18n="wd2.label">Apps móviles</div>
-          <h3 data-i18n="wd2.h3">Aplicaciones iOS & Android</h3>
-          <p data-i18n="wd2.p">Apps nativas y multiplataforma con experiencia de usuario impecable. Desde MVPs hasta productos listos para la App Store y Google Play.</p>
-          <div class="wd-tags">
-            <span class="wd-tag">React Native</span>
-            <span class="wd-tag">Flutter</span>
-            <span class="wd-tag">Swift</span>
-            <span class="wd-tag">Kotlin</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- E-commerce -->
-      <div class="wd-card reveal d2">
-        <div class="wd-visual" style="background: linear-gradient(135deg,#0F1A0A 0%,#1A2D0A 100%);">
-          <div class="wd-visual-inner">
-            <svg width="150" height="80" viewBox="0 0 150 80" fill="none">
-              <!-- Product cards grid -->
-              <rect x="8"  y="10" width="38" height="48" rx="3" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-              <rect x="54" y="10" width="38" height="48" rx="3" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-              <rect x="100" y="10" width="38" height="48" rx="3" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-              <rect x="10" y="14" width="34" height="22" rx="2" fill="rgba(255,255,255,.1)"/>
-              <rect x="56" y="14" width="34" height="22" rx="2" fill="rgba(255,255,255,.1)"/>
-              <rect x="102" y="14" width="34" height="22" rx="2" fill="rgba(255,255,255,.1)"/>
-              <rect x="10" y="40" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.2)"/>
-              <rect x="56" y="40" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.2)"/>
-              <rect x="102" y="40" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.2)"/>
-              <rect x="10" y="48" width="14" height="3" rx="1.5" fill="rgba(100,220,100,.4)"/>
-              <rect x="56" y="48" width="14" height="3" rx="1.5" fill="rgba(100,220,100,.4)"/>
-              <rect x="102" y="48" width="14" height="3" rx="1.5" fill="rgba(100,220,100,.4)"/>
-            </svg>
-          </div>
-        </div>
-        <div class="wd-body">
-          <div class="wd-label">E-commerce</div>
-          <h3 data-i18n="wd3.h3">Tiendas Online & Marketplaces</h3>
-          <p data-i18n="wd3.p">Plataformas de venta con catálogos dinámicos, carrito, pagos integrados (Stripe, Conekta, PayPal) y panel de administración a la medida.</p>
-          <div class="wd-tags">
-            <span class="wd-tag">Shopify</span>
-            <span class="wd-tag">WooCommerce</span>
-            <span class="wd-tag">Custom</span>
-            <span class="wd-tag">Stripe</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Web Apps / SaaS -->
-      <div class="wd-card reveal">
-        <div class="wd-visual" style="background: linear-gradient(135deg,#1A0A2D 0%,#2D0A3A 100%);">
-          <div class="wd-chrome">
-            <span class="wd-chrome-dot" style="background:#FF5F57"></span>
-            <span class="wd-chrome-dot" style="background:#FEBC2E"></span>
-            <span class="wd-chrome-dot" style="background:#28C840"></span>
-          </div>
-          <div class="wd-visual-inner" style="padding-top:18px;">
-            <svg width="160" height="70" viewBox="0 0 160 70" fill="none">
-              <!-- Dashboard layout -->
-              <rect x="8" y="8" width="34" height="52" rx="2" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-              <rect x="48" y="8" width="104" height="22" rx="2" fill="rgba(255,255,255,.07)"/>
-              <rect x="48" y="36" width="48" height="24" rx="2" fill="rgba(255,255,255,.07)"/>
-              <rect x="102" y="36" width="50" height="24" rx="2" fill="rgba(255,255,255,.07)"/>
-              <!-- Chart bars inside big panel -->
-              <rect x="56" y="14" width="6" height="10" rx="1" fill="rgba(247,164,0,.5)"/>
-              <rect x="66" y="10" width="6" height="14" rx="1" fill="rgba(247,164,0,.7)"/>
-              <rect x="76" y="16" width="6" height="8" rx="1" fill="rgba(247,164,0,.4)"/>
-              <rect x="86" y="12" width="6" height="12" rx="1" fill="rgba(247,164,0,.6)"/>
-              <rect x="96" y="14" width="6" height="10" rx="1" fill="rgba(247,164,0,.5)"/>
-              <rect x="106" y="9" width="6" height="15" rx="1" fill="rgba(247,164,0,.8)"/>
-              <rect x="116" y="13" width="6" height="11" rx="1" fill="rgba(247,164,0,.5)"/>
-              <rect x="126" y="11" width="6" height="13" rx="1" fill="rgba(247,164,0,.65)"/>
-              <!-- Sidebar items -->
-              <rect x="12" y="12" width="26" height="4" rx="2" fill="rgba(255,255,255,.15)"/>
-              <rect x="12" y="22" width="18" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
-              <rect x="12" y="30" width="22" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
-              <rect x="12" y="38" width="16" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
-            </svg>
-          </div>
-        </div>
-        <div class="wd-body">
-          <div class="wd-label" data-i18n="wd4.label">Aplicaciones web</div>
-          <h3 data-i18n="wd4.h3">SaaS, Dashboards & Portales</h3>
-          <p data-i18n="wd4.p">Sistemas web completos: CRMs, ERPs ligeros, portales de clientes, paneles de analytics en tiempo real y aplicaciones internas de negocio.</p>
-          <div class="wd-tags">
-            <span class="wd-tag">React</span>
-            <span class="wd-tag">Node.js</span>
-            <span class="wd-tag">PostgreSQL</span>
-            <span class="wd-tag">WebSockets</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI Features -->
-      <div class="wd-card reveal d1">
-        <div class="wd-visual" style="background: linear-gradient(135deg,#1A1000 0%,#2D1E00 100%);">
-          <div class="wd-visual-inner">
-            <svg width="150" height="80" viewBox="0 0 150 80" fill="none">
-              <!-- Chat bubbles -->
-              <rect x="8" y="8" width="80" height="20" rx="10" fill="rgba(255,255,255,.1)"/>
-              <rect x="12" y="15" width="56" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
-              <rect x="62" y="34" width="80" height="20" rx="10" fill="rgba(247,164,0,.25)"/>
-              <rect x="66" y="41" width="56" height="6" rx="3" fill="rgba(247,164,0,.4)"/>
-              <rect x="8" y="58" width="66" height="16" rx="8" fill="rgba(255,255,255,.1)"/>
-              <rect x="12" y="63" width="42" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
-              <!-- Typing dots -->
-              <circle cx="128" cy="66" r="3" fill="rgba(247,164,0,.5)"/>
-              <circle cx="138" cy="66" r="3" fill="rgba(247,164,0,.35)"/>
-            </svg>
-          </div>
-        </div>
-        <div class="wd-body">
-          <div class="wd-label" data-i18n="wd5.label">Inteligencia artificial</div>
-          <h3 data-i18n="wd5.h3">Funciones IA en tus Productos</h3>
-          <p data-i18n="wd5.p">Integración de IA generativa en productos existentes: asistentes conversacionales, generación automática de contenido, búsqueda semántica y recomendaciones.</p>
-          <div class="wd-tags">
-            <span class="wd-tag">Claude API</span>
-            <span class="wd-tag">GPT-4o</span>
-            <span class="wd-tag">RAG</span>
-            <span class="wd-tag">LangChain</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- APIs & Cloud -->
-      <div class="wd-card reveal d2">
-        <div class="wd-visual" style="background: linear-gradient(135deg,#001A1A 0%,#002D2D 100%);">
-          <div class="wd-visual-inner">
-            <svg width="150" height="80" viewBox="0 0 150 80" fill="none">
-              <!-- Nodes connected -->
-              <circle cx="75" cy="40" r="12" fill="rgba(247,164,0,.4)" stroke="rgba(247,164,0,.6)" stroke-width="1.5"/>
-              <circle cx="28" cy="20" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-              <circle cx="28" cy="60" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-              <circle cx="122" cy="20" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-              <circle cx="122" cy="60" r="8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-              <line x1="36" y1="24" x2="63" y2="34" stroke="rgba(255,255,255,.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <line x1="36" y1="56" x2="63" y2="46" stroke="rgba(255,255,255,.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <line x1="87" y1="34" x2="114" y2="24" stroke="rgba(255,255,255,.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <line x1="87" y1="46" x2="114" y2="56" stroke="rgba(255,255,255,.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="70" y="44" fill="rgba(255,255,255,.8)" font-size="8" font-family="monospace">API</text>
-            </svg>
-          </div>
-        </div>
-        <div class="wd-body">
-          <div class="wd-label" data-i18n="wd6.label">Infraestructura</div>
-          <h3>APIs, Backend & Cloud</h3>
-          <p data-i18n="wd6.p">Arquitecturas robustas y escalables: APIs REST y GraphQL, microservicios, bases de datos, autenticación, CI/CD y despliegue en AWS, Azure o GCP.</p>
-          <div class="wd-tags">
-            <span class="wd-tag">FastAPI</span>
-            <span class="wd-tag">Docker</span>
-            <span class="wd-tag">AWS</span>
-            <span class="wd-tag">GraphQL</span>
-          </div>
-        </div>
-      </div>
-
+      <div class="wd-card reveal"><div class="wd-body">
+        <div class="wd-label">01</div>
+        <h3 data-i18n="pain1.h3">“Capturamos el mismo pedido tres veces.”</h3>
+        <p data-i18n="pain1.p">Un solo lugar donde entra el pedido, y de ahí salen la cotización, la orden y la factura.</p>
+      </div></div>
+      <div class="wd-card reveal d1"><div class="wd-body">
+        <div class="wd-label">02</div>
+        <h3 data-i18n="pain2.h3">“Cotizo bien, pero cobro tarde.”</h3>
+        <p data-i18n="pain2.p">Cada factura con su fecha de cobro y alguien responsable de cobrarla.</p>
+      </div></div>
+      <div class="wd-card reveal d2"><div class="wd-body">
+        <div class="wd-label">03</div>
+        <h3 data-i18n="pain3.h3">“No sé cuánto gano.”</h3>
+        <p data-i18n="pain3.p">Números claros cada mes: cuánto vendiste, cuánto te costó y cuánto te quedó.</p>
+      </div></div>
+      <div class="wd-card reveal"><div class="wd-body">
+        <div class="wd-label">04</div>
+        <h3 data-i18n="pain4.h3">“Si falto una semana, el negocio se detiene.”</h3>
+        <p data-i18n="pain4.p">Procesos escritos y roles claros, para que el negocio no dependa de ti.</p>
+      </div></div>
+      <div class="wd-card reveal d1"><div class="wd-body">
+        <div class="wd-label">05</div>
+        <h3 data-i18n="pain5.h3">“Todo lo llevamos en Excel y WhatsApp.”</h3>
+        <p data-i18n="pain5.p">Pasamos a un sistema lo que ya funciona, sin cambiarle a tu equipo la forma de trabajar de un día para otro.</p>
+      </div></div>
+      <div class="wd-card reveal d2"><div class="wd-body">
+        <div class="wd-label">06</div>
+        <h3 data-i18n="pain6.h3">“El inventario nunca cuadra.”</h3>
+        <p data-i18n="pain6.p">Entradas y salidas con control, para saber qué tienes sin ir a contarlo.</p>
+      </div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ MACHINERY ═══════════ -->
-<section class="machinery" id="maquinaria">
+<!-- ═══════════ MÉTODO PRIMAL ═══════════ -->
+<section class="process" id="metodo">
   <div class="container">
-    <div class="tag reveal" data-i18n="machinery.tag">Equipamiento</div>
-    <h2 class="reveal d1" data-i18n="machinery.h2">Maquinaria de <span>precisión industrial</span></h2>
-    <p class="machinery-intro reveal d2" data-i18n="machinery.intro">Maquinado, corte, formado, soldadura y acabados bajo un mismo techo, con un parque de máquinas de última generación en El Paso, TX y Cd. Juárez, Chih.</p>
+    <div class="tag reveal" data-i18n="process.tag">El Método Primal</div>
+    <h2 class="reveal d1" data-i18n="process.h2">Cuatro pasos. <span>Siempre en este orden.</span></h2>
+    <p class="process-intro reveal d2" data-i18n="process.intro">Así trabajamos en cada negocio, un proceso a la vez.</p>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><span class="step-num">01</span></div>
+        <div class="step-title" data-i18n="step1.title">Diagnosticar</div>
+        <p class="step-desc" data-i18n="step1.desc">Vamos a tu negocio y vemos dónde se pierden tiempo y dinero.</p>
+      </div>
+      <div class="process-step reveal d1">
+        <div class="step-num-wrap"><span class="step-num">02</span></div>
+        <div class="step-title" data-i18n="step2.title">Ordenar</div>
+        <p class="step-desc" data-i18n="step2.desc">Quién hace qué, cómo y con qué control.</p>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step-num-wrap"><span class="step-num">03</span></div>
+        <div class="step-title" data-i18n="step3.title">Automatizar</div>
+        <p class="step-desc" data-i18n="step3.desc">Lo que ya está ordenado pasa a Dunebox o a una automatización.</p>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step-num-wrap"><span class="step-num">04</span></div>
+        <div class="step-title" data-i18n="step4.title">Medir</div>
+        <p class="step-desc" data-i18n="step4.desc">Cada mes revisamos los números y ajustamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRIMAL WORKS ═══════════ -->
+<section class="machinery" id="works">
+  <div class="container">
+    <div class="tag reveal" data-i18n="works.tag">Primal Works · Manufactura</div>
+    <h2 class="reveal d1" data-i18n="works.h2">Piezas y prototipos. <span>Sin pagar un taller de corporativo.</span></h2>
+    <p class="machinery-intro reveal d2" data-i18n="works.intro">Maquinado, corte, formado, soldadura y acabados bajo un mismo techo, para el negocio que necesita una pieza, un prototipo o una corrida corta.</p>
 
     <div class="machinery-banner reveal" style="background-image:url('https://images.unsplash.com/photo-1716643863806-989dd76ae093?auto=format&fit=crop&w=1920&q=85');">
       <div class="machinery-banner-text">
-        <strong data-i18n="machinery.banner.strong">Instalaciones binacionales de manufactura</strong>
-        <span data-i18n="machinery.banner.text">El Paso, TX (USA) &amp; Cd. Juárez, Chih. (México) — operación continua desde 2007</span>
+        <strong data-i18n="works.banner.strong">Dos plantas, una frontera</strong>
+        <span data-i18n="works.banner.text">El Paso, TX y Cd. Juárez, Chih. Operando desde 2007.</span>
       </div>
     </div>
 
     <div class="eq-groups">
-
       <div class="eq-group reveal">
         <h4 data-i18n="mach.cat.cnc">Maquinado CNC</h4>
         <div class="eq-tags">
@@ -2043,7 +1639,6 @@ footer {
           <span class="eq-tag">Hurco VMX60</span>
         </div>
       </div>
-
       <div class="eq-group reveal d1">
         <h4>EDM</h4>
         <div class="eq-tags">
@@ -2052,146 +1647,90 @@ footer {
           <span class="eq-tag">Wire Cutter FX20</span>
         </div>
       </div>
-
       <div class="eq-group reveal d2">
-        <h4 data-i18n="mach.cat.cutting">Corte y Formado</h4>
+        <h4 data-i18n="mach.cat.cutting">Corte y formado</h4>
         <div class="eq-tags">
           <span class="eq-tag">Laser Amada LCG 3015 AJ</span>
           <span class="eq-tag">Turret Press (Amada)</span>
-          <span class="eq-tag">Guillotina 3/8" × 12 ft</span>
+          <span class="eq-tag" data-i18n="mach.name.shear">Guillotina 3/8" × 12 ft</span>
           <span class="eq-tag">Press Brake + CNC Router</span>
         </div>
       </div>
-
       <div class="eq-group reveal d3">
-        <h4 data-i18n="mach.cat.manual">Fresado, Inspección y Acabados</h4>
+        <h4 data-i18n="mach.cat.manual">Fresado, inspección y acabados</h4>
         <div class="eq-tags">
           <span class="eq-tag">Kent Vertical Manual Mill</span>
-          <span class="eq-tag" data-i18n="mach.name.optical">Comparador Óptico</span>
+          <span class="eq-tag" data-i18n="mach.name.optical">Comparador óptico</span>
           <span class="eq-tag">Zing Laser Etch</span>
-          <span class="eq-tag">Sandblaster Industrial</span>
+          <span class="eq-tag">Sandblaster</span>
         </div>
       </div>
-
       <div class="eq-group reveal d4" style="grid-column:1/-1;">
-        <h4 data-i18n="procs.tag">Procesos productivos</h4>
+        <h4 data-i18n="procs.tag">Lo que hacemos en planta</h4>
         <div class="eq-tags">
-          <span class="eq-tag" data-i18n="proc1.h3">Proceso de Maquinado</span>
-          <span class="eq-tag" data-i18n="proc2.h3">Formado de Metal</span>
-          <span class="eq-tag" data-i18n="proc3.h3">Proceso de Soldadura</span>
-          <span class="eq-tag" data-i18n="proc4.h3">Pintura en Polvo</span>
-          <span class="eq-tag" data-i18n="proc5.h3">Pintura Líquida</span>
-          <span class="eq-tag" data-i18n="proc6.h3">Empaque y Embarque</span>
+          <span class="eq-tag" data-i18n="proc1">Maquinado</span>
+          <span class="eq-tag" data-i18n="proc2">Formado de metal</span>
+          <span class="eq-tag" data-i18n="proc3">Soldadura</span>
+          <span class="eq-tag" data-i18n="proc4">Pintura en polvo</span>
+          <span class="eq-tag" data-i18n="proc5">Pintura líquida</span>
+          <span class="eq-tag" data-i18n="proc6">Empaque y embarque</span>
         </div>
       </div>
-
     </div>
-    <div class="machinery-note reveal" data-i18n="machinery.note">
-      <strong>Capacidad binacional:</strong> Operamos bajo esquemas <em>Shelter</em> y maquila entre ambos lados de la frontera.
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ PROCESS ═══════════ -->
-<section class="process" id="proceso">
-  <div class="container">
-    <div class="tag reveal" data-i18n="process.tag">Cómo trabajamos</div>
-    <h2 class="reveal d1" data-i18n="process.h2">Proceso <span>claro</span>,<br>resultados medibles</h2>
-    <p class="process-intro reveal d2" data-i18n="process.intro">Un método estructurado que elimina la incertidumbre y te mantiene en control de cada etapa de tu proyecto.</p>
-    <div class="process-steps">
-      <div class="process-connector"></div>
-      <div class="process-step reveal">
-        <div class="step-num-wrap"><span class="step-num">01</span></div>
-        <div class="step-title" data-i18n="step1.title">Diagnóstico</div>
-        <p class="step-desc" data-i18n="step1.desc">Analizamos tu operación, identificamos cuellos de botella y definimos el alcance exacto del proyecto.</p>
-      </div>
-      <div class="process-step reveal d1">
-        <div class="step-num-wrap"><span class="step-num">02</span></div>
-        <div class="step-title" data-i18n="step2.title">Propuesta</div>
-        <p class="step-desc" data-i18n="step2.desc">Presentamos una solución técnica detallada con tiempos, costos y retorno de inversión estimado.</p>
-      </div>
-      <div class="process-step reveal d2">
-        <div class="step-num-wrap"><span class="step-num">03</span></div>
-        <div class="step-title" data-i18n="step3.title">Desarrollo</div>
-        <p class="step-desc" data-i18n="step3.desc">Iteramos en sprints cortos con entregas parciales y revisiones continuas contigo.</p>
-      </div>
-      <div class="process-step reveal d3">
-        <div class="step-num-wrap"><span class="step-num">04</span></div>
-        <div class="step-title" data-i18n="step4.title">Implementación</div>
-        <p class="step-desc" data-i18n="step4.desc">Desplegamos la solución en tu entorno, con pruebas rigurosas y capacitación a tu equipo.</p>
-      </div>
-      <div class="process-step reveal d4">
-        <div class="step-num-wrap"><span class="step-num">05</span></div>
-        <div class="step-title" data-i18n="step5.title">Soporte</div>
-        <p class="step-desc" data-i18n="step5.desc">Monitoreamos, optimizamos y actualizamos la solución para que siempre opere al máximo.</p>
-      </div>
+    <div class="machinery-note reveal" data-i18n="works.note">
+      <strong>De los dos lados de la frontera:</strong> trabajamos con esquemas <em>Shelter</em> y maquila entre El Paso y Juárez.
     </div>
   </div>
 </section>
 
-<!-- ═══════════ TECHNOLOGY ═══════════ -->
-<section class="technology" id="tecnologias">
+<!-- ═══════════ HERRAMIENTAS ═══════════ -->
+<section class="products" id="herramientas">
   <div class="container">
-    <div class="tag reveal" data-i18n="tech.tag">Stack tecnológico</div>
-    <h2 class="reveal d1" data-i18n="tech.h2">Automatización y <span>software de punta</span></h2>
-    <p class="tech-intro reveal d2" data-i18n="tech.intro">Las herramientas y protocolos con los que integramos el piso de producción con el software y la inteligencia artificial.</p>
-    <div class="tech-categories">
-      <div class="reveal">
-        <div class="tech-cat-title" data-i18n="tech.cat2">Automatización PLC</div>
-        <ul class="tech-list">
-          <li data-i18n="tech.cat2.li1">Programación PLC</li>
-          <li data-i18n="tech.cat2.li2">Integración robótica</li>
-          <li>SCADA / HMI</li>
-          <li>MES Integration</li>
-          <li data-i18n="tech.cat2.li5">IoT Industrial</li>
-          <li>OPC-UA / Modbus</li>
-          <li data-i18n="tech.cat2.li7">Modernización legacy</li>
-          <li>Remote Monitoring</li>
-        </ul>
-      </div>
-      <div class="reveal d1">
-        <div class="tech-cat-title" data-i18n="tech.cat3">Software & IA</div>
-        <ul class="tech-list">
-          <li>Python / FastAPI</li>
-          <li>Node.js / TypeScript</li>
-          <li>PyTorch / OpenCV</li>
-          <li>APIs Claude / GPT</li>
-          <li>PostgreSQL / MongoDB</li>
-          <li>Docker / Kubernetes</li>
-          <li>AWS / Azure / GCP</li>
-          <li>React / Next.js</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ PRODUCTS ═══════════ -->
-<section class="products" id="productos">
-  <div class="container">
-    <div class="tag reveal" data-i18n="prods.tag">Alianzas tecnológicas</div>
-    <h2 class="reveal d1" style="font-size:clamp(32px,3.5vw,48px);font-weight:700;color:var(--white);margin-bottom:16px;" data-i18n="prods.h2">Productos que <span style="color:var(--orange);">distribuimos</span></h2>
-    <p class="products-intro reveal d2" data-i18n="prods.intro">Representamos soluciones de clase mundial para complementar nuestra oferta de ingeniería y software con tecnología de frontera.</p>
+    <div class="tag reveal" data-i18n="prods.tag">Herramientas</div>
+    <h2 class="reveal d1" data-i18n="prods.h2">Donde vive tu operación. <span>Y quién la protege.</span></h2>
+    <p class="products-intro reveal d2" data-i18n="prods.intro">Cuando el proceso ya está ordenado, necesita un lugar donde vivir y alguien que lo cuide. Estas son las herramientas con las que lo dejamos funcionando.</p>
   </div>
 
   <div class="products-stack">
 
-    <!-- ── FIRE.ONE ────────────────────────────────── -->
+    <!-- ── DUNEBOX ─────────────────────────────────── -->
+    <div class="prod-card prod-card-dune reveal">
+      <div class="prod-card-body">
+        <div class="prod-badge prod-badge-dune" data-i18n="dune.badge">Dunebox by Primal Technologies</div>
+        <div class="prod-logo-wrap">
+          <svg class="prod-logo-mark" width="44" height="36" viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 24C7 24 9 18 14 18C19 18 21 24 26 24C31 24 33 18 34 18" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M2 16C7 16 9 10 14 10C19 10 21 16 26 16C31 16 33 10 34 10" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round" opacity=".7"/>
+            <path d="M2 8C7 8 9 2 14 2C19 2 21 8 26 8C31 8 33 2 34 2" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round" opacity=".38"/>
+          </svg>
+          <div class="prod-logo-wordmark">
+            <span class="prod-logo-sub" style="color:#E4832E;">dunebox.app</span>
+            <span class="prod-logo-main" style="font-size:28px;">dunebox</span>
+          </div>
+        </div>
+        <p class="prod-desc" data-i18n="dune.desc">El sistema donde vive tu operación ya ordenada. Cotizas, vendes, facturas y controlas tu inventario en un solo lugar, sin capturar dos veces.</p>
+        <ul class="prod-features">
+          <li data-i18n="dune.feat1">Cotizaciones que se convierten en pedido y factura</li>
+          <li data-i18n="dune.feat2">Inventario que cuadra, con entradas y salidas controladas</li>
+          <li data-i18n="dune.feat3">Facturación CFDI 4.0 integrada</li>
+          <li data-i18n="dune.feat4">Producción y cuentas por cobrar a la vista</li>
+        </ul>
+        <a href="https://dunebox.app" target="_blank" rel="noopener" class="prod-cta prod-cta-dune" data-i18n="dune.cta">Crea tu cuenta gratis</a>
+      </div>
+      <div class="prod-card-visual">
+        <img src="https://dunebox.app/opengraph-image?5fce4daa0d4ad3df" alt="Dunebox">
+      </div>
+    </div>
+
+    <!-- ── PRIMAL SECURITY · FIRE.ONE ──────────────── -->
     <div class="prod-card prod-card-fire reveal">
       <div class="prod-card-body">
-        <div class="prod-badge prod-badge-fire" data-i18n="fire.badge">Ciberseguridad · Granada Vista Inc.</div>
-
-        <!-- Breezeway Fire.ONE logo (inline SVG recreation from presentation) -->
+        <div class="prod-badge prod-badge-fire" data-i18n="fire.badge">Primal Security · con Granada Vista</div>
         <div class="prod-logo-wrap">
-          <!-- Fire.ONE icon mark: two overlapping teardrops (orange + teal) -->
-          <svg class="prod-logo-mark" width="52" height="58" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left teardrop (orange) -->
+          <svg class="prod-logo-mark" width="52" height="58" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M18 2C18 2 4 14 4 26C4 34.837 10.268 42 18 42C25.732 42 32 34.837 32 26C32 14 18 2 18 2Z" fill="#FF6B35"/>
-            <!-- Right teardrop (teal) -->
             <path d="M34 8C34 8 22 18 22 28C22 35.732 27.373 42 34 42C40.627 42 46 35.732 46 28C46 18 34 8 34 8Z" fill="#3DD8C8"/>
-            <!-- Orange drop below -->
             <ellipse cx="34" cy="50" rx="5" ry="7" fill="#FF6B35"/>
-            <!-- Overlap blend area -->
             <path d="M22 18C22 18 26 22 28 28C29.2 31.6 29.5 35.5 28.5 39C30.5 40.9 33.2 42 36 42C40.627 42 46 35.732 46 28C46 18 34 8 34 8C34 8 28 12.5 22 18Z" fill="url(#fireBlend)" opacity=".6"/>
             <defs>
               <linearGradient id="fireBlend" x1="22" y1="18" x2="46" y2="42" gradientUnits="userSpaceOnUse">
@@ -2205,31 +1744,12 @@ footer {
             <span class="prod-logo-main">Fire<span style="color:#FF6B35;">.</span><span style="color:#3DD8C8;">ONE</span></span>
           </div>
         </div>
-
-        <p class="prod-desc" data-i18n="fire.desc">Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.</p>
-
-        <div class="prod-stats">
-          <div>
-            <div class="pstat-num">85%</div>
-            <div class="pstat-label" data-i18n="fire.stat1">Deployments más rápidos</div>
-          </div>
-          <div>
-            <div class="pstat-num" style="color:#fff">0%</div>
-            <div class="pstat-label" data-i18n="fire.stat2">Error humano</div>
-          </div>
-          <div>
-            <div class="pstat-num">300+</div>
-            <div class="pstat-label" data-i18n="fire.stat3">Clientes enterprise</div>
-          </div>
-        </div>
-
+        <p class="prod-desc" data-i18n="fire.desc">Las reglas de tu firewall, revisadas y al día sin depender de que alguien se acuerde. Fire.ONE automatiza las políticas de seguridad de la red y deja registro de cada cambio.</p>
         <ul class="prod-features">
-          <li data-i18n="fire.feat1">Discovery — visibilidad end-to-end en entornos multi-vendor</li>
-          <li data-i18n="fire.feat2">AI Optimization — análisis simultáneo de reglas y tráfico en vivo</li>
-          <li data-i18n="fire.feat3">Governance — auditoría continua y cumplimiento automatizado</li>
+          <li data-i18n="fire.feat1">Ves qué está conectado y qué está abierto en tu red</li>
+          <li data-i18n="fire.feat2">Limpia reglas que ya nadie usa o que dejan huecos</li>
+          <li data-i18n="fire.feat3">Auditoría continua, lista para cuando te la pidan</li>
         </ul>
-
-        <!-- Vendor compatibility chips -->
         <div class="prod-vendors">
           <span class="prod-vendor">Fortinet</span>
           <span class="prod-vendor">Palo Alto</span>
@@ -2239,77 +1759,40 @@ footer {
           <span class="prod-vendor">Check Point</span>
           <span class="prod-vendor">SonicWall</span>
         </div>
-
-        <a href="#contacto" class="prod-cta prod-cta-fire" data-i18n="fire.cta">Solicitar demo</a>
+        <a href="#contacto" class="prod-cta prod-cta-fire" data-i18n="fire.cta">Revisa tu negocio</a>
       </div>
       <div class="prod-card-visual">
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity operations center">
-      </div>
-    </div>
-
-    <!-- ── DUNEBOX ─────────────────────────────────── -->
-    <div class="prod-card prod-card-dune reveal">
-      <div class="prod-card-body">
-        <div class="prod-badge prod-badge-dune" data-i18n="dune.badge">ERP Generativo · SaaS · México</div>
-
-        <!-- Dunebox logo (official brand mark from dunebox.app) -->
-        <div class="prod-logo-wrap">
-          <!-- Dunebox wave mark (simplified navbar version from dunebox-landing.html) -->
-          <svg class="prod-logo-mark" width="44" height="36" viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 24C7 24 9 18 14 18C19 18 21 24 26 24C31 24 33 18 34 18" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M2 16C7 16 9 10 14 10C19 10 21 16 26 16C31 16 33 10 34 10" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round" opacity=".7"/>
-            <path d="M2 8C7 8 9 2 14 2C19 2 21 8 26 8C31 8 33 2 34 2" stroke="#E4832E" stroke-width="3.2" stroke-linecap="round" opacity=".38"/>
-          </svg>
-          <div class="prod-logo-wordmark">
-            <span class="prod-logo-sub" style="color:#E4832E;">dunebox.app</span>
-            <span class="prod-logo-main" style="font-size:28px;">dunebox</span>
-          </div>
-        </div>
-
-        <p class="prod-desc" data-i18n="dune.desc">De una conversación a tu software empresarial. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.</p>
-
-        <ul class="prod-features">
-          <li data-i18n="dune.feat1">Cotizaciones y propuestas comerciales automáticas</li>
-          <li data-i18n="dune.feat2">Control de inventario con trazabilidad en tiempo real</li>
-          <li data-i18n="dune.feat3">Facturación CFDI 4.0 integrada</li>
-          <li data-i18n="dune.feat4">Módulo de producción y cuentas por cobrar</li>
-        </ul>
-
-        <a href="#contacto" class="prod-cta prod-cta-dune" data-i18n="dune.cta">Conocer más</a>
-      </div>
-      <div class="prod-card-visual">
-        <!-- Official Dunebox OG image from dunebox.app -->
-        <img src="https://dunebox.app/opengraph-image?5fce4daa0d4ad3df" alt="Dunebox — Software Líquido para PyMEs">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="">
       </div>
     </div>
 
   </div><!-- /products-stack -->
 </section>
 
-<!-- ═══════════ TRUST ═══════════ -->
+<!-- ═══════════ CÓMO EMPEZAR ═══════════ -->
 <section class="trust" id="confianza">
   <div class="container">
     <div class="trust-header">
-      <div class="tag reveal" data-i18n="trust.tag">Compromiso de calidad</div>
-      <h2 class="reveal d1" data-i18n="trust.h2">Ingeniería lista para <span>auditar</span></h2>
-      <p class="trust-sub reveal d2" data-i18n="trust.sub">Cada pieza que maquinamos y cada línea de código que entregamos queda documentada, trazable y respaldada por procesos que puedes revisar.</p>
+      <div class="tag reveal" data-i18n="trust.tag">Cómo empezar</div>
+      <h2 class="reveal d1" data-i18n="trust.h2">Fácil de empezar. <span>Fácil de medir.</span></h2>
+      <p class="trust-sub reveal d2" data-i18n="trust.sub">Implementar tecnología no tiene que ser caro ni complicado. Así lo hacemos:</p>
     </div>
     <div class="trust-grid">
       <div class="trust-item reveal d1">
-        <h4 data-i18n="trust.p1.h4">Trazabilidad total</h4>
-        <p data-i18n="trust.p1.p">Cada pieza maquinada y cada release de software queda documentado y es rastreable de principio a fin.</p>
+        <h4 data-i18n="trust.p1.h4">Alcance y precio fijo</h4>
+        <p data-i18n="trust.p1.p">El diagnóstico tiene un alcance y un precio claros desde el principio. Sin sorpresas.</p>
       </div>
       <div class="trust-item reveal d2">
-        <h4 data-i18n="trust.p2.h4">Procesos certificados</h4>
-        <p data-i18n="trust.p2.p">Control de calidad en cada etapa, desde el diseño hasta la entrega final en planta o en producción.</p>
+        <h4 data-i18n="trust.p2.h4">Un proceso a la vez</h4>
+        <p data-i18n="trust.p2.p">Empezamos por lo que más te cuesta hoy, no por todo el negocio al mismo tiempo.</p>
       </div>
       <div class="trust-item reveal d3">
-        <h4 data-i18n="trust.p3.h4">Cumplimiento normativo</h4>
-        <p data-i18n="trust.p3.p">Software y manufactura para sectores regulados: médico, farmacéutico y automotriz.</p>
+        <h4 data-i18n="trust.p3.h4">Pago mensual</h4>
+        <p data-i18n="trust.p3.p">Sistemas, automatización y seguridad que se contratan por mes, no con una inversión enorme al inicio.</p>
       </div>
       <div class="trust-item reveal d4">
-        <h4 data-i18n="trust.p4.h4">Entregas garantizadas</h4>
-        <p data-i18n="trust.p4.p">Diagnóstico inicial gratuito y compromisos medibles por sprint u orden de producción.</p>
+        <h4 data-i18n="trust.p4.h4">Resultados que se miden</h4>
+        <p data-i18n="trust.p4.p">Cada mes ves los números: qué cambió, cuánto tiempo se ahorró y qué sigue.</p>
       </div>
     </div>
   </div>
@@ -2317,14 +1800,13 @@ footer {
 
 <!-- ═══════════ CTA BAND ═══════════ -->
 <section class="cta-band">
-  <div class="cta-band-bg"></div>
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2 data-i18n="ctaband.h2">¿Listo para transformar<br>tu operación?</h2>
-        <p data-i18n="ctaband.p">Habla con nuestros especialistas y obtén un diagnóstico gratuito sin compromiso.</p>
+        <h2 data-i18n="ctaband.h2">Un sistema no arregla un proceso desordenado. Lo hace más rápido.</h2>
+        <p data-i18n="ctaband.p">Diagnóstico de tu operación: en 2 semanas sabes dónde se pierden tiempo y dinero.</p>
       </div>
-      <a href="#contacto" class="cta-btn-dark"><span data-i18n="ctaband.btn">Agendar diagnóstico</span> <span class="arrow-right"></span></a>
+      <a href="#contacto" class="cta-btn-dark"><span data-i18n="ctaband.btn">Agenda tu diagnóstico</span> <span class="arrow-right"></span></a>
     </div>
   </div>
 </section>
@@ -2334,46 +1816,48 @@ footer {
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="tag reveal" data-i18n="contact.tag">Contacto</div>
-        <h2 class="reveal d1" data-i18n="contact.h2">Hablemos de tu <span>próximo proyecto</span></h2>
-        <p class="reveal d2" data-i18n="contact.p">Cuéntanos tu desafío y en menos de 24 horas un especialista te contactará con una propuesta inicial.</p>
+        <div class="tag reveal" data-i18n="contact.tag">Platiquemos</div>
+        <h2 class="reveal d1" data-i18n="contact.h2">Cuéntanos qué te quita <span>más tiempo hoy</span></h2>
+        <p class="reveal d2" data-i18n="contact.p">En menos de 24 horas te contactamos para agendar tu diagnóstico. También nos encuentras en Cd. Juárez y El Paso.</p>
       </div>
       <div class="contact-form reveal d2">
         <form id="contactForm">
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="form.label.name">Nombre</label>
-              <input type="text" placeholder="Tu nombre" data-i18n-placeholder="form.placeholder.name" required>
+              <label for="f-name" data-i18n="form.label.name">Nombre</label>
+              <input id="f-name" type="text" placeholder="Tu nombre" data-i18n-placeholder="form.placeholder.name" required>
             </div>
             <div class="form-group">
-              <label data-i18n="form.label.company">Empresa</label>
-              <input type="text" placeholder="Nombre de tu empresa" data-i18n-placeholder="form.placeholder.company">
+              <label for="f-company" data-i18n="form.label.company">Negocio</label>
+              <input id="f-company" type="text" placeholder="Nombre de tu negocio" data-i18n-placeholder="form.placeholder.company">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="form.label.email">Correo</label>
-              <input type="email" placeholder="tu@empresa.com" required>
+              <label for="f-email" data-i18n="form.label.email">Correo</label>
+              <input id="f-email" type="email" placeholder="tu@negocio.com" data-i18n-placeholder="form.placeholder.email" required>
             </div>
             <div class="form-group">
-              <label data-i18n="form.label.phone">Teléfono</label>
-              <input type="tel" placeholder="+52 000 000 0000">
+              <label for="f-phone" data-i18n="form.label.phone">WhatsApp o teléfono</label>
+              <input id="f-phone" type="tel" placeholder="+52 000 000 0000">
             </div>
           </div>
           <div class="form-group">
-            <label data-i18n="form.label.service">Servicio de interés</label>
-            <select required>
+            <label for="f-service" data-i18n="form.label.service">¿Qué te interesa?</label>
+            <select id="f-service" required>
               <option value="" data-i18n="form.opt.default">Selecciona una opción</option>
-              <option data-i18n="form.opt1">Automatización Industrial y Maquinado</option>
-              <option data-i18n="form.opt2">Desarrollo de Software a la Medida</option>
-              <option data-i18n="form.opt3">Automatización con IA</option>
-              <option data-i18n="form.opt4">Desarrollo Web</option>
-              <option data-i18n="form.opt5">Varios servicios</option>
+              <option data-i18n="form.opt1">Diagnóstico de mi operación</option>
+              <option data-i18n="form.opt2">Ordenar y automatizar un proceso</option>
+              <option data-i18n="form.opt3">Operaciones por mensualidad</option>
+              <option data-i18n="form.opt4">Dunebox</option>
+              <option data-i18n="form.opt5">Revisar la seguridad de mi negocio</option>
+              <option data-i18n="form.opt6">Piezas o prototipos (Primal Works)</option>
+              <option data-i18n="form.opt7">Todavía no sé</option>
             </select>
           </div>
           <div class="form-group">
-            <label data-i18n="form.label.message">Cuéntanos tu proyecto</label>
-            <textarea placeholder="Describe brevemente el reto que quieres resolver o el proyecto que tienes en mente..." data-i18n-placeholder="form.placeholder.message"></textarea>
+            <label for="f-message" data-i18n="form.label.message">¿Qué te quita más tiempo hoy?</label>
+            <textarea id="f-message" placeholder="Por ejemplo: cotizamos por WhatsApp y se nos pierden pedidos." data-i18n-placeholder="form.placeholder.message"></textarea>
           </div>
           <button type="submit" class="form-submit">
             <span data-i18n="form.submit">Enviar mensaje</span>
@@ -2402,40 +1886,40 @@ footer {
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" class="logo">
-          <img src="assets/logo-primal.png" alt="Primal" class="logo-img">
+          <img src="assets/primal-logo-negativo.svg" alt="Primal" class="logo-img"><span class="logo-sub">Technologies</span>
         </a>
-        <p data-i18n="footer.brand.p">Soluciones de ingeniería y tecnología que impulsan la competitividad de tu empresa en la era digital.</p>
+        <p data-i18n="footer.brand.p">Primero ordenamos tu operación. Después la automatizamos. Cd. Juárez, Chih. y El Paso, TX.</p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.services.h4">Servicios</h4>
         <ul>
-          <li><a href="#servicios" data-i18n="footer.services.link1">Automatización Industrial</a></li>
-          <li><a href="#servicios" data-i18n="footer.services.link2">Software a la Medida</a></li>
-          <li><a href="#servicios" data-i18n="footer.services.link3">Automatización con IA</a></li>
-          <li><a href="#servicios" data-i18n="footer.services.link4">Desarrollo Web</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link1">Diagnóstico de operación</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link2">Ordenar y automatizar</a></li>
+          <li><a href="#servicios" data-i18n="footer.services.link3">Operaciones por mes</a></li>
+          <li><a href="#servicios">Primal Security</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 data-i18n="footer.company.h4">Empresa</h4>
+        <h4 data-i18n="footer.company.h4">Primal</h4>
         <ul>
-          <li><a href="#nosotros" data-i18n="footer.company.link1">Nosotros</a></li>
-          <li><a href="#proceso" data-i18n="footer.company.link2">Proceso</a></li>
-          <li><a href="#industrias" data-i18n="nav.industrias">Web & Móvil</a></li>
-          <li><a href="#tecnologias" data-i18n="footer.company.link4">Tecnologías</a></li>
+          <li><a href="#nosotros" data-i18n="footer.company.link1">Qué somos</a></li>
+          <li><a href="#metodo" data-i18n="footer.company.link2">El Método Primal</a></li>
+          <li><a href="#works">Primal Works</a></li>
+          <li><a href="#herramientas" data-i18n="footer.company.link4">Herramientas</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 data-i18n="contact.tag">Contacto</h4>
+        <h4 data-i18n="footer.contact.h4">Contacto</h4>
         <ul>
           <li><a href="#contacto" data-i18n="footer.contact.link1">Enviar mensaje</a></li>
-          <li><a href="#contacto" data-i18n="footer.contact.link2">Agendar llamada</a></li>
+          <li><a href="#contacto" data-i18n="footer.contact.link2">Agenda una llamada</a></li>
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy" data-i18n="footer.copy">© 2025 <span>OnePrimal</span>. Todos los derechos reservados.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2025 <span>Primal Technologies</span>. Todos los derechos reservados.</p>
       <div class="footer-legal">
         <a href="#" data-i18n="footer.legal1">Privacidad</a>
         <a href="#" data-i18n="footer.legal2">Términos de uso</a>
@@ -2447,7 +1931,7 @@ footer {
 <!-- ═══════════ TOAST ═══════════ -->
 <div class="toast" id="toast">
   <div class="toast-dot"></div>
-  <span data-i18n="toast.msg">Mensaje enviado. Te contactaremos pronto.</span>
+  <span data-i18n="toast.msg">Mensaje enviado. Te contactamos en menos de 24 horas.</span>
 </div>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
@@ -2517,7 +2001,7 @@ const statsObs = new IntersectionObserver(entries => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = (num < 10 ? (eased * num).toFixed(1) : Math.round(eased * num)) + suffix;
+      el.textContent = (Number.isInteger(num) ? Math.round(eased * num) : (eased * num).toFixed(1)) + suffix;
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -2531,400 +2015,338 @@ statNums.forEach(el => statsObs.observe(el));
 <script>
 const translations = {
   es: {
-    'meta.title': 'OnePrimal — Innovación que transforma industrias',
-    'nav.servicios': 'Servicios',
-    'nav.maquinaria': 'Maquinaria',
-    'nav.procesos': 'Procesos',
-    'nav.industrias': 'Web & Móvil',
-    'nav.contacto': 'Contáctanos',
-    'mobile.industrias': 'Industrias',
-
-    'hero.eyebrow': 'Software · IA · Ingeniería Industrial',
-    'hero.h1': 'Innovación que<br><em>transforma</em><br>industrias',
-    'hero.sub': 'Desarrollamos software a la medida, integramos inteligencia artificial y dominamos la manufactura de precisión para llevar tu empresa al siguiente nivel.',
-    'hero.cta1': 'Ver servicios',
-    'hero.cta2': 'Hablar con un experto',
-
-    'stats.years': 'Años en operación (desde 2007)',
-    'stats.plants': 'Plantas: El Paso TX & Cd. Juárez',
-    'stats.cnc': 'Máquinas CNC y de precisión',
-    'stats.sectors': 'Sectores industriales atendidos',
-
-    'clients.tag': 'Empresas que confían en nosotros',
-    'clients.h2': 'Clientes que nos <span>respaldan</span>',
-
-    'about.tag': 'Quiénes somos',
-    'about.h2': 'Manufactura de <span>precisión</span> e ingeniería que transforma operaciones',
-    'about.p1': 'Integramos maquinado CNC, automatización industrial, software a la medida e inteligencia artificial en una sola empresa.',
-    'about.p2': 'Trabajamos con un solo objetivo: calidad medible en cada entrega, con mejora continua y un equipo en constante capacitación.',
-    'about.v1.h4': 'Precisión CNC',
-    'about.v1.p': 'Maquinado de piezas con tolerancias exactas usando Haas, FANUC, Hurco y Mitsubishi EDM.',
-    'about.v2.h4': 'Industria 4.0',
-    'about.v2.p': 'Automatización PLC, robótica, IoT, MES y analítica de datos para producción inteligente.',
-    'about.v3.h4': 'Software & IA',
-    'about.v3.p': 'Sistemas a la medida, automatización con inteligencia artificial y plataformas web de alto impacto.',
-    'about.v4.h4': 'Acabados Industriales',
-    'about.v4.p': 'Pintura en polvo, pintura líquida convencional y electroestática, con horno de curado.',
-
-    'services.tag': 'Nuestros servicios',
-    'services.h2': 'Lo que <span>hacemos</span><br>mejor',
-    'services.sub': 'Cuatro áreas de especialización que se complementan para darte una solución tecnológica completa e integrada.',
-    'svc1.h3': 'Desarrollo de Software a la Medida',
-    'svc1.p': 'Operamos como una software factory: un equipo dedicado que diseña, construye y libera software con control de calidad y entregas medibles en cada sprint, incluso para procesos regulados en sectores médico y farmacéutico.',
-    'svc1.tag2': 'Sistemas MES',
-    'svc1.tag4': 'ERP Industrial',
-    'svc1.tag5': 'Trazabilidad',
-    'svc2.h3': 'Automatización Industrial, PLC y Maquinado CNC',
-    'svc2.p': 'Programación PLC, integración robótica y líneas de producción automatizadas bajo estándares Industry 4.0, combinado con maquinado CNC de precisión en nuestro propio taller.',
-    'svc2.tag3': 'Robótica',
-    'svc2.tag4': 'Industria 4.0',
-    'svc2.tag6': 'Corte Láser',
-    'svc3.h3': 'Automatización con Inteligencia Artificial',
-    'svc3.p': 'Liberamos el potencial humano de tareas repetitivas: visión por computadora para inspección de calidad, agentes LLM para soporte técnico, y mantenimiento predictivo que convierte los datos de tu planta en decisiones más rentables.',
-    'svc3.tag1': 'Visión por cómputo',
-    'svc3.tag2': 'Control de calidad IA',
-    'svc3.tag3': 'Mantenimiento predictivo',
-    'svc4.h3': 'Desarrollo Web',
-    'svc4.p': 'Creamos sitios web corporativos, plataformas de comercio electrónico y aplicaciones web progresivas que combinan diseño de alto impacto con rendimiento y posicionamiento SEO.',
-    'svc4.tag4': 'SEO técnico',
-
-    'webdev.h2': 'Tu fábrica de <span>software a la medida</span>',
-    'webdev.intro': 'Un equipo de desarrollo dedicado que opera como línea de producción: procesos estandarizados, control de calidad en cada entrega y la velocidad de una fábrica, no de un freelancer.',
-    'wd1.label': 'Sitios web',
-    'wd1.h3': 'Landing Pages & Sitios Corporativos',
-    'wd1.p': 'Diseño moderno, animaciones fluidas, SEO técnico y velocidad de carga optimizada. Cada página construida para convertir visitantes en clientes.',
-    'wd2.label': 'Apps móviles',
-    'wd2.h3': 'Aplicaciones iOS & Android',
-    'wd2.p': 'Apps nativas y multiplataforma con experiencia de usuario impecable. Desde MVPs hasta productos listos para la App Store y Google Play.',
-    'wd3.h3': 'Tiendas Online & Marketplaces',
-    'wd3.p': 'Plataformas de venta con catálogos dinámicos, carrito, pagos integrados (Stripe, Conekta, PayPal) y panel de administración a la medida.',
-    'wd4.label': 'Aplicaciones web',
-    'wd4.h3': 'SaaS, Dashboards & Portales',
-    'wd4.p': 'Sistemas web completos: CRMs, ERPs ligeros, portales de clientes, paneles de analytics en tiempo real y aplicaciones internas de negocio.',
-    'wd5.label': 'Inteligencia artificial',
-    'wd5.h3': 'Funciones IA en tus Productos',
-    'wd5.p': 'Integración de IA generativa en productos existentes: asistentes conversacionales, generación automática de contenido, búsqueda semántica y recomendaciones.',
-    'wd6.label': 'Infraestructura',
-    'wd6.p': 'Arquitecturas robustas y escalables: APIs REST y GraphQL, microservicios, bases de datos, autenticación, CI/CD y despliegue en AWS, Azure o GCP.',
-
-    'machinery.tag': 'Equipamiento',
-    'machinery.h2': 'Maquinaria de <span>precisión industrial</span>',
-    'machinery.intro': 'Contamos con un parque de máquinas de última generación en nuestras plantas de El Paso, TX y Cd. Juárez, Chih., que nos permite ofrecer maquinado de alta precisión, corte, formado, soldadura y acabados superficiales bajo un mismo techo.',
-    'machinery.banner.strong': 'Instalaciones binacionales de manufactura',
-    'machinery.banner.text': 'El Paso, TX (USA) &amp; Cd. Juárez, Chih. (México) — operación continua desde 2007',
-    'mach.cat.cnc': 'Maquinado CNC',
-    'mach.cat.cutting': 'Corte y Formado',
-    'mach.cat.manual': 'Fresado, Inspección y Acabados',
-    'mach.name.optical': 'Comparador Óptico',
-    'machinery.note': '<strong>Capacidad binacional:</strong> Operamos bajo esquemas <em>Shelter</em> y maquila entre ambos lados de la frontera.',
-
-    'procs.tag': 'Procesos productivos',
-    'proc1.h3': 'Proceso de Maquinado',
-    'proc2.h3': 'Formado de Metal',
-    'proc3.h3': 'Proceso de Soldadura',
-    'proc4.h3': 'Pintura en Polvo',
-    'proc5.h3': 'Pintura Líquida',
-    'proc6.h3': 'Empaque y Embarque',
-
-    'process.tag': 'Cómo trabajamos',
-    'process.h2': 'Proceso <span>claro</span>,<br>resultados medibles',
-    'process.intro': 'Un método estructurado que elimina la incertidumbre y te mantiene en control de cada etapa de tu proyecto.',
-    'step1.title': 'Diagnóstico',
-    'step1.desc': 'Analizamos tu operación, identificamos cuellos de botella y definimos el alcance exacto del proyecto.',
-    'step2.title': 'Propuesta',
-    'step2.desc': 'Presentamos una solución técnica detallada con tiempos, costos y retorno de inversión estimado.',
-    'step3.title': 'Desarrollo',
-    'step3.desc': 'Iteramos en sprints cortos con entregas parciales y revisiones continuas contigo.',
-    'step4.title': 'Implementación',
-    'step4.desc': 'Desplegamos la solución en tu entorno, con pruebas rigurosas y capacitación a tu equipo.',
-    'step5.title': 'Soporte',
-    'step5.desc': 'Monitoreamos, optimizamos y actualizamos la solución para que siempre opere al máximo.',
-
-    'tech.tag': 'Stack tecnológico',
-    'tech.h2': 'Automatización y <span>software de punta</span>',
-    'tech.intro': 'Las herramientas y protocolos con los que integramos el piso de producción con el software y la inteligencia artificial.',
-    'tech.cat2': 'Automatización PLC',
-    'tech.cat2.li1': 'Programación PLC',
-    'tech.cat2.li2': 'Integración robótica',
-    'tech.cat2.li5': 'IoT Industrial',
-    'tech.cat2.li7': 'Modernización legacy',
-    'tech.cat3': 'Software & IA',
-
-    'prods.tag': 'Alianzas tecnológicas',
-    'prods.h2': 'Productos que <span style="color:var(--orange);">distribuimos</span>',
-    'prods.intro': 'Representamos soluciones de clase mundial para complementar nuestra oferta de ingeniería y software con tecnología de frontera.',
-    'fire.badge': 'Ciberseguridad · Granada Vista Inc.',
-    'fire.desc': 'Plataforma de automatización unificada de políticas de firewall impulsada por IA. Defiende tu infraestructura a velocidad de máquina — sin error humano.',
-    'fire.stat1': 'Deployments más rápidos',
-    'fire.stat2': 'Error humano',
-    'fire.stat3': 'Clientes enterprise',
-    'fire.feat1': 'Discovery — visibilidad end-to-end en entornos multi-vendor',
-    'fire.feat2': 'AI Optimization — análisis simultáneo de reglas y tráfico en vivo',
-    'fire.feat3': 'Governance — auditoría continua y cumplimiento automatizado',
-    'fire.cta': 'Solicitar demo',
-    'dune.badge': 'ERP Generativo · SaaS · México',
-    'dune.desc': 'De una conversación a tu software empresarial. Describe lo que necesitas — Dunebox genera tu sistema de gestión en segundos, sin código.',
-    'dune.feat1': 'Cotizaciones y propuestas comerciales automáticas',
-    'dune.feat2': 'Control de inventario con trazabilidad en tiempo real',
-    'dune.feat3': 'Facturación CFDI 4.0 integrada',
-    'dune.feat4': 'Módulo de producción y cuentas por cobrar',
-    'dune.cta': 'Conocer más',
-
-    'trust.tag': 'Compromiso de calidad',
-    'trust.h2': 'Ingeniería lista para <span>auditar</span>',
-    'trust.sub': 'Cada pieza que maquinamos y cada línea de código que entregamos queda documentada, trazable y respaldada por procesos que puedes revisar.',
-    'trust.p1.h4': 'Trazabilidad total',
-    'trust.p1.p': 'Cada pieza maquinada y cada release de software queda documentado y es rastreable de principio a fin.',
-    'trust.p2.h4': 'Procesos certificados',
-    'trust.p2.p': 'Control de calidad en cada etapa, desde el diseño hasta la entrega final en planta o en producción.',
-    'trust.p3.h4': 'Cumplimiento normativo',
-    'trust.p3.p': 'Software y manufactura para sectores regulados: médico, farmacéutico y automotriz.',
-    'trust.p4.h4': 'Entregas garantizadas',
-    'trust.p4.p': 'Diagnóstico inicial gratuito y compromisos medibles por sprint u orden de producción.',
-
-    'ctaband.h2': '¿Listo para transformar<br>tu operación?',
-    'ctaband.p': 'Habla con nuestros especialistas y obtén un diagnóstico gratuito sin compromiso.',
-    'ctaband.btn': 'Agendar diagnóstico',
-
-    'contact.tag': 'Contacto',
-    'contact.h2': 'Hablemos de tu <span>próximo proyecto</span>',
-    'contact.p': 'Cuéntanos tu desafío y en menos de 24 horas un especialista te contactará con una propuesta inicial.',
-
-    'form.label.name': 'Nombre',
-    'form.placeholder.name': 'Tu nombre',
-    'form.label.company': 'Empresa',
-    'form.placeholder.company': 'Nombre de tu empresa',
-    'form.label.email': 'Correo',
-    'form.label.phone': 'Teléfono',
-    'form.label.service': 'Servicio de interés',
-    'form.opt.default': 'Selecciona una opción',
-    'form.opt1': 'Automatización Industrial y Maquinado',
-    'form.opt2': 'Desarrollo de Software a la Medida',
-    'form.opt3': 'Automatización con IA',
-    'form.opt4': 'Desarrollo Web',
-    'form.opt5': 'Varios servicios',
-    'form.label.message': 'Cuéntanos tu proyecto',
-    'form.placeholder.message': 'Describe brevemente el reto que quieres resolver o el proyecto que tienes en mente...',
-    'form.submit': 'Enviar mensaje',
-
-    'credit.by': 'Fotografías por',
-    'credit.via': 'vía',
-
-    'footer.brand.p': 'Soluciones de ingeniería y tecnología que impulsan la competitividad de tu empresa en la era digital.',
-    'footer.services.h4': 'Servicios',
-    'footer.services.link1': 'Automatización Industrial',
-    'footer.services.link2': 'Software a la Medida',
-    'footer.services.link3': 'Automatización con IA',
-    'footer.services.link4': 'Desarrollo Web',
-    'footer.company.h4': 'Empresa',
-    'footer.company.link1': 'Nosotros',
-    'footer.company.link2': 'Proceso',
-    'footer.company.link4': 'Tecnologías',
-    'footer.contact.link1': 'Enviar mensaje',
-    'footer.contact.link2': 'Agendar llamada',
-    'footer.copy': '© 2025 <span>OnePrimal</span>. Todos los derechos reservados.',
-    'footer.legal1': 'Privacidad',
-    'footer.legal2': 'Términos de uso',
-
-    'toast.msg': 'Mensaje enviado. Te contactaremos pronto.'
+    "meta.title": "Primal Technologies — Primero ordenamos tu operación. Después la automatizamos.",
+    "nav.servicios": "Servicios",
+    "nav.metodo": "Método",
+    "nav.works": "Works",
+    "nav.herramientas": "Herramientas",
+    "nav.contacto": "Platiquemos",
+    "hero.eyebrow": "Operación y tecnología para PyMEs",
+    "hero.h1": "Primero ordenamos tu operación. <em>Después la automatizamos.</em>",
+    "hero.sub": "Tecnología de corporativo, tamaño PyME. Entramos a cómo cotizas, vendes, compras, cobras y controlas tu inventario, lo ordenamos y después ponemos la tecnología. Se contrata por mes.",
+    "hero.cta1": "Agenda tu diagnóstico",
+    "hero.cta2": "Cómo trabajamos",
+    "stats.years": "Años en operación (desde 2007)",
+    "stats.cities": "Ciudades: Cd. Juárez y El Paso",
+    "stats.steps": "Pasos del Método Primal",
+    "stats.one": "Proceso a la vez, con pago mensual",
+    "clients.tag": "Empresas que confían en nosotros",
+    "clients.h2": "Ya trabajamos <span>con ellos</span>",
+    "about.tag": "Qué somos",
+    "about.h2": "Hemos estado en muchos negocios <span>como el tuyo</span>",
+    "about.p1": "Que tu negocio haya crecido con desorden es normal: nadie le enseña a un dueño a diseñar procesos. Entramos a tu operación, la técnica y la administrativa, y la dejamos clara: quién hace qué, cómo y con qué control.",
+    "about.p2": "Un sistema no arregla un proceso desordenado; lo hace más rápido. Por eso primero ordenamos y después automatizamos.",
+    "about.v1.h4": "Primal ordena",
+    "about.v1.p": "Diagnóstico, roles, controles y números claros. Es la puerta de entrada.",
+    "about.v2.h4": "Dunebox opera",
+    "about.v2.p": "El sistema donde vive la operación ya ordenada: cotizaciones, inventario y facturación.",
+    "about.v3.h4": "Primal Security protege",
+    "about.v3.p": "Ciberseguridad para negocios pequeños, sin sustos: el riesgo real y el siguiente paso.",
+    "about.v4.h4": "Primal Works fabrica",
+    "about.v4.p": "Piezas y prototipos para negocios que no pueden pagar un taller de corporativo.",
+    "services.tag": "Lo que hacemos",
+    "services.h2": "Empieza por un proceso. <span>Paga por mes.</span>",
+    "services.sub": "Sin proyectos eternos ni contratos de corporativo. Un diagnóstico con alcance y precio fijo y, de ahí, un proceso a la vez.",
+    "svc1.h3": "Diagnóstico de tu operación",
+    "svc1.p": "En 2 semanas sabes dónde se pierden tiempo y dinero. Vamos a tu negocio, vemos cómo se cotiza, se vende, se compra, se cobra y se controla el inventario, y te decimos qué arreglar primero.",
+    "svc1.tag1": "Alcance fijo",
+    "svc1.tag2": "Precio fijo",
+    "svc1.tag3": "2 semanas",
+    "svc2.h3": "Ordenar y automatizar",
+    "svc2.p": "Ordenamos el proceso y lo dejamos funcionando en un sistema. Definimos quién hace qué y con qué control, y lo pasamos a Dunebox o a una automatización.",
+    "svc2.tag1": "Procesos",
+    "svc2.tag3": "Automatización",
+    "svc2.tag4": "Setup + mensualidad",
+    "svc3.h3": "Operaciones por mensualidad",
+    "svc3.p": "Un gerente de operaciones de medio tiempo para tu negocio. Cada mes revisamos los números contigo, ajustamos lo que no funciona y cuidamos que el negocio no dependa de ti.",
+    "svc3.tag1": "Revisión mensual",
+    "svc3.tag2": "Números claros",
+    "svc4.h3": "Primal Security",
+    "svc4.p": "Revisa si tu negocio está expuesto. Revisamos tu dominio, tu correo y tus accesos, y te decimos el riesgo real y el siguiente paso.",
+    "svc4.tag1": "Revisión sin costo",
+    "svc4.tag2": "Dominio y correo",
+    "svc4.tag3": "Accesos",
+    "pains.tag": "¿Te suena?",
+    "pains.h2": "Lo que nos cuentan <span>los dueños</span>",
+    "pains.intro": "Si tu negocio todavía corre en Excel y WhatsApp, no estás atrasado: los sistemas grandes se hicieron para corporativos. Esto es lo que más vemos, y cómo lo resolvemos.",
+    "pain1.h3": "“Capturamos el mismo pedido tres veces.”",
+    "pain1.p": "Un solo lugar donde entra el pedido, y de ahí salen la cotización, la orden y la factura.",
+    "pain2.h3": "“Cotizo bien, pero cobro tarde.”",
+    "pain2.p": "Cada factura con su fecha de cobro y alguien responsable de cobrarla.",
+    "pain3.h3": "“No sé cuánto gano.”",
+    "pain3.p": "Números claros cada mes: cuánto vendiste, cuánto te costó y cuánto te quedó.",
+    "pain4.h3": "“Si falto una semana, el negocio se detiene.”",
+    "pain4.p": "Procesos escritos y roles claros, para que el negocio no dependa de ti.",
+    "pain5.h3": "“Todo lo llevamos en Excel y WhatsApp.”",
+    "pain5.p": "Pasamos a un sistema lo que ya funciona, sin cambiarle a tu equipo la forma de trabajar de un día para otro.",
+    "pain6.h3": "“El inventario nunca cuadra.”",
+    "pain6.p": "Entradas y salidas con control, para saber qué tienes sin ir a contarlo.",
+    "process.tag": "El Método Primal",
+    "process.h2": "Cuatro pasos. <span>Siempre en este orden.</span>",
+    "process.intro": "Así trabajamos en cada negocio, un proceso a la vez.",
+    "step1.title": "Diagnosticar",
+    "step1.desc": "Vamos a tu negocio y vemos dónde se pierden tiempo y dinero.",
+    "step2.title": "Ordenar",
+    "step2.desc": "Quién hace qué, cómo y con qué control.",
+    "step3.title": "Automatizar",
+    "step3.desc": "Lo que ya está ordenado pasa a Dunebox o a una automatización.",
+    "step4.title": "Medir",
+    "step4.desc": "Cada mes revisamos los números y ajustamos.",
+    "works.tag": "Primal Works · Manufactura",
+    "works.h2": "Piezas y prototipos. <span>Sin pagar un taller de corporativo.</span>",
+    "works.intro": "Maquinado, corte, formado, soldadura y acabados bajo un mismo techo, para el negocio que necesita una pieza, un prototipo o una corrida corta.",
+    "works.banner.strong": "Dos plantas, una frontera",
+    "works.banner.text": "El Paso, TX y Cd. Juárez, Chih. Operando desde 2007.",
+    "mach.cat.cnc": "Maquinado CNC",
+    "mach.cat.cutting": "Corte y formado",
+    "mach.name.shear": "Guillotina 3/8\" × 12 ft",
+    "mach.cat.manual": "Fresado, inspección y acabados",
+    "mach.name.optical": "Comparador óptico",
+    "procs.tag": "Lo que hacemos en planta",
+    "proc1": "Maquinado",
+    "proc2": "Formado de metal",
+    "proc3": "Soldadura",
+    "proc4": "Pintura en polvo",
+    "proc5": "Pintura líquida",
+    "proc6": "Empaque y embarque",
+    "works.note": "<strong>De los dos lados de la frontera:</strong> trabajamos con esquemas <em>Shelter</em> y maquila entre El Paso y Juárez.",
+    "prods.tag": "Herramientas",
+    "prods.h2": "Donde vive tu operación. <span>Y quién la protege.</span>",
+    "prods.intro": "Cuando el proceso ya está ordenado, necesita un lugar donde vivir y alguien que lo cuide. Estas son las herramientas con las que lo dejamos funcionando.",
+    "dune.badge": "Dunebox by Primal Technologies",
+    "dune.desc": "El sistema donde vive tu operación ya ordenada. Cotizas, vendes, facturas y controlas tu inventario en un solo lugar, sin capturar dos veces.",
+    "dune.feat1": "Cotizaciones que se convierten en pedido y factura",
+    "dune.feat2": "Inventario que cuadra, con entradas y salidas controladas",
+    "dune.feat3": "Facturación CFDI 4.0 integrada",
+    "dune.feat4": "Producción y cuentas por cobrar a la vista",
+    "dune.cta": "Crea tu cuenta gratis",
+    "fire.badge": "Primal Security · con Granada Vista",
+    "fire.desc": "Las reglas de tu firewall, revisadas y al día sin depender de que alguien se acuerde. Fire.ONE automatiza las políticas de seguridad de la red y deja registro de cada cambio.",
+    "fire.feat1": "Ves qué está conectado y qué está abierto en tu red",
+    "fire.feat2": "Limpia reglas que ya nadie usa o que dejan huecos",
+    "fire.feat3": "Auditoría continua, lista para cuando te la pidan",
+    "fire.cta": "Revisa tu negocio",
+    "trust.tag": "Cómo empezar",
+    "trust.h2": "Fácil de empezar. <span>Fácil de medir.</span>",
+    "trust.sub": "Implementar tecnología no tiene que ser caro ni complicado. Así lo hacemos:",
+    "trust.p1.h4": "Alcance y precio fijo",
+    "trust.p1.p": "El diagnóstico tiene un alcance y un precio claros desde el principio. Sin sorpresas.",
+    "trust.p2.h4": "Un proceso a la vez",
+    "trust.p2.p": "Empezamos por lo que más te cuesta hoy, no por todo el negocio al mismo tiempo.",
+    "trust.p3.h4": "Pago mensual",
+    "trust.p3.p": "Sistemas, automatización y seguridad que se contratan por mes, no con una inversión enorme al inicio.",
+    "trust.p4.h4": "Resultados que se miden",
+    "trust.p4.p": "Cada mes ves los números: qué cambió, cuánto tiempo se ahorró y qué sigue.",
+    "ctaband.h2": "Un sistema no arregla un proceso desordenado. Lo hace más rápido.",
+    "ctaband.p": "Diagnóstico de tu operación: en 2 semanas sabes dónde se pierden tiempo y dinero.",
+    "ctaband.btn": "Agenda tu diagnóstico",
+    "contact.tag": "Platiquemos",
+    "contact.h2": "Cuéntanos qué te quita <span>más tiempo hoy</span>",
+    "contact.p": "En menos de 24 horas te contactamos para agendar tu diagnóstico. También nos encuentras en Cd. Juárez y El Paso.",
+    "form.label.name": "Nombre",
+    "form.label.company": "Negocio",
+    "form.label.email": "Correo",
+    "form.label.phone": "WhatsApp o teléfono",
+    "form.label.service": "¿Qué te interesa?",
+    "form.opt.default": "Selecciona una opción",
+    "form.opt1": "Diagnóstico de mi operación",
+    "form.opt2": "Ordenar y automatizar un proceso",
+    "form.opt3": "Operaciones por mensualidad",
+    "form.opt4": "Dunebox",
+    "form.opt5": "Revisar la seguridad de mi negocio",
+    "form.opt6": "Piezas o prototipos (Primal Works)",
+    "form.opt7": "Todavía no sé",
+    "form.label.message": "¿Qué te quita más tiempo hoy?",
+    "form.submit": "Enviar mensaje",
+    "credit.by": "Fotografías por",
+    "credit.via": "vía",
+    "footer.brand.p": "Primero ordenamos tu operación. Después la automatizamos. Cd. Juárez, Chih. y El Paso, TX.",
+    "footer.services.h4": "Servicios",
+    "footer.services.link1": "Diagnóstico de operación",
+    "footer.services.link2": "Ordenar y automatizar",
+    "footer.services.link3": "Operaciones por mes",
+    "footer.company.h4": "Primal",
+    "footer.company.link1": "Qué somos",
+    "footer.company.link2": "El Método Primal",
+    "footer.company.link4": "Herramientas",
+    "footer.contact.h4": "Contacto",
+    "footer.contact.link1": "Enviar mensaje",
+    "footer.contact.link2": "Agenda una llamada",
+    "footer.copy": "© 2025 <span>Primal Technologies</span>. Todos los derechos reservados.",
+    "footer.legal1": "Privacidad",
+    "footer.legal2": "Términos de uso",
+    "toast.msg": "Mensaje enviado. Te contactamos en menos de 24 horas.",
+    "form.placeholder.name": "Tu nombre",
+    "form.placeholder.company": "Nombre de tu negocio",
+    "form.placeholder.email": "tu@negocio.com",
+    "form.placeholder.message": "Por ejemplo: cotizamos por WhatsApp y se nos pierden pedidos."
   },
   en: {
-    'meta.title': 'OnePrimal — Innovation that Transforms Industries',
-    'nav.servicios': 'Services',
-    'nav.maquinaria': 'Machinery',
-    'nav.procesos': 'Processes',
-    'nav.industrias': 'Web & Mobile',
-    'nav.contacto': 'Contact Us',
-    'mobile.industrias': 'Industries',
-
-    'hero.eyebrow': 'Software · AI · Industrial Engineering',
-    'hero.h1': 'Innovation that<br><em>transforms</em><br>industries',
-    'hero.sub': 'We build custom software, integrate artificial intelligence and master precision manufacturing to take your company to the next level.',
-    'hero.cta1': 'View services',
-    'hero.cta2': 'Talk to an expert',
-
-    'stats.years': 'Years in operation (since 2007)',
-    'stats.plants': 'Plants: El Paso TX & Cd. Juárez',
-    'stats.cnc': 'CNC & precision machines',
-    'stats.sectors': 'Industrial sectors served',
-
-    'clients.tag': 'Companies that trust us',
-    'clients.h2': 'Clients who <span>back us</span>',
-
-    'about.tag': 'Who we are',
-    'about.h2': 'Precision <span>manufacturing</span> and engineering that transforms operations',
-    'about.p1': 'We bring together CNC machining, industrial automation, custom software and artificial intelligence under one company.',
-    'about.p2': 'We work toward one goal: measurable quality on every delivery, with continuous improvement and a team that never stops training.',
-    'about.v1.h4': 'CNC Precision',
-    'about.v1.p': 'Machining parts to exact tolerances using Haas, FANUC, Hurco and Mitsubishi EDM.',
-    'about.v2.h4': 'Industry 4.0',
-    'about.v2.p': 'PLC automation, robotics, IoT, MES and data analytics for smart production.',
-    'about.v3.h4': 'Software & AI',
-    'about.v3.p': 'Custom systems, AI-powered automation and high-impact web platforms.',
-    'about.v4.h4': 'Industrial Finishing',
-    'about.v4.p': 'Powder coating, conventional and electrostatic liquid paint, with curing oven.',
-
-    'services.tag': 'Our services',
-    'services.h2': 'What we <span>do</span><br>best',
-    'services.sub': 'Four areas of specialization that work together to give you a complete, integrated technology solution.',
-    'svc1.h3': 'Custom Software Development',
-    'svc1.p': 'We operate as a software factory: a dedicated team that designs, builds and ships software with quality control and measurable deliveries every sprint, even for regulated processes in the medical and pharmaceutical sectors.',
-    'svc1.tag2': 'MES Systems',
-    'svc1.tag4': 'Industrial ERP',
-    'svc1.tag5': 'Traceability',
-    'svc2.h3': 'Industrial Automation, PLC & CNC Machining',
-    'svc2.p': 'PLC programming, robotic integration and automated production lines under Industry 4.0 standards, combined with precision CNC machining in our own shop.',
-    'svc2.tag3': 'Robotics',
-    'svc2.tag4': 'Industry 4.0',
-    'svc2.tag6': 'Laser Cutting',
-    'svc3.h3': 'AI-Powered Automation',
-    'svc3.p': 'We free up human potential from repetitive tasks: computer vision for quality inspection, LLM agents for technical support, and predictive maintenance that turns your plant\'s data into more profitable decisions.',
-    'svc3.tag1': 'Computer Vision',
-    'svc3.tag2': 'AI Quality Control',
-    'svc3.tag3': 'Predictive Maintenance',
-    'svc4.h3': 'Web Development',
-    'svc4.p': 'We build corporate websites, e-commerce platforms and progressive web apps that combine high-impact design with performance and SEO.',
-    'svc4.tag4': 'Technical SEO',
-
-    'webdev.h2': 'Your <span>custom software factory</span>',
-    'webdev.intro': 'A dedicated development team that runs like a production line: standardized processes, quality control on every release and the speed of a factory — not a freelancer.',
-    'wd1.label': 'Websites',
-    'wd1.h3': 'Landing Pages & Corporate Sites',
-    'wd1.p': 'Modern design, fluid animations, technical SEO and optimized load speed. Every page built to convert visitors into customers.',
-    'wd2.label': 'Mobile Apps',
-    'wd2.h3': 'iOS & Android Apps',
-    'wd2.p': 'Native and cross-platform apps with a flawless user experience. From MVPs to products ready for the App Store and Google Play.',
-    'wd3.h3': 'Online Stores & Marketplaces',
-    'wd3.p': 'Sales platforms with dynamic catalogs, cart, integrated payments (Stripe, Conekta, PayPal) and a custom admin panel.',
-    'wd4.label': 'Web Applications',
-    'wd4.h3': 'SaaS, Dashboards & Portals',
-    'wd4.p': 'Full web systems: CRMs, lightweight ERPs, customer portals, real-time analytics dashboards and internal business applications.',
-    'wd5.label': 'Artificial Intelligence',
-    'wd5.h3': 'AI Features in Your Products',
-    'wd5.p': 'Generative AI integration into existing products: conversational assistants, automatic content generation, semantic search and recommendations.',
-    'wd6.label': 'Infrastructure',
-    'wd6.p': 'Robust, scalable architectures: REST and GraphQL APIs, microservices, databases, authentication, CI/CD and deployment on AWS, Azure or GCP.',
-
-    'machinery.tag': 'Equipment',
-    'machinery.h2': 'Industrial <span>precision</span> machinery',
-    'machinery.intro': 'We run a fleet of latest-generation machines at our El Paso, TX and Cd. Juárez, Chih. plants, letting us offer high-precision machining, cutting, forming, welding and surface finishing all under one roof.',
-    'machinery.banner.strong': 'Binational manufacturing facilities',
-    'machinery.banner.text': 'El Paso, TX (USA) &amp; Cd. Juárez, Chih. (Mexico) — continuous operation since 2007',
-    'mach.cat.cnc': 'CNC Machining',
-    'mach.cat.cutting': 'Cutting & Forming',
-    'mach.cat.manual': 'Milling, Inspection & Finishing',
-    'mach.name.optical': 'Optical Comparator',
-    'machinery.note': '<strong>Binational capacity:</strong> We operate under <em>Shelter</em> and maquila schemes across both sides of the border.',
-
-    'procs.tag': 'Production processes',
-    'proc1.h3': 'Machining Process',
-    'proc2.h3': 'Metal Forming',
-    'proc3.h3': 'Welding Process',
-    'proc4.h3': 'Powder Coating',
-    'proc5.h3': 'Liquid Paint',
-    'proc6.h3': 'Packing & Shipping',
-
-    'process.tag': 'How we work',
-    'process.h2': '<span>Clear</span> process,<br>measurable results',
-    'process.intro': 'A structured method that removes uncertainty and keeps you in control at every stage of your project.',
-    'step1.title': 'Discovery',
-    'step1.desc': 'We analyze your operation, identify bottlenecks and define the exact scope of the project.',
-    'step2.title': 'Proposal',
-    'step2.desc': 'We present a detailed technical solution with timelines, costs and estimated ROI.',
-    'step3.title': 'Development',
-    'step3.desc': 'We iterate in short sprints with partial deliveries and continuous reviews with you.',
-    'step4.title': 'Implementation',
-    'step4.desc': 'We deploy the solution in your environment, with rigorous testing and training for your team.',
-    'step5.title': 'Support',
-    'step5.desc': 'We monitor, optimize and update the solution so it always runs at its best.',
-
-    'tech.tag': 'Tech stack',
-    'tech.h2': 'Automation & <span>top-tier software</span>',
-    'tech.intro': 'The tools and protocols we use to connect the shop floor with software and artificial intelligence.',
-    'tech.cat2': 'PLC Automation',
-    'tech.cat2.li1': 'PLC Programming',
-    'tech.cat2.li2': 'Robotic Integration',
-    'tech.cat2.li5': 'Industrial IoT',
-    'tech.cat2.li7': 'Legacy Modernization',
-    'tech.cat3': 'Software & AI',
-
-    'prods.tag': 'Technology partnerships',
-    'prods.h2': 'Products we <span style="color:var(--orange);">distribute</span>',
-    'prods.intro': 'We represent world-class solutions that complement our engineering and software offering with frontier technology.',
-    'fire.badge': 'Cybersecurity · Granada Vista Inc.',
-    'fire.desc': 'AI-powered unified firewall policy automation platform. Defend your infrastructure at machine speed — with zero human error.',
-    'fire.stat1': 'Faster deployments',
-    'fire.stat2': 'Human error',
-    'fire.stat3': 'Enterprise clients',
-    'fire.feat1': 'Discovery — end-to-end visibility across multi-vendor environments',
-    'fire.feat2': 'AI Optimization — simultaneous analysis of rules and live traffic',
-    'fire.feat3': 'Governance — continuous auditing and automated compliance',
-    'fire.cta': 'Request a demo',
-    'dune.badge': 'Generative ERP · SaaS · Mexico',
-    'dune.desc': 'From a conversation to your business software. Describe what you need — Dunebox generates your management system in seconds, no code required.',
-    'dune.feat1': 'Automatic quotes and sales proposals',
-    'dune.feat2': 'Inventory control with real-time traceability',
-    'dune.feat3': 'Integrated CFDI 4.0 invoicing',
-    'dune.feat4': 'Production and accounts-receivable module',
-    'dune.cta': 'Learn more',
-
-    'trust.tag': 'Quality commitment',
-    'trust.h2': 'Engineering ready for <span>audit</span>',
-    'trust.sub': 'Every part we machine and every line of code we ship is documented, traceable, and backed by processes you can review.',
-    'trust.p1.h4': 'Full traceability',
-    'trust.p1.p': 'Every machined part and every software release is documented and traceable end to end.',
-    'trust.p2.h4': 'Certified processes',
-    'trust.p2.p': 'Quality control at every stage, from design to final delivery on the shop floor or in production.',
-    'trust.p3.h4': 'Regulatory compliance',
-    'trust.p3.p': 'Software and manufacturing for regulated industries: medical, pharmaceutical, and automotive.',
-    'trust.p4.h4': 'Guaranteed delivery',
-    'trust.p4.p': 'Free initial diagnostic and measurable commitments per sprint or production order.',
-
-    'ctaband.h2': 'Ready to transform<br>your operation?',
-    'ctaband.p': 'Talk to our specialists and get a free, no-obligation diagnostic.',
-    'ctaband.btn': 'Schedule a diagnostic',
-
-    'contact.tag': 'Contact',
-    'contact.h2': "Let's talk about your <span>next project</span>",
-    'contact.p': "Tell us about your challenge and within 24 hours a specialist will reach out with an initial proposal.",
-
-    'form.label.name': 'Name',
-    'form.placeholder.name': 'Your name',
-    'form.label.company': 'Company',
-    'form.placeholder.company': 'Your company name',
-    'form.label.email': 'Email',
-    'form.label.phone': 'Phone',
-    'form.label.service': 'Service of interest',
-    'form.opt.default': 'Select an option',
-    'form.opt1': 'Industrial Automation & Machining',
-    'form.opt2': 'Custom Software Development',
-    'form.opt3': 'AI Automation',
-    'form.opt4': 'Web Development',
-    'form.opt5': 'Multiple services',
-    'form.label.message': 'Tell us about your project',
-    'form.placeholder.message': 'Briefly describe the challenge you want to solve or the project you have in mind...',
-    'form.submit': 'Send message',
-
-    'credit.by': 'Photos by',
-    'credit.via': 'via',
-
-    'footer.brand.p': 'Engineering and technology solutions that drive your company\'s competitiveness in the digital era.',
-    'footer.services.h4': 'Services',
-    'footer.services.link1': 'Industrial Automation',
-    'footer.services.link2': 'Custom Software',
-    'footer.services.link3': 'AI Automation',
-    'footer.services.link4': 'Web Development',
-    'footer.company.h4': 'Company',
-    'footer.company.link1': 'About Us',
-    'footer.company.link2': 'Process',
-    'footer.company.link4': 'Technologies',
-    'footer.contact.link1': 'Send a message',
-    'footer.contact.link2': 'Schedule a call',
-    'footer.copy': '© 2025 <span>OnePrimal</span>. All rights reserved.',
-    'footer.legal1': 'Privacy',
-    'footer.legal2': 'Terms of use',
-
-    'toast.msg': "Message sent. We'll contact you soon."
+    "meta.title": "Primal Technologies — We fix the process, then we automate it.",
+    "nav.servicios": "Services",
+    "nav.metodo": "Method",
+    "nav.works": "Works",
+    "nav.herramientas": "Tools",
+    "nav.contacto": "Let's talk",
+    "hero.eyebrow": "Operations and technology for small businesses",
+    "hero.h1": "We fix the process. <em>Then we automate it.</em>",
+    "hero.sub": "Enterprise tech without the enterprise price. We look at how you quote, sell, buy, collect and track inventory, put it in order, and then add the technology. Paid monthly.",
+    "hero.cta1": "Book your assessment",
+    "hero.cta2": "How we work",
+    "stats.years": "Years in business (since 2007)",
+    "stats.cities": "Cities: Juárez and El Paso",
+    "stats.steps": "Steps in the Primal Method",
+    "stats.one": "Process at a time, paid monthly",
+    "clients.tag": "Companies that trust us",
+    "clients.h2": "We already work <span>with them</span>",
+    "about.tag": "What we are",
+    "about.h2": "We've been inside many businesses <span>like yours</span>",
+    "about.p1": "If your business grew in a messy way, that is normal: nobody teaches an owner how to design processes. We step into your operation, both the technical and the admin side, and make it clear: who does what, how, and with what control.",
+    "about.p2": "A system doesn't fix a messy process; it just makes it faster. That's why we fix the process first, then automate it.",
+    "about.v1.h4": "Primal fixes",
+    "about.v1.p": "Assessment, roles, controls and clear numbers. This is where it starts.",
+    "about.v2.h4": "Dunebox runs",
+    "about.v2.p": "The system where your organized operation lives: quotes, inventory and invoicing.",
+    "about.v3.h4": "Primal Security protects",
+    "about.v3.p": "Cybersecurity for small businesses, without the scare tactics: the real risk and the next step.",
+    "about.v4.h4": "Primal Works builds",
+    "about.v4.p": "Parts and prototypes for businesses that can't pay for an enterprise machine shop.",
+    "services.tag": "What we do",
+    "services.h2": "Start with one process. <span>Pay monthly.</span>",
+    "services.sub": "No endless projects or enterprise contracts. A fixed-scope, fixed-price assessment, and then one process at a time.",
+    "svc1.h3": "Operations assessment",
+    "svc1.p": "In 2 weeks you know where you are losing time and money. We visit your business, see how you quote, sell, buy, collect and track inventory, and tell you what to fix first.",
+    "svc1.tag1": "Fixed scope",
+    "svc1.tag2": "Fixed price",
+    "svc1.tag3": "2 weeks",
+    "svc2.h3": "Fix and automate",
+    "svc2.p": "We fix the process and leave it running in a system. We define who does what and with what control, then move it to Dunebox or an automation.",
+    "svc2.tag1": "Processes",
+    "svc2.tag3": "Automation",
+    "svc2.tag4": "Setup + monthly fee",
+    "svc3.h3": "Monthly operations",
+    "svc3.p": "A part-time operations manager for your business. Every month we review the numbers with you, adjust what isn't working, and make sure the business doesn't depend on you.",
+    "svc3.tag1": "Monthly review",
+    "svc3.tag2": "Clear numbers",
+    "svc4.h3": "Primal Security",
+    "svc4.p": "Check if your business is exposed. We review your domain, email and access, and tell you the real risk and the next step.",
+    "svc4.tag1": "Free review",
+    "svc4.tag2": "Domain and email",
+    "svc4.tag3": "Access",
+    "pains.tag": "Sound familiar?",
+    "pains.h2": "What owners <span>tell us</span>",
+    "pains.intro": "If your business still runs on Excel and WhatsApp, you're not behind: big systems were built for big companies. This is what we see most, and how we fix it.",
+    "pain1.h3": "“We enter the same order three times.”",
+    "pain1.p": "One place where the order comes in, and the quote, work order and invoice all come from there.",
+    "pain2.h3": "“I quote well, but I get paid late.”",
+    "pain2.p": "Every invoice with a due date and someone responsible for collecting it.",
+    "pain3.h3": "“I don’t know how much I make.”",
+    "pain3.p": "Clear numbers every month: what you sold, what it cost and what you kept.",
+    "pain4.h3": "“If I miss a week, the business stops.”",
+    "pain4.p": "Written processes and clear roles, so the business doesn't depend on you.",
+    "pain5.h3": "“Everything lives in Excel and WhatsApp.”",
+    "pain5.p": "We move what already works into a system, without changing how your team works overnight.",
+    "pain6.h3": "“The inventory never adds up.”",
+    "pain6.p": "Controlled ins and outs, so you know what you have without counting it.",
+    "process.tag": "The Primal Method",
+    "process.h2": "Four steps. <span>Always in this order.</span>",
+    "process.intro": "This is how we work in every business, one process at a time.",
+    "step1.title": "Assess",
+    "step1.desc": "We visit your business and see where time and money are lost.",
+    "step2.title": "Organize",
+    "step2.desc": "Who does what, how, and with what control.",
+    "step3.title": "Automate",
+    "step3.desc": "What is already organized moves to Dunebox or an automation.",
+    "step4.title": "Measure",
+    "step4.desc": "Every month we review the numbers and adjust.",
+    "works.tag": "Primal Works · Manufacturing",
+    "works.h2": "Parts and prototypes. <span>Without paying for an enterprise shop.</span>",
+    "works.intro": "Machining, cutting, forming, welding and finishing under one roof, for the business that needs a part, a prototype or a short run.",
+    "works.banner.strong": "Two plants, one border",
+    "works.banner.text": "El Paso, TX and Juárez, Chih. Operating since 2007.",
+    "mach.cat.cnc": "CNC machining",
+    "mach.cat.cutting": "Cutting and forming",
+    "mach.name.shear": "Shear 3/8\" × 12 ft",
+    "mach.cat.manual": "Milling, inspection and finishing",
+    "mach.name.optical": "Optical comparator",
+    "procs.tag": "What we do on the floor",
+    "proc1": "Machining",
+    "proc2": "Metal forming",
+    "proc3": "Welding",
+    "proc4": "Powder coating",
+    "proc5": "Liquid paint",
+    "proc6": "Packing and shipping",
+    "works.note": "<strong>On both sides of the border:</strong> we work under <em>Shelter</em> and maquila arrangements between El Paso and Juárez.",
+    "prods.tag": "Tools",
+    "prods.h2": "Where your operation lives. <span>And who protects it.</span>",
+    "prods.intro": "Once a process is organized, it needs a place to live and someone to look after it. These are the tools we leave it running on.",
+    "dune.badge": "Dunebox by Primal Technologies",
+    "dune.desc": "The system where your organized operation lives. Quote, sell, invoice and track inventory in one place, without entering anything twice.",
+    "dune.feat1": "Quotes that turn into orders and invoices",
+    "dune.feat2": "Inventory that adds up, with controlled ins and outs",
+    "dune.feat3": "Built-in CFDI 4.0 invoicing (Mexico)",
+    "dune.feat4": "Production and receivables at a glance",
+    "dune.cta": "Create your free account",
+    "fire.badge": "Primal Security · with Granada Vista",
+    "fire.desc": "Your firewall rules, reviewed and up to date without relying on someone to remember. Fire.ONE automates your network security policies and logs every change.",
+    "fire.feat1": "See what's connected and what's open on your network",
+    "fire.feat2": "Clean up rules nobody uses or that leave gaps",
+    "fire.feat3": "Continuous auditing, ready when someone asks for it",
+    "fire.cta": "Check your business",
+    "trust.tag": "How to start",
+    "trust.h2": "Easy to start. <span>Easy to measure.</span>",
+    "trust.sub": "Technology doesn't have to be expensive or complicated. Here's how we do it:",
+    "trust.p1.h4": "Fixed scope and price",
+    "trust.p1.p": "The assessment has a clear scope and price from day one. No surprises.",
+    "trust.p2.h4": "One process at a time",
+    "trust.p2.p": "We start with what costs you the most today, not the whole business at once.",
+    "trust.p3.h4": "Monthly payments",
+    "trust.p3.p": "Systems, automation and security paid monthly, not with a huge upfront investment.",
+    "trust.p4.h4": "Results you can measure",
+    "trust.p4.p": "Every month you see the numbers: what changed, how much time was saved and what comes next.",
+    "ctaband.h2": "A system doesn't fix a messy process. It just makes it faster.",
+    "ctaband.p": "Operations assessment: in 2 weeks you know where you are losing time and money.",
+    "ctaband.btn": "Book your assessment",
+    "contact.tag": "Let's talk",
+    "contact.h2": "Tell us what takes <span>the most time today</span>",
+    "contact.p": "We'll get back to you within 24 hours to schedule your assessment. You can also find us in Juárez and El Paso.",
+    "form.label.name": "Name",
+    "form.label.company": "Business",
+    "form.label.email": "Email",
+    "form.label.phone": "WhatsApp or phone",
+    "form.label.service": "What are you interested in?",
+    "form.opt.default": "Choose an option",
+    "form.opt1": "An assessment of my operation",
+    "form.opt2": "Fix and automate a process",
+    "form.opt3": "Monthly operations",
+    "form.opt4": "Dunebox",
+    "form.opt5": "Check my business security",
+    "form.opt6": "Parts or prototypes (Primal Works)",
+    "form.opt7": "I'm not sure yet",
+    "form.label.message": "What takes the most time today?",
+    "form.submit": "Send message",
+    "credit.by": "Photos by",
+    "credit.via": "on",
+    "footer.brand.p": "We fix the process, then we automate it. Juárez, Chih. and El Paso, TX.",
+    "footer.services.h4": "Services",
+    "footer.services.link1": "Operations assessment",
+    "footer.services.link2": "Fix and automate",
+    "footer.services.link3": "Monthly operations",
+    "footer.company.h4": "Primal",
+    "footer.company.link1": "What we are",
+    "footer.company.link2": "The Primal Method",
+    "footer.company.link4": "Tools",
+    "footer.contact.h4": "Contact",
+    "footer.contact.link1": "Send a message",
+    "footer.contact.link2": "Book a call",
+    "footer.copy": "© 2025 <span>Primal Technologies</span>. All rights reserved.",
+    "footer.legal1": "Privacy",
+    "footer.legal2": "Terms of use",
+    "toast.msg": "Message sent. We'll get back to you within 24 hours.",
+    "form.placeholder.name": "Your name",
+    "form.placeholder.company": "Your business name",
+    "form.placeholder.email": "you@business.com",
+    "form.placeholder.message": "For example: we take quotes over WhatsApp and orders get lost."
   }
 };
 
